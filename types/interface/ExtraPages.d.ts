@@ -1,4 +1,4 @@
 export interface ExtraPage {
-  permalink: string;
-  frontmatter?: Record<string, any>;
+    permalink: string;
+    frontmatter?: Record<string, any>;
 }

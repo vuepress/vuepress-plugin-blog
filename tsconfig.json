@@ -1,9 +1,9 @@
 {
   "compilerOptions": {
     "target": "esnext",
-    "module": "es2015",
+    "module": "umd",
     "lib": ["dom", "es6", "es2017", "esnext.asynciterable"],
-    "sourceMap": true,
+    "sourceMap": false,
     "outDir": "./lib",
     "declaration": true,
     "declarationDir": "types",
