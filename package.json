@@ -1,0 +1,74 @@
+{
+  "name": "vuepress-plugin-blog",
+  "version": "0.0.0",
+  "description": "Blog plugin for VuePress",
+  "scripts": {
+    "lint": "xo",
+    "dev": "nodemon --exec ts-node src/index.ts",
+    "build": "tsc",
+    "build:w": "tsc --watch",
+    "prepare": "npm run build",
+    "prepublishOnly": "conventional-changelog -p angular -r 2 -i CHANGELOG.md -s"
+  },
+  "main": "lib/index.js",
+  "repository": {
+    "url": "ulivz/vuepress-plugin-blog",
+    "type": "git"
+  },
+  "author": "ULIVZ <chl814@foxmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "xo": "^0.23.0",
+    "prettier": "^1.15.2",
+    "eslint-config-rem": "^4.0.0",
+    "eslint-config-prettier": "^3.3.0",
+    "eslint-plugin-prettier": "^3.0.0",
+    "eslint-config-xo-typescript": "^0.3.0",
+    "eslint-plugin-typescript": "^0.14.0",
+    "typescript-eslint-parser": "^21.0.2",
+    "husky": "^1.2.0",
+    "lint-staged": "^8.1.0",
+    "nodemon": "^1.18.7",
+    "ts-node": "^7.0.1",
+    "typescript": "^3.1.4",
+    "conventional-changelog-cli": "^2.0.1"
+  },
+  "xo": {
+    "extends": [
+      "rem",
+      "plugin:prettier/recommended",
+      "xo-typescript"
+    ],
+    "extensions": [
+      "ts"
+    ],
+    "rules": {
+      "unicorn/filename-case": "off",
+      "new-cap": "off",
+      "typescript/no-inferrable-types": "off",
+      "import/no-unassigned-import": "off",
+      "typescript/explicit-function-return-type": "off",
+      "no-throw-literal": "off"
+    }
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "linters": {
+      "*.{ts,js}": [
+        "xo --fix",
+        "git add"
+      ],
+      "*.{json,md}": [
+        "prettier --write",
+        "git add"
+      ]
+    }
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  }
+}
