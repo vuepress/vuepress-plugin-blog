@@ -41,7 +41,7 @@ So, how to combine them skillfully? Next, let's take a look at how this plugin s
 
 ### Directory Classifier
 
-Directory Classifier, that means the classification of source files in a same directory.
+Directory Classifier, that classifies the source pages placed in a same directory.
 
 Suppose you have the following files structure:
 
@@ -145,7 +145,7 @@ The default value of `itemPermalink` is `'/:year/:month/:day/:slug'`.
 As your blog articles grew more and more, you began to have the need for paging. By default, this plugin integrates a
  very powerful pagination system that allows you to access paging functions with simple configuration.
  
-By default, the plugin assumes that the number of pages per page is `10`. you can also modify it like this:
+By default, the plugin assumes that the max number of pages per page is `10`. you can also modify it like this:
 
 ```diff
 // .vuepress/config.js
@@ -220,7 +220,7 @@ the data structure of `$page` at the [official documentation](https://v1.vuepres
 
 ### Frontmatter Classifier
 
-Frontmatter Classifier, that is the classification of pages that have the same frontmatter key values.
+Frontmatter Classifier, which classifies pages that have the same frontmatter key values.
 
 Suppose you have three pages:
 
