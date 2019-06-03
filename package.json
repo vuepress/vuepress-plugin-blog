@@ -9,7 +9,7 @@
     "example": "tsc && vuepress dev example --temp example/.temp",
     "build:w": "tsc --watch",
     "prepare": "npm run build",
-    "prepublishOnly": "conventional-changelog -p angular -r 2 -i CHANGELOG.md -s"
+    "prepublishOnly": "npm run build && conventional-changelog -p angular -r 2 -i CHANGELOG.md -s"
   },
   "main": "lib/index.js",
   "repository": {
@@ -35,7 +35,8 @@
     "conventional-changelog-cli": "^2.0.1",
     "vuepress": "next",
     "@vuepress/plugin-search": "next",
-    "vue-feather-icons": "^4.21.0"
+    "vue-feather-icons": "^4.21.0",
+    "vuepress-theme-blogging": "latest"
   },
   "xo": {
     "extends": [
