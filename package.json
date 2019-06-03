@@ -1,13 +1,15 @@
 {
-  "name": "vuepress-plugin-blog",
+  "name": "@vuepress/plugin-blog",
   "version": "0.0.2",
-  "description": "Blog plugin for VuePress",
+  "description": "Offical blog plugin for VuePress",
   "scripts": {
     "lint": "xo",
-    "dev": "nodemon --exec ts-node src/index.ts",
-    "build": "tsc && cp -r src/client lib",
-    "example": "tsc && vuepress dev example --temp example/.temp",
-    "build:w": "tsc --watch",
+    "dev": "tsc --watch",
+    "cpc": "cp -r src/client lib",
+    "build": "tsc && npm run cpc",
+    "dev:docs": "vuepress dev docs --temp docs/.temp",
+    "build:docs": "vuepress build docs --temp docs/.temp",
+    "example": "node examples/launch.js",
     "prepare": "npm run build",
     "prepublishOnly": "npm run build && conventional-changelog -p angular -r 2 -i CHANGELOG.md -s"
   },
@@ -38,10 +40,7 @@
     "ts-node": "^7.0.1",
     "typescript": "^3.1.4",
     "conventional-changelog-cli": "^2.0.1",
-    "vuepress": "next",
-    "@vuepress/plugin-search": "next",
-    "vue-feather-icons": "^4.21.0",
-    "vuepress-theme-blogging": "latest"
+    "vuepress": "next"
   },
   "xo": {
     "extends": [
