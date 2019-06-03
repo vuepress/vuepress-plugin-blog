@@ -4,9 +4,9 @@ sidebar: auto
 
 # @vuepress/plugin-blog
 
-> Official blog theme for VuePress. 
+> Official blog plugin for VuePress. 
 
-Note that this plug-in has been deeply integrated into [@vuepress/theme-blog](https://github.com/ulivz/vuepress-theme-blog).
+Note that this plugin has been deeply integrated into [@vuepress/theme-blog](https://github.com/ulivz/vuepress-theme-blog).
 
 ## Install
 
@@ -317,8 +317,21 @@ natural experiences:
 ```
 
 
+## Examples
+
+Here is [live example](https://github.com/ulivz/70-lines-of-vuepress-blog-theme) that implements a VuePress theme in around 70 lines.
 
 
 ## Options
 
-### 
+### directories
+
+> TODO, contribution welcome.
+
+### frontmatters
+
+> TODO, contribution welcome.
+
+
+
+
