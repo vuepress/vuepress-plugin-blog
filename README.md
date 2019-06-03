@@ -2,7 +2,7 @@
 
 > Official blog plugin for VuePress. 
 
-Note that this plug-in has been deeply integrated into [@vuepress/theme-blog](https://github.com/ulivz/vuepress-theme-blog).
+Note that this plugin has been deeply integrated into [@vuepress/theme-blog](https://github.com/ulivz/vuepress-theme-blog).
 
 ## Install
 
