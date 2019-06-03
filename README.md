@@ -1,6 +1,6 @@
 # @vuepress/plugin-blog
 
-> Official blog theme for VuePress. 
+> Official blog plugin for VuePress. 
 
 Note that this plug-in has been deeply integrated into [@vuepress/theme-blog](https://github
 .com/ulivz/vuepress-theme-blog).
