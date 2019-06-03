@@ -141,12 +141,13 @@
     display: none;
     width: $tocWidth;
     max-height: 100vh;
+    max-width 220px
     overflow-y: auto;
     padding: $sidebarTop + $navbarHeight 0;
     top: 0;
     right: 10px;
     box-sizing: border-box;
-    background: #fff;
+    /*background: #fff;*/
     z-index: 0;
 
     .vuepress-toc-item
@@ -170,14 +171,14 @@
         white-space: nowrap;
 
       &.active
-        border-left-color: #3eaf7c;
+        border-left-color: $accentColor;
 
         a
-          color: #3eaf7c;
+          color: $accentColor;
 
       &:hover
         a
-          color: #3eaf7c;
+          color: $accentColor;
 
     for i in range(3, 6)
       .vuepress-toc-h{i} a

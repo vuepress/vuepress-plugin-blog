@@ -3,8 +3,10 @@
     <div class="footer-left-wrap">
       <ul class="contact" v-if="contact">
         <li class="contact-item" v-for="item in contact">
-          <component :is="item.iconComponent"></component>
-          <NavLink :link="item.link">{{ item.text }}</NavLink>
+          <NavLink :link="item.link">
+            <component :is="item.iconComponent"></component>
+            {{ item.text }}
+          </NavLink>
         </li>
       </ul>
     </div>
@@ -104,13 +106,17 @@
             font-size 12px
             color rgba(255, 255, 255, 0.45)
             text-decoration none
+            transition color .3s
+            
+            &:hover
+              color #FFF
     
     .footer-right-wrap
       flex 1
       display flex
       align-items center
       justify-content flex-end
-  
+      
       .copyright
         display flex
         justify-content flex-end
@@ -129,7 +135,8 @@
             font-size 12px
             color rgba(255, 255, 255, 0.6)
             text-decoration none
-            transition color.3s
+            transition color .3s
+            
             &:hover
               color rgba(255, 255, 255, 0.9)
   
@@ -137,6 +144,7 @@
     .footer
       height 100px
       flex-direction column
+      
       .footer-left-wrap
         align-items center
         justify-content center

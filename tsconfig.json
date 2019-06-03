@@ -1,8 +1,13 @@
 {
   "compilerOptions": {
     "target": "esnext",
-    "module": "umd",
-    "lib": ["dom", "es6", "es2017", "esnext.asynciterable"],
+    "module": "commonjs",
+    "lib": [
+      "dom",
+      "es6",
+      "es2017",
+      "esnext.asynciterable"
+    ],
     "sourceMap": false,
     "outDir": "./lib",
     "declaration": true,
@@ -21,6 +26,11 @@
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true
   },
-  "exclude": ["node_modules"],
-  "include": ["./src/**/*.tsx", "./src/**/*.ts"]
+  "exclude": [
+    "node_modules"
+  ],
+  "include": [
+    "./src/**/*.tsx",
+    "./src/**/*.ts"
+  ]
 }

@@ -103,10 +103,22 @@ class Pagination {
 export default ({ Vue }) => {
   Vue.mixin({
     methods: {
-      $pagination(pid, id) {
+      $getPagination(pid, id) {
         id = id || pid
         return gateway.getPagination(pid, id, this.$route)
       },
     },
+    computed: {
+      $pagination() {
+        if (!this.$route.meta.pid || !this.$route.meta.id) {
+          throw new Error(`Cannot access "$pagination" in current page.`)
+        }
+
+        return this.$getPagination(
+          this.$route.meta.pid,
+          this.$route.meta.id,
+        )
+      },
+    }
   })
 }

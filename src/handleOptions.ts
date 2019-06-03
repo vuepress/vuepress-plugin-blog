@@ -5,6 +5,7 @@ import { AppContext } from './interface/VuePress'
 import { InternalPagination } from './interface/Pagination'
 import { FrontmatterClassificationPage } from './interface/Frontmatter'
 import { curryFrontmatterHandler, FrontmatterTempMap } from './util'
+import { DefaultLayoutEnum } from './Config'
 
 /**
  * Handle options from users.
@@ -65,6 +66,10 @@ export function handleOptions(options: BlogPluginOptions, ctx: AppContext) {
     extraPages.push({
       permalink: indexPath,
       frontmatter,
+      meta: {
+        pid: id,
+        id: id,
+      },
     })
 
     /**
@@ -84,7 +89,7 @@ export function handleOptions(options: BlogPluginOptions, ctx: AppContext) {
         regularPath !== indexPath &&
         regularPath.startsWith(`/${dirname}/`),
       frontmatter: {
-        layout: getLayout(itemLayout),
+        layout: getLayout(itemLayout, 'Post'),
         permalink: itemPermalink,
       },
       data: { id, pid: id },
@@ -96,7 +101,14 @@ export function handleOptions(options: BlogPluginOptions, ctx: AppContext) {
     paginations.push({
       pid: id,
       id,
-      options: pagination,
+      meta: {
+        pid: id,
+        id: id,
+      },
+      options: {
+        ...pagination,
+        layout: DefaultLayoutEnum.FrontmatterClassifier,
+      },
       getUrl(index) {
         if (index === 0) {
           return indexPath

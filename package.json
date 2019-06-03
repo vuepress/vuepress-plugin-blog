@@ -5,7 +5,7 @@
   "scripts": {
     "lint": "xo",
     "dev": "nodemon --exec ts-node src/index.ts",
-    "build": "tsc",
+    "build": "tsc && cp -r src/client lib",
     "example": "tsc && vuepress dev example --temp example/.temp",
     "build:w": "tsc --watch",
     "prepare": "npm run build",

@@ -86,6 +86,10 @@ module.exports = (options: BlogPluginOptions, ctx: AppContext) => {
               paginations.push({
                 pid: scope,
                 id: key,
+                meta: {
+                  pid: scope,
+                  id: key,
+                },
                 options: {
                   ...pagination,
                   layout: DefaultLayoutEnum.FrontmatterClassifier,
@@ -112,7 +116,8 @@ module.exports = (options: BlogPluginOptions, ctx: AppContext) => {
               return {
                 permalink: path,
                 meta: {
-                  frontmatterClassificationKey: scope,
+                  pid: scope,
+                  id: key,
                 },
                 pid: scope,
                 id: key,
@@ -125,6 +130,8 @@ module.exports = (options: BlogPluginOptions, ctx: AppContext) => {
           })
           .reduce((arr, next) => arr.concat(next), []),
       ]
+      console.log('====== allExtraPages')
+      console.log(allExtraPages)
 
       await Promise.all(allExtraPages.map(async page => ctx.addPage(page)))
       await registerPagination(paginations, ctx)

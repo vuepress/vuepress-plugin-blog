@@ -8,6 +8,7 @@ export interface PaginationConfig {
   layout?: string
   serverPageFilter?: any;
   clientPageFilter?: any;
+  clientPageSorter?: any;
 }
 
 /**

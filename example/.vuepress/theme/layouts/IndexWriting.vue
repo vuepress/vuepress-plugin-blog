@@ -8,11 +8,9 @@ import BaseListLayout from './BaseListLayout'
 export default {
   components: { BaseListLayout },
   computed: {
-    pagination() {
-      if (this.$route.meta.pid) {
-        return this.$pagination
-      }
-      return this.$getPagination('post')
+    pagination () {
+      console.warn(this.$pagination)
+      return this.$pagination
     },
   },
 }

@@ -1,29 +1,29 @@
 module.exports = {
-  title: `VuePress`,
+  title: `ULIVZ`,
   themeConfig: {
     nav: [
       {
-        text: 'Home',
+        text: 'Blog',
         link: '/',
       },
       {
-        text: 'Tutorials',
-        link: '/tutorials/',
+        text: 'Writings',
+        link: '/writings/',
       },
       {
-        text: 'Documentation',
-        link: 'https://v1.vuepress.vuejs.org',
+        text: 'Tags',
+        link: '/tag/',
       },
     ],
     footer: {
       contact: [
         {
           type: 'github',
-          link: '',
+          link: 'https://github.com/ulivz',
         },
         {
           type: 'twitter',
-          link: '',
+          link: 'https://twitter.com/_ulivz',
         },
       ],
       copyright: [

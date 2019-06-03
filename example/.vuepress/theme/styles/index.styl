@@ -1,7 +1,6 @@
 @require './font.styl'
 @require './config.styl'
 @require './code.styl'
-@require './code-highligth.styl'
 @require './custom-blocks.styl'
 @require './arrow.styl'
 @require './wrapper.styl'
@@ -18,7 +17,7 @@ body
   -moz-osx-font-smoothing grayscale
   font-size 16px
   color $textColor
-  //background-color #FeFeFe
+  background-color #FFF
 
 .page
   padding-left $sidebarWidth
@@ -83,7 +82,9 @@ body
 a
   font-weight 500
   color $accentColor
-  text-decoration none
+  text-decoration underline
+  &:hover
+    color darken($accentColor, 20%)
 
 p a code
   font-weight 400
@@ -98,8 +99,8 @@ kbd
 
 blockquote
   font-size .9rem
-  color #999
-  border-left .5rem solid #dfe2e5
+  color darken($accentColor, 50%)
+  border-left: 3px solid $accentColor;
   margin 0.5rem 0
   padding .25rem 0 .25rem 1rem
 

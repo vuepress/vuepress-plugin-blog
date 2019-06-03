@@ -2,8 +2,6 @@ import { findPageByKey } from '@app/util'
 import frontmatterClassifiedPageMap from '@dynamic/vuepress_blog/frontmatterClassified'
 
 class Classifiable {
-  private _metaMap: Record<string, any>
-
   constructor(metaMap, pages) {
     this._metaMap = Object.assign({}, metaMap)
     Object.keys(this._metaMap).forEach(name => {
@@ -39,7 +37,6 @@ class Classifiable {
 }
 
 export default ({ Vue }) => {
-  console.log(Object.keys(frontmatterClassifiedPageMap))
   const computed = Object.keys(frontmatterClassifiedPageMap)
     .map(classifiedType => {
       const map = frontmatterClassifiedPageMap[classifiedType]
@@ -52,7 +49,7 @@ export default ({ Vue }) => {
         },
         [`$current${classifiedType.charAt(0).toUpperCase() +
           classifiedType.slice(1)}`]() {
-          const tagName = this.$route.meta.frontmatterClassificationKey
+          const tagName = this.$route.meta.pid
           return this[helperName].getItemByName(tagName)
         },
       }

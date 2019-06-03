@@ -1,6 +1,7 @@
 import { AppContext } from './interface/VuePress'
+import { InternalPagination } from './interface/Pagination'
 
-export async function registerPagination(paginations, ctx: AppContext) {
+export async function registerPagination(paginations: InternalPagination[], ctx: AppContext) {
   ctx.paginations = []
   ctx.pageFilters = {}
   ctx.pageSorters = {}
@@ -22,6 +23,7 @@ export async function registerPagination(paginations, ctx: AppContext) {
   for (const {
     pid,
     id,
+    meta,
     getUrl = index => `/${id}/${index}/`,
     getTitle = index => `Page ${index + 1} | ${id}`,
     options,
@@ -34,6 +36,7 @@ export async function registerPagination(paginations, ctx: AppContext) {
     }
 
     const defaultPostsFilter = new Function(
+      // @ts-ignore
       defaultPostsFilterMeta.args,
       defaultPostsFilterMeta.body,
     )
@@ -48,6 +51,7 @@ export async function registerPagination(paginations, ctx: AppContext) {
       layout = 'Layout',
       serverPageFilter = defaultPostsFilter,
       clientPageFilter = defaultPostsFilter,
+      // @ts-ignore
       clientPageSorter = defaultPostsSorter,
     } = options
 
@@ -67,20 +71,26 @@ export async function registerPagination(paginations, ctx: AppContext) {
     recordPageFilters(pid, clientPageFilter)
     recordPageSorters(pid, clientPageSorter)
 
+    console.log('==== pagination.paginationPages')
+    console.log(pagination.paginationPages)
+
     await Promise.all(
       pagination.paginationPages.map(async ({ path }, index) => {
         if (index === 0) {
           return
         }
+
         return ctx.addPage({
           permalink: path,
           frontmatter: {
             layout,
             title: getTitle(index),
           },
+          meta,
         })
       }),
     )
+    // @ts-ignore
     ctx.paginations.push(pagination)
   }
 }
@@ -91,6 +101,7 @@ function getIntervallers(max, interval) {
       ? Math.floor(max / interval)
       : Math.floor(max / interval) + 1
   const arr = [...new Array(count)]
+  // @ts-ignore
   return arr.map((v, index) => {
     const start = index * interval
     const end = (index + 1) * interval - 1
