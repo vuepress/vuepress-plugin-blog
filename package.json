@@ -12,6 +12,11 @@
     "prepublishOnly": "npm run build && conventional-changelog -p angular -r 2 -i CHANGELOG.md -s"
   },
   "main": "lib/index.js",
+  "files": [
+    "lib",
+    "docs",
+    "types"
+  ],
   "repository": {
     "url": "ulivz/vuepress-plugin-blog",
     "type": "git"
