@@ -26,14 +26,17 @@ module.exports = {
 
 ## Tutorials
 
-### Classifier
+### Document Classifier
 
-This plugin creates a concept named `classifier`. All files in a directory (e.g. `_post`) should be the 
-same classification, all pages containing the same specific frontmatter key value (e.g. `tag: js`) can also be a 
-classification. 
+`Document classifier` is a set of functions that can classify pages with the same characteristics. For a blog developer, the same characteristics may exist between different pages as follows:
 
-So there are two different types of classification. Of course, both of them may be related to another common 
-requirement, `pagination`. Next, let's take a look at the benefits of this plugin from the shallow to the deep.
+- Pages put in a directory (e.g. `_post`)
+- Pages containing the same specific frontmatter key value (e.g. `tag: js`). 
+
+Of course, both of them may be related to another common 
+requirement, `pagination`.
+
+So, how to combine them skillfully? Next, let's take a look at how this plugin solve these problems.
 
 
 ### Directory Classifier
