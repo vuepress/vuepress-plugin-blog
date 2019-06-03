@@ -4,9 +4,9 @@
   "description": "Offical blog plugin for VuePress",
   "scripts": {
     "lint": "xo",
-    "dev": "tsc --watch",
+    "dev": "tsc -skipLibCheck --watch",
     "cpc": "cp -r src/client lib",
-    "build": "tsc && npm run cpc",
+    "build": "tsc -skipLibCheck && npm run cpc",
     "dev:docs": "vuepress dev docs --temp docs/.temp",
     "build:docs": "vuepress build docs --temp docs/.temp",
     "example": "node examples/launch.js",
