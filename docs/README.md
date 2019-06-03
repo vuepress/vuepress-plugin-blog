@@ -81,7 +81,7 @@ layout:
 
 | url | layout |
 |---|---|
-| `/` | `IndexPost` |
+| `/` | `IndexPost` / `Layout` |
 | `/2018/04/04/intro-to-vuepress/` | `Post` |
 | `/2019/06/08/intro-to-vuepress-next/` | `Post` |
 
@@ -174,11 +174,15 @@ When the `perPagePosts` is set to `2`, this plugin will help you generate the fo
 
 | url | layout |
 |---|---|
-| `/` | `IndexPost / Layout` |
-| `/page/2/` (New) | `DirectoryPagination / Layout` |
+| `/` | `IndexPost` / `Layout` |
+| `/page/2/` (New) | `DirectoryPagination` / `Layout` |
 | `/2019/06/08/a/` | `Post` |
 | `/2019/06/08/b/` | `Post` |
 | `/2018/06/08/c/` | `Post` |
+
+::: tip 
+`DirectoryPagination / Layout` means that the layout component will Will be downgraded to `Layout` when `DirectoryPagination` layout doesn't exist.
+::: 
 
 So how to get the matched pages in the layout component? In fact, it will be much simpler than you think.
 
@@ -270,8 +274,8 @@ layout:
 | url | layout |
 |---|---|
 | `/tag/` | `Tag` |
-| `/tag/vue/` | `FrontmatterClassifier` |
-| `/tag/js/` | `FrontmatterClassifier` |
+| `/tag/vue/` | `FrontmatterPagination` / `Layout` |
+| `/tag/js/` | `FrontmatterPagination` / `Layout` |
 
 In `Tags` component, you can use `this.$tag.list` to get the tag list. the value would be like:
 
@@ -295,9 +299,8 @@ In `Tags` component, you can use `this.$tag.list` to get the tag list. the value
 ]
 ```
 
-In `FrontmatterClassifier` component, you can use `this.$pagination.pages` to get the matched pages in current tag 
-classification. And what is wonderful is that a you don't nned to card about where you are, and you'll get a very 
-natural experiences:
+In the `FrontmatterPagination` component, you can use `this.$pagination.pages` to get the matched pages in current tag 
+classification:
  
 - If you visit `/tag/vue/`, the `this.$pagination.pages` will be:
 
@@ -319,8 +322,13 @@ natural experiences:
 
 ## Examples
 
-Here is [live example](https://github.com/ulivz/70-lines-of-vuepress-blog-theme) that implements a VuePress theme in around 70 lines.
+Actually, there are only 2 necessary layouts components to create a blog theme:
 
+- Layout
+- Post
+- Tag (Only required when you set up a `tag` frontmatter classification.)
+
+Here is [live example](https://github.com/ulivz/70-lines-of-vuepress-blog-theme) that implements a functionally qualified VuePress theme in around 70 lines.
 
 ## Options
 
