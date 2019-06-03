@@ -1,3 +1,4 @@
 export enum DefaultLayoutEnum {
-  FrontmatterClassifier = 'FrontmatterClassifier',
+  FrontmatterPagination = 'FrontmatterPagination',
+  DirectoryPagination = 'DirectoryPagination',
 }

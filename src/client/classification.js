@@ -6,7 +6,7 @@ class Classifiable {
     this._metaMap = Object.assign({}, metaMap)
     Object.keys(this._metaMap).forEach(name => {
       const { pageKeys } = this._metaMap[name]
-      this._metaMap[name].posts = pageKeys.map(key => findPageByKey(pages, key))
+      this._metaMap[name].pages = pageKeys.map(key => findPageByKey(pages, key))
     })
   }
 
@@ -18,6 +18,10 @@ class Classifiable {
     return this._metaMap
   }
 
+  get pages() {
+    return this.list
+  }
+
   get list() {
     return this.toArray()
   }
@@ -25,8 +29,8 @@ class Classifiable {
   toArray() {
     const tags = []
     Object.keys(this._metaMap).forEach(name => {
-      const { posts, path } = this._metaMap[name]
-      tags.push({ name, posts, path })
+      const { pages, path } = this._metaMap[name]
+      tags.push({ name, pages, path })
     })
     return tags
   }
@@ -48,7 +52,7 @@ export default ({ Vue }) => {
           return classified
         },
         [`$current${classifiedType.charAt(0).toUpperCase() +
-          classifiedType.slice(1)}`]() {
+        classifiedType.slice(1)}`]() {
           const tagName = this.$route.meta.pid
           return this[helperName].getItemByName(tagName)
         },

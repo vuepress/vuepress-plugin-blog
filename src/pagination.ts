@@ -1,5 +1,6 @@
 import { AppContext } from './interface/VuePress'
 import { InternalPagination } from './interface/Pagination'
+import { logPages } from './util'
 
 export async function registerPagination(paginations: InternalPagination[], ctx: AppContext) {
   ctx.paginations = []
@@ -71,8 +72,10 @@ export async function registerPagination(paginations: InternalPagination[], ctx:
     recordPageFilters(pid, clientPageFilter)
     recordPageSorters(pid, clientPageSorter)
 
-    console.log('==== pagination.paginationPages')
-    console.log(pagination.paginationPages)
+    logPages(
+      `Automatically Added Pagination Pages`,
+      pagination.paginationPages.slice(1)
+    )
 
     await Promise.all(
       pagination.paginationPages.map(async ({ path }, index) => {

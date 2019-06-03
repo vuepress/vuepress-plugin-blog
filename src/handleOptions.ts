@@ -44,10 +44,10 @@ export function handleOptions(options: BlogPluginOptions, ctx: AppContext) {
       id,
       dirname,
       path: indexPath,
-      layout: indexLayout,
+      layout: indexLayout = 'IndexPost',
       frontmatter,
-      itemLayout,
-      itemPermalink,
+      itemLayout = 'Post',
+      itemPermalink = '/:year/:month/:day/:slug',
       pagination = {
         perPagePosts: 10,
       },
@@ -107,7 +107,7 @@ export function handleOptions(options: BlogPluginOptions, ctx: AppContext) {
       },
       options: {
         ...pagination,
-        layout: DefaultLayoutEnum.FrontmatterClassifier,
+        layout: DefaultLayoutEnum.DirectoryPagination,
       },
       getUrl(index) {
         if (index === 0) {

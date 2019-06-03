@@ -4,6 +4,7 @@ import { registerPagination } from './pagination'
 import { BlogPluginOptions } from './interface/Options'
 import { AppContext, Page } from './interface/VuePress'
 import { DefaultLayoutEnum } from './Config'
+import { logPages } from './util'
 
 module.exports = (options: BlogPluginOptions, ctx: AppContext) => {
   const {
@@ -92,7 +93,7 @@ module.exports = (options: BlogPluginOptions, ctx: AppContext) => {
                 },
                 options: {
                   ...pagination,
-                  layout: DefaultLayoutEnum.FrontmatterClassifier,
+                  layout: DefaultLayoutEnum.FrontmatterPagination,
                   serverPageFilter(page) {
                     return clientFrontmatterClassifierPageFilter(
                       page,
@@ -122,7 +123,7 @@ module.exports = (options: BlogPluginOptions, ctx: AppContext) => {
                 pid: scope,
                 id: key,
                 frontmatter: {
-                  layout: DefaultLayoutEnum.FrontmatterClassifier,
+                  layout: DefaultLayoutEnum.FrontmatterPagination,
                   title: `${key} | ${scope}`,
                 },
               }
@@ -130,8 +131,11 @@ module.exports = (options: BlogPluginOptions, ctx: AppContext) => {
           })
           .reduce((arr, next) => arr.concat(next), []),
       ]
-      console.log('====== allExtraPages')
-      console.log(allExtraPages)
+
+      logPages(
+        `Automatically Added Index Pages`,
+        allExtraPages
+      )
 
       await Promise.all(allExtraPages.map(async page => ctx.addPage(page)))
       await registerPagination(paginations, ctx)
