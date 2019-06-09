@@ -111,7 +111,7 @@ export default ({ Vue }) => {
     computed: {
       $pagination() {
         if (!this.$route.meta.pid || !this.$route.meta.id) {
-          throw new Error(`Cannot access "$pagination" in current page.`)
+          return {}
         }
 
         return this.$getPagination(
