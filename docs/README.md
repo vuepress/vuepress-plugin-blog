@@ -4,9 +4,9 @@ sidebar: auto
 
 # @vuepress/plugin-blog
 
-> Official blog theme for VuePress. 
+> Official blog plugin for VuePress. 
 
-Note that this plug-in has been deeply integrated into [@vuepress/theme-blog](https://github.com/ulivz/vuepress-theme-blog).
+Note that this plugin has been deeply integrated into [@vuepress/theme-blog](https://github.com/ulivz/vuepress-theme-blog).
 
 ## Install
 
@@ -26,19 +26,22 @@ module.exports = {
 
 ## Tutorials
 
-### Classifier
+### Document Classifier
 
-This plugin creates a concept named `classifier`. All files in a directory (e.g. `_post`) should be the 
-same classification, all pages containing the same specific frontmatter key value (e.g. `tag: js`) can also be a 
-classification. 
+`Document classifier` is a set of functions that can classify pages with the same characteristics. For a blog developer, the same characteristics may exist between different pages as follows:
 
-So there are two different types of classification. Of course, both of them may be related to another common 
-requirement, `pagination`. Next, let's take a look at the benefits of this plugin from the shallow to the deep.
+- Pages put in a directory (e.g. `_post`)
+- Pages containing the same specific frontmatter key value (e.g. `tag: js`). 
+
+Of course, both of them may be related to another common 
+requirement, `pagination`.
+
+So, how to combine them skillfully? Next, let's take a look at how this plugin solve these problems.
 
 
 ### Directory Classifier
 
-Directory Classifier, that means the classification of source files in a same directory.
+Directory Classifier, that classifies the source pages placed in a same directory.
 
 Suppose you have the following files structure:
 
@@ -81,7 +84,7 @@ layout:
 
 | url | layout |
 |---|---|
-| `/` | `IndexPost` |
+| `/` | `IndexPost` / `Layout` |
 | `/2018/04/04/intro-to-vuepress/` | `Post` |
 | `/2019/06/08/intro-to-vuepress-next/` | `Post` |
 
@@ -142,7 +145,7 @@ The default value of `itemPermalink` is `'/:year/:month/:day/:slug'`.
 As your blog articles grew more and more, you began to have the need for paging. By default, this plugin integrates a
  very powerful pagination system that allows you to access paging functions with simple configuration.
  
-By default, the plugin assumes that the number of pages per page is `10`. you can also modify it like this:
+By default, the plugin assumes that the max number of pages per page is `10`. you can also modify it like this:
 
 ```diff
 // .vuepress/config.js
@@ -174,16 +177,20 @@ When the `perPagePosts` is set to `2`, this plugin will help you generate the fo
 
 | url | layout |
 |---|---|
-| `/` | `IndexPost / Layout` |
-| `/page/2/` (New) | `DirectoryPagination / Layout` |
+| `/` | `IndexPost` / `Layout` |
+| `/page/2/` (New) | `DirectoryPagination` / `Layout` |
 | `/2019/06/08/a/` | `Post` |
 | `/2019/06/08/b/` | `Post` |
 | `/2018/06/08/c/` | `Post` |
 
+::: tip 
+`DirectoryPagination / Layout` means that the layout component will be downgraded to `Layout` when `DirectoryPagination` layout doesn't exist.
+::: 
+
 So how to get the matched pages in the layout component? In fact, it will be much simpler than you think.
 
-If you visit `/`, current page leverages layout `IndexPost`, in this layout component, you just need to use `this
-.$pagination.pages` to get the matched pages, in the above example, the actual value of `this.$pagination.pages` will
+If you visit `/`, current page leverages layout `IndexPost`. In this layout component, you just need to use
+`this.$pagination.pages` to get the matched pages. In the above example, the actual value of `this.$pagination.pages` will
  be:
 
 ```json
@@ -193,8 +200,8 @@ If you visit `/`, current page leverages layout `IndexPost`, in this layout comp
 ]
 ```
 
-If you visit `/`, current page leverages layout `DirectoryPagination`, you can also use `this
-.$pagination.pages` to access it:
+If you visit `/`, current page leverages layout `DirectoryPagination`, you can also use
+`this.$pagination.pages` to access it:
 
 ```json
 [
@@ -202,18 +209,18 @@ If you visit `/`, current page leverages layout `DirectoryPagination`, you can a
 ]
 ```
 
-Isn't a very natural experiences? You just need to care about the style of your layout component, not the complicated and boring logic behind it.
+Isn't this very natural experience? You just need to care about the style of your layout component, not the complicated and boring logic behind it.
 
 
 ::: tip
-To save the length of docs, we omitted the data structure of `$page` object. you can get more information about 
+To save the length of docs, we omitted the data structure of the `$page` object. You can get more information about
 the data structure of `$page` at the [official documentation](https://v1.vuepress.vuejs.org/guide/global-computed.html#page).
 :::
 
 
 ### Frontmatter Classifier
 
-Frontmatter Classifier, that is the classification of pages that have the same frontmatter key values.
+Frontmatter Classifier, which classifies pages that have the same frontmatter key values.
 
 Suppose you have three pages:
 
@@ -258,22 +265,22 @@ module.exports = {
           // Layout of the `entry page`
           layout: 'Tag',
         },
-       ]
+      ]
     }]
   ]
 }
 ```
 
-Then the plugin will help you to generate following extra pages, and automatically leverage corresponding 
-layout:
+Then the plugin will help you to generate the following extra pages, and automatically leverage
+the corresponding layout:
 
 | url | layout |
 |---|---|
 | `/tag/` | `Tag` |
-| `/tag/vue/` | `FrontmatterClassifier` |
-| `/tag/js/` | `FrontmatterClassifier` |
+| `/tag/vue/` | `FrontmatterPagination` / `Layout` |
+| `/tag/js/` | `FrontmatterPagination` / `Layout` |
 
-In `Tags` component, you can use `this.$tag.list` to get the tag list. the value would be like:
+In the `Tags` component, you can use `this.$tag.list` to get the tag list. The value would be like:
 
 ```json
 [
@@ -295,9 +302,8 @@ In `Tags` component, you can use `this.$tag.list` to get the tag list. the value
 ]
 ```
 
-In `FrontmatterClassifier` component, you can use `this.$pagination.pages` to get the matched pages in current tag 
-classification. And what is wonderful is that a you don't nned to card about where you are, and you'll get a very 
-natural experiences:
+In the `FrontmatterPagination` component, you can use `this.$pagination.pages` to get the matched pages in current tag 
+classification:
  
 - If you visit `/tag/vue/`, the `this.$pagination.pages` will be:
 
@@ -317,8 +323,26 @@ natural experiences:
 ```
 
 
+## Examples
 
+Actually, there are only 2 necessary layout components to create a blog theme:
+
+- Layout
+- Post
+- Tag (Only required when you set up a `tag` frontmatter classification.)
+
+Here is [live example](https://github.com/ulivz/70-lines-of-vuepress-blog-theme) that implements a functionally qualified VuePress theme in around 70 lines.
 
 ## Options
 
-### 
+### directories
+
+> TODO, contribution welcome.
+
+### frontmatters
+
+> TODO, contribution welcome.
+
+
+
+
