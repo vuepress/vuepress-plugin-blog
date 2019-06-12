@@ -53,7 +53,7 @@ export default ({ Vue }) => {
         },
         [`$current${classifiedType.charAt(0).toUpperCase() +
         classifiedType.slice(1)}`]() {
-          const tagName = this.$route.meta.pid
+          const tagName = this.$route.meta.id
           return this[helperName].getItemByName(tagName)
         },
       }
