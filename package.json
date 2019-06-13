@@ -4,7 +4,7 @@
   "description": "Offical blog plugin for VuePress",
   "scripts": {
     "lint": "xo",
-    "dev": "tsc -skipLibCheck --watch",
+    "dev": "npm run cpc && tsc -skipLibCheck --watch",
     "cpc": "cp -r src/client lib",
     "build": "tsc -skipLibCheck && npm run cpc",
     "dev:docs": "vuepress dev docs --temp docs/.temp",
@@ -26,21 +26,22 @@
   "author": "ULIVZ <chl814@foxmail.com>",
   "license": "MIT",
   "devDependencies": {
-    "xo": "^0.23.0",
-    "prettier": "^1.15.2",
-    "eslint-config-rem": "^4.0.0",
+    "conventional-changelog-cli": "^2.0.1",
     "eslint-config-prettier": "^3.3.0",
-    "eslint-plugin-prettier": "^3.0.0",
+    "eslint-config-rem": "^4.0.0",
     "eslint-config-xo-typescript": "^0.3.0",
+    "eslint-plugin-prettier": "^3.0.0",
     "eslint-plugin-typescript": "^0.14.0",
-    "typescript-eslint-parser": "^21.0.2",
     "husky": "^1.2.0",
     "lint-staged": "^8.1.0",
     "nodemon": "^1.18.7",
+    "prettier": "^1.15.2",
     "ts-node": "^7.0.1",
     "typescript": "^3.1.4",
-    "conventional-changelog-cli": "^2.0.1",
-    "vuepress": "next"
+    "typescript-eslint-parser": "^21.0.2",
+    "vuepress": "^1.0.0",
+    "xo": "^0.23.0",
+    "vuejs-paginate": "^2.1.0"
   },
   "xo": {
     "extends": [

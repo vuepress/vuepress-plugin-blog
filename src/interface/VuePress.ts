@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import { FrontmatterClassificationPage } from './Frontmatter'
-import { InternalPagination } from './Pagination'
+import { SerializedPagination } from './Pagination'
 
 export interface Page {
   key: string;
@@ -18,7 +18,8 @@ export interface AppContext {
 
 export interface AppContext {
   frontmatterClassificationPages: FrontmatterClassificationPage[];
-  paginations: InternalPagination[];
+  serializedPaginations: SerializedPagination[];
   pageFilters: any;
   pageSorters: any;
+  getLayout: (name?: string, fallback?: string) => string | undefined;
 }

@@ -3,10 +3,28 @@ import { handleOptions } from './handleOptions'
 import { registerPagination } from './pagination'
 import { BlogPluginOptions } from './interface/Options'
 import { AppContext, Page } from './interface/VuePress'
-import { DefaultLayoutEnum } from './Config'
-import { logPages } from './util'
+import { logPages, resolvePaginationConfig } from './util'
+import { ClassifierTypeEnum, DefaultLayoutEnum } from './interface/Classifier'
+
+function injectExtraAPI(ctx: AppContext) {
+  const { layoutComponentMap } = ctx.themeAPI
+
+  /**
+   * A function used to check whether layout exists
+   */
+  const isLayoutExists = name => layoutComponentMap[name] !== undefined
+
+  /**
+   * Get layout
+   */
+  ctx.getLayout = (name?: string, fallback?: string) => {
+    return isLayoutExists(name) ? name : fallback || 'Layout'
+  }
+}
 
 module.exports = (options: BlogPluginOptions, ctx: AppContext) => {
+  injectExtraAPI(ctx)
+
   const {
     pageEnhancers,
     frontmatterClassificationPages,
@@ -84,34 +102,24 @@ module.exports = (options: BlogPluginOptions, ctx: AppContext) => {
               /**
                * Register pagination
                */
+              const indexPath = `/${scope}/${key}/`
+
               paginations.push({
-                pid: scope,
-                id: key,
-                meta: {
-                  pid: scope,
-                  id: key,
-                },
-                options: {
-                  ...pagination,
-                  layout: DefaultLayoutEnum.FrontmatterPagination,
-                  serverPageFilter(page) {
-                    return clientFrontmatterClassifierPageFilter(
-                      page,
-                      keys,
-                      key,
-                    )
-                  },
-                  clientPageFilter: clientFrontmatterClassifierPageFilter,
-                },
-                getUrl(index) {
-                  if (index === 0) {
-                    return `/${scope}/${key}/`
-                  }
-                  return `/${scope}/${key}/page/${index + 1}/`
-                },
-                getTitle(index) {
+                classifierType: ClassifierTypeEnum.Frontmatter,
+                getPaginationPageTitle(index) {
                   return `Page ${index + 1} - ${key} | ${scope}`
                 },
+                ...resolvePaginationConfig(
+                  ClassifierTypeEnum.Frontmatter,
+                  pagination,
+                  indexPath,
+                  scope,
+                  key,
+                  ctx,
+                  keys,
+                ),
+                pid: scope,
+                id: key,
               })
 
               return {
@@ -124,7 +132,7 @@ module.exports = (options: BlogPluginOptions, ctx: AppContext) => {
                 id: key,
                 frontmatter: {
                   layout: DefaultLayoutEnum.FrontmatterPagination,
-                  title: `${key} | ${scope}`,
+                  title: `${key} ${scope}`,
                 },
               }
             })
@@ -132,10 +140,7 @@ module.exports = (options: BlogPluginOptions, ctx: AppContext) => {
           .reduce((arr, next) => arr.concat(next), []),
       ]
 
-      logPages(
-        `Automatically Added Index Pages`,
-        allExtraPages
-      )
+      logPages(`Automatically Added Index Pages`, allExtraPages)
 
       await Promise.all(allExtraPages.map(async page => ctx.addPage(page)))
       await registerPagination(paginations, ctx)
@@ -154,25 +159,8 @@ module.exports = (options: BlogPluginOptions, ctx: AppContext) => {
       )
 
       const PREFIX = 'vuepress_blog'
-      const strippedFrontmatterClassificationPages = frontmatterClassificationPages.map(
-        ({ id, pagination, keys }) => {
-          return {
-            id,
-            pagination,
-            keys,
-          }
-        },
-      )
 
       return [
-        {
-          name: `${PREFIX}/frontmatterClassifications.js`,
-          content: `export default ${JSON.stringify(
-            strippedFrontmatterClassificationPages,
-            null,
-            2,
-          )}`,
-        },
         {
           name: `${PREFIX}/frontmatterClassified.js`,
           content: `export default ${JSON.stringify(
@@ -183,15 +171,23 @@ module.exports = (options: BlogPluginOptions, ctx: AppContext) => {
         },
         {
           name: `${PREFIX}/paginations.js`,
-          content: `export default ${JSON.stringify(ctx.paginations, null, 2)}`,
+          content: `
+import sorters from './pageSorters'
+import filters from './pageFilters'
+
+export default ${serializePaginations(ctx.serializedPaginations, [
+            'filter',
+            'sorter',
+          ])}
+`,
         },
         {
           name: `${PREFIX}/pageFilters.js`,
-          content: `export default ${mapToString(ctx.pageFilters)}`,
+          content: `export default ${mapToString(ctx.pageFilters, true)}`,
         },
         {
           name: `${PREFIX}/pageSorters.js`,
-          content: `export default ${mapToString(ctx.pageSorters)}`,
+          content: `export default ${mapToString(ctx.pageSorters, true)}`,
         },
       ]
     },
@@ -203,21 +199,26 @@ module.exports = (options: BlogPluginOptions, ctx: AppContext) => {
   }
 }
 
-function mapToString(map) {
+function serializePaginations(paginations, unstringedKeys: string[] = []) {
+  return `[${paginations.map(p => mapToString(p, unstringedKeys)).join(',\n')}]`
+}
+
+/**
+ * Transform map tp string.
+ *
+ * @param map
+ * @param unstringedKeys Set to ture to force all field value to not be stringified.
+ */
+function mapToString(map, unstringedKeys: string[] | boolean = []) {
+  const keys = unstringedKeys
   let str = `{\n`
   for (const key of Object.keys(map)) {
-    str += `  "${key}": ${map[key]},\n`
+    str += `  ${key}: ${
+      keys === true || (Array.isArray(keys) && keys.includes(key))
+        ? map[key]
+        : JSON.stringify(map[key])
+    },\n`
   }
   str += '}'
   return str
-}
-
-function clientFrontmatterClassifierPageFilter(page, keys, value) {
-  return keys.some(key => {
-    const _value = page.frontmatter[key]
-    if (Array.isArray(_value)) {
-      return _value.some(i => i === value)
-    }
-    return _value === value
-  })
 }
