@@ -52,7 +52,7 @@ export default ({ Vue }) => {
           return classified
         },
         [`$current${classifiedType.charAt(0).toUpperCase() +
-        classifiedType.slice(1)}`]() {
+          classifiedType.slice(1)}`]() {
           const tagName = this.$route.meta.pid
           return this[helperName].getItemByName(tagName)
         },

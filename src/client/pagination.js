@@ -1,19 +1,8 @@
 import Vue from 'vue'
 import paginations from '@dynamic/vuepress_blog/paginations'
-import frontmatterClassifications from '@dynamic/vuepress_blog/frontmatterClassifications'
-import pageFilters from '@dynamic/vuepress_blog/pageFilters'
-import pageSorters from '@dynamic/vuepress_blog/pageSorters'
 import _debug from 'debug'
 
 const debug = _debug('plugin-blog:pagination')
-
-function getClientFrontmatterPageFilter(rawFilter, pid, value) {
-  // debug('getClientFrontmatterPageFilter')
-  // debug('frontmatterClassifications', frontmatterClassifications)
-  // debug('pid', pid)
-  const match = frontmatterClassifications.filter(i => i.id === pid)[0]
-  return page => rawFilter(page, match && match.keys, value)
-}
 
 class PaginationGateway {
   constructor(paginations) {
@@ -39,11 +28,7 @@ const gateway = new PaginationGateway(paginations)
 class Pagination {
   constructor(pagination, pages, route) {
     debug(pagination)
-    const { pid, id, paginationPages } = pagination
-
-    const pageFilter = getClientFrontmatterPageFilter(pageFilters[pid], pid, id)
-    const pageSorter = pageSorters[pid]
-
+    const { pages: paginationPages } = pagination
     const { path } = route
 
     for (let i = 0, l = paginationPages.length; i < l; i++) {
@@ -60,7 +45,7 @@ class Pagination {
 
     this._paginationPages = paginationPages
     this._currentPage = paginationPages[this.paginationIndex]
-    this._matchedPages = pages.filter(pageFilter).sort(pageSorter)
+    this._matchedPages = pages.filter(pagination.filter).sort(pagination.sorter)
   }
 
   setIndexPage(path) {
@@ -98,6 +83,10 @@ class Pagination {
       return this._paginationPages[this.paginationIndex + 1].path
     }
   }
+
+  getSpecificPageLink(index) {
+    return this._paginationPages[this.paginationIndex + 1].path
+  }
 }
 
 export default ({ Vue }) => {
@@ -114,11 +103,8 @@ export default ({ Vue }) => {
           return {}
         }
 
-        return this.$getPagination(
-          this.$route.meta.pid,
-          this.$route.meta.id,
-        )
+        return this.$getPagination(this.$route.meta.pid, this.$route.meta.id)
       },
-    }
+    },
   })
 }
