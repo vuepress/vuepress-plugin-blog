@@ -1,3 +1,18 @@
+# [1.1.0](https://github.com/ulivz/vuepress-plugin-blog/compare/v1.0.0...v1.1.0) (2019-06-14)
+
+
+### Bug Fixes
+
+* $pagination.getSpecificPageLink doesn't work ([98a5d69](https://github.com/ulivz/vuepress-plugin-blog/commit/98a5d69))
+* use id instead of pid to calculate `current${frontmattterClassifierId}` ([#6](https://github.com/ulivz/vuepress-plugin-blog/issues/6)) ([a49fa3d](https://github.com/ulivz/vuepress-plugin-blog/commit/a49fa3d))
+
+
+### Features
+
+* carding internal implementation ([#8](https://github.com/ulivz/vuepress-plugin-blog/issues/8)) ([b249e86](https://github.com/ulivz/vuepress-plugin-blog/commit/b249e86))
+
+
+
 # [1.0.0](https://github.com/ulivz/vuepress-plugin-blog/compare/v1.0.0-alpha.50...v1.0.0) (2019-06-09)
 
 
