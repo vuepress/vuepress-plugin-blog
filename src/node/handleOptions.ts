@@ -1,7 +1,7 @@
 import { BlogPluginOptions } from './interface/Options'
 import { ExtraPage } from './interface/ExtraPages'
 import { PageEnhancer } from './interface/PageEnhancer'
-import { AppContext } from './interface/VuePress'
+import { VuePressContext } from './interface/VuePress'
 import { InternalPagination, PaginationConfig } from './interface/Pagination'
 import { FrontmatterClassificationPage } from './interface/Frontmatter'
 import {
@@ -19,7 +19,10 @@ import { ClassifierTypeEnum } from './interface/Classifier'
  * @returns {*}
  */
 
-export function handleOptions(options: BlogPluginOptions, ctx: AppContext) {
+export function handleOptions(
+  options: BlogPluginOptions,
+  ctx: VuePressContext,
+) {
   const { directories = [], frontmatters = [] } = options
 
   const pageEnhancers: PageEnhancer[] = []

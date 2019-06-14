@@ -1,4 +1,4 @@
-import { AppContext } from './interface/VuePress'
+import { VuePressContext } from './interface/VuePress'
 import {
   InternalPagination,
   PageFilter,
@@ -8,9 +8,30 @@ import {
 } from './interface/Pagination'
 import { logPages } from './util'
 
-export async function registerPagination(
+/**
+ * Divided an interval of several lengths into several equal-length intervals.
+ */
+
+function getIntervallers(max, interval) {
+  const count =
+    max % interval === 0
+      ? Math.floor(max / interval)
+      : Math.floor(max / interval) + 1
+  const arr = [...new Array(count)]
+  // @ts-ignore
+  return arr.map((v, index) => {
+    const start = index * interval
+    const end = (index + 1) * interval - 1
+    return [start, end > max ? max : end]
+  })
+}
+
+/**
+ * Register paginations
+ */
+export async function registerPaginations(
   paginations: InternalPagination[],
-  ctx: AppContext,
+  ctx: VuePressContext,
 ) {
   ctx.serializedPaginations = []
   ctx.pageFilters = []
@@ -54,18 +75,10 @@ export async function registerPagination(
     recordPageFilters(pid, filter)
     recordPageSorters(pid, sorter)
 
-    logPages(
-      `Automatically generated pagination pages`,
-      pagination.pages.slice(1),
-    )
-
-    await Promise.all(
-      pagination.pages.map(async ({ path }, index) => {
-        if (index === 0) {
-          return
-        }
-
-        return ctx.addPage({
+    const extraPages = pagination.pages
+      .slice(1) // The index page has been generated.
+      .map(({ path }, index) => {
+        return {
           permalink: path,
           frontmatter: {
             layout,
@@ -75,31 +88,14 @@ export async function registerPagination(
             pid,
             id,
           },
-        })
-      }),
-    )
+        }
+      })
+
+    logPages(`Automatically generated pagination pages`, extraPages)
+
+    await Promise.all(extraPages.map(page => ctx.addPage(page)))
+
     // @ts-ignore
     ctx.serializedPaginations.push(pagination)
   }
-}
-
-/**
- * Divided an interval of several lengths into several equal-length intervals.
- *
- * @param max
- * @param interval
- */
-
-function getIntervallers(max, interval) {
-  const count =
-    max % interval === 0
-      ? Math.floor(max / interval)
-      : Math.floor(max / interval) + 1
-  const arr = [...new Array(count)]
-  // @ts-ignore
-  return arr.map((v, index) => {
-    const start = index * interval
-    const end = (index + 1) * interval - 1
-    return [start, end > max ? max : end]
-  })
 }

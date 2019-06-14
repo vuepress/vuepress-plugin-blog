@@ -12,7 +12,7 @@
 
 <script>
   import Paginate from 'vuejs-paginate'
-  
+
   export default {
     data() {
       return {
@@ -20,10 +20,12 @@
       }
     },
     components: { Paginate },
+    created() {
+      this.page = this.$pagination.paginationIndex + 1
+    },
     methods: {
       clickCallback(pageNum) {
         const link = this.$pagination.getSpecificPageLink(pageNum - 1)
-        console.log(link)
         this.$router.push(link)
       },
     },

@@ -1,7 +1,7 @@
 module.exports = {
   title: `ULIVZ`,
   plugins: [
-    [require('../../../lib'), {
+    [require('../../../lib/node'), {
       directories: [
         {
           // Unique ID of current classification

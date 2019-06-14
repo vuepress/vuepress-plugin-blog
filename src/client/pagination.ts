@@ -1,10 +1,21 @@
 import Vue from 'vue'
+// @ts-ignore
 import paginations from '@dynamic/vuepress_blog/paginations'
 import _debug from 'debug'
 
 const debug = _debug('plugin-blog:pagination')
 
 class Pagination {
+  public paginationIndex: number
+
+  public _paginationPages: any
+
+  public _currentPage: any
+
+  public _matchedPages: any
+
+  public _indexPage: string
+
   constructor(pagination, pages, route) {
     debug(pagination)
     const { pages: paginationPages } = pagination
@@ -71,11 +82,14 @@ class Pagination {
 }
 
 class PaginationGateway {
+  private paginations: any
+
   constructor(paginations) {
     this.paginations = paginations
   }
 
   get pages() {
+    // @ts-ignore
     return Vue.$vuepress.$get('siteData').pages
   }
 
@@ -96,15 +110,18 @@ export default ({ Vue }) => {
     methods: {
       $getPagination(pid, id) {
         id = id || pid
+        // @ts-ignore
         return gateway.getPagination(pid, id, this.$route)
       },
     },
     computed: {
       $pagination() {
+        // @ts-ignore
         if (!this.$route.meta.pid || !this.$route.meta.id) {
           return {}
         }
 
+        // @ts-ignore
         return this.$getPagination(this.$route.meta.pid, this.$route.meta.id)
       },
     },

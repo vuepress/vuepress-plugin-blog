@@ -1,12 +1,12 @@
 import * as path from 'path'
 import { handleOptions } from './handleOptions'
-import { registerPagination } from './pagination'
+import { registerPaginations } from './pagination'
 import { BlogPluginOptions } from './interface/Options'
-import { AppContext, Page } from './interface/VuePress'
 import { logPages, resolvePaginationConfig } from './util'
 import { ClassifierTypeEnum, DefaultLayoutEnum } from './interface/Classifier'
+import { VuePressContext, VuePressPage } from './interface/VuePress'
 
-function injectExtraAPI(ctx: AppContext) {
+function injectExtraAPI(ctx: VuePressContext) {
   const { layoutComponentMap } = ctx.themeAPI
 
   /**
@@ -22,7 +22,7 @@ function injectExtraAPI(ctx: AppContext) {
   }
 }
 
-module.exports = (options: BlogPluginOptions, ctx: AppContext) => {
+module.exports = (options: BlogPluginOptions, ctx: VuePressContext) => {
   injectExtraAPI(ctx)
 
   const {
@@ -38,7 +38,7 @@ module.exports = (options: BlogPluginOptions, ctx: AppContext) => {
     /**
      * 1. Execute `pageEnhancers` generated in handleOptions
      */
-    extendPageData(pageCtx: Page) {
+    extendPageData(pageCtx: VuePressPage) {
       const { frontmatter: rawFrontmatter } = pageCtx
 
       pageEnhancers.forEach(({ when, data = {}, frontmatter = {} }) => {
@@ -143,14 +143,14 @@ module.exports = (options: BlogPluginOptions, ctx: AppContext) => {
       logPages(`Automatically Added Index Pages`, allExtraPages)
 
       await Promise.all(allExtraPages.map(async page => ctx.addPage(page)))
-      await registerPagination(paginations, ctx)
+      await registerPaginations(paginations, ctx)
     },
 
     /**
      * Generate tag and category metadata.
      */
     async clientDynamicModules() {
-      const frontmatterClassifiedPageMap = ctx.frontmatterClassificationPages.reduce(
+      const frontmatterClassifiedMap = ctx.frontmatterClassificationPages.reduce(
         (map, page) => {
           map[page.id] = page.map
           return map
@@ -164,7 +164,7 @@ module.exports = (options: BlogPluginOptions, ctx: AppContext) => {
         {
           name: `${PREFIX}/frontmatterClassified.js`,
           content: `export default ${JSON.stringify(
-            frontmatterClassifiedPageMap,
+            frontmatterClassifiedMap,
             null,
             2,
           )}`,
@@ -193,8 +193,8 @@ export default ${serializePaginations(ctx.serializedPaginations, [
     },
 
     enhanceAppFiles: [
-      path.resolve(__dirname, 'client/classification.js'),
-      path.resolve(__dirname, 'client/pagination.js'),
+      path.resolve(__dirname, '../client/classification.js'),
+      path.resolve(__dirname, '../client/pagination.js'),
     ],
   }
 }

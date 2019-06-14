@@ -4,16 +4,20 @@
   "description": "Offical blog plugin for VuePress",
   "scripts": {
     "lint": "xo",
-    "dev": "npm run cpc && tsc -skipLibCheck --watch",
-    "cpc": "cp -r src/client lib",
-    "build": "tsc -skipLibCheck && npm run cpc",
+    "dev": "concurrently \"yarn dev:client\" \"yarn dev:node\" \"yarn build:components\"",
+    "build": "concurrently \"yarn build:client\" \"yarn build:node\" \"yarn build:components\"",
+    "dev:client": "tsc -p tsconfig.client.json --watch",
+    "dev:node": "tsc -p tsconfig.node.json --watch",
+    "build:client": "tsc -p tsconfig.client.json",
+    "build:node": "tsc -p tsconfig.node.json",
+    "build:components": "mkdir -p lib/client/components && cp -r src/client/components lib/client",
     "dev:docs": "vuepress dev docs --temp docs/.temp",
     "build:docs": "vuepress build docs --temp docs/.temp",
     "example": "node examples/launch.js",
     "prepare": "npm run build",
     "prepublishOnly": "npm run build && conventional-changelog -p angular -r 2 -i CHANGELOG.md -s"
   },
-  "main": "lib/index.js",
+  "main": "lib/node/index.js",
   "files": [
     "lib",
     "docs",
@@ -25,24 +29,17 @@
   },
   "author": "ULIVZ <chl814@foxmail.com>",
   "license": "MIT",
+  "dependencies": {
+    "vuejs-paginate": "^2.1.0"
+  },
   "devDependencies": {
+    "concurrently": "^4.1.0",
     "conventional-changelog-cli": "^2.0.1",
-    "eslint-config-prettier": "^3.3.0",
-    "eslint-config-rem": "^4.0.0",
-    "eslint-config-xo-typescript": "^0.3.0",
-    "eslint-plugin-prettier": "^3.0.0",
-    "eslint-plugin-typescript": "^0.14.0",
-    "husky": "^1.2.0",
     "inquirer": "^6.3.1",
-    "lint-staged": "^8.1.0",
     "nodemon": "^1.18.7",
-    "prettier": "^1.15.2",
     "ts-node": "^7.0.1",
-    "typescript": "^3.1.4",
-    "typescript-eslint-parser": "^21.0.2",
-    "vuejs-paginate": "^2.1.0",
-    "vuepress": "^1.0.0",
-    "xo": "^0.23.0"
+    "typescript": "3.1.4",
+    "vuepress": "^1.0.0"
   },
   "xo": {
     "extends": [
@@ -63,24 +60,9 @@
       "typescript/no-var-requires": "off",
       "no-implicit-globals": "off",
       "import/no-unresolved": "off",
-      "import/no-extraneous-dependencies": "off"
-    }
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
-  "lint-staged": {
-    "linters": {
-      "*.{ts,js}": [
-        "xo --fix",
-        "git add"
-      ],
-      "*.{json,md}": [
-        "prettier --write",
-        "git add"
-      ]
+      "import/no-extraneous-dependencies": "off",
+      "typescript/no-use-before-define": "off",
+      "typescript/no-type-alias": "off"
     }
   },
   "publishConfig": {

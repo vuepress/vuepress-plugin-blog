@@ -1,7 +1,12 @@
+// @ts-ignore
 import { findPageByKey } from '@app/util'
-import frontmatterClassifiedPageMap from '@dynamic/vuepress_blog/frontmatterClassified'
+// @ts-ignore
+import frontmatterClassifiedMap from '@dynamic/vuepress_blog/frontmatterClassified'
+import { VuePressPage } from '../types/VuePress'
 
 class Classifiable {
+  private _metaMap: any
+
   constructor(metaMap, pages) {
     this._metaMap = Object.assign({}, metaMap)
     Object.keys(this._metaMap).forEach(name => {
@@ -27,7 +32,12 @@ class Classifiable {
   }
 
   toArray() {
-    const tags = []
+    const tags: Array<{
+      name: string
+      pages: VuePressPage[]
+      path: string
+    }> = []
+
     Object.keys(this._metaMap).forEach(name => {
       const { pages, path } = this._metaMap[name]
       tags.push({ name, pages, path })
@@ -41,18 +51,22 @@ class Classifiable {
 }
 
 export default ({ Vue }) => {
-  const computed = Object.keys(frontmatterClassifiedPageMap)
+  const computed = Object.keys(frontmatterClassifiedMap)
     .map(classifiedType => {
-      const map = frontmatterClassifiedPageMap[classifiedType]
+      const map = frontmatterClassifiedMap[classifiedType]
       const helperName = `$${classifiedType}`
       return {
         [helperName]() {
+          // @ts-ignore
           const { pages } = this.$site
           const classified = new Classifiable(map, pages)
           return classified
         },
-        [`$current${classifiedType.charAt(0).toUpperCase() + classifiedType.slice(1)}`]() {
+        [`$current${classifiedType.charAt(0).toUpperCase() +
+          classifiedType.slice(1)}`]() {
+          // @ts-ignore
           const tagName = this.$route.meta.id
+          // @ts-ignore
           return this[helperName].getItemByName(tagName)
         },
       }

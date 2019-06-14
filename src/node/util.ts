@@ -1,5 +1,5 @@
 import { env } from '@vuepress/shared-utils'
-import { AppContext, Page } from './interface/VuePress'
+import { VuePressContext, VuePressPage } from './interface/VuePress'
 import { ClassifierTypeEnum, DefaultLayoutEnum } from './interface/Classifier'
 import { PaginationConfig } from './interface/Pagination'
 
@@ -58,7 +58,7 @@ export function resolvePaginationConfig(
   indexPath,
   pid, // post / tag
   id, // post / js
-  ctx: AppContext,
+  ctx: VuePressContext,
   keys: string[] = [''], // ['js']
 ) {
   return Object.assign(
@@ -79,7 +79,7 @@ export function resolvePaginationConfig(
           ? getIdentityFilter(pid, id)
           : getFrontmatterClassifierPageFilter(keys, id),
 
-      sorter: (prev: Page, next: Page) => {
+      sorter: (prev: VuePressPage, next: VuePressPage) => {
         const prevTime = new Date(prev.frontmatter.date).getTime()
         const nextTime = new Date(next.frontmatter.date).getTime()
         return prevTime - nextTime > 0 ? -1 : 1
@@ -91,8 +91,7 @@ export function resolvePaginationConfig(
 
 function getIdentityFilter(pid, id) {
   return new Function(
-    // @ts-ignore
-    ['page'],
+    'page',
     `return page.pid === ${JSON.stringify(pid)} && page.id === ${JSON.stringify(
       id,
     )}`,
@@ -102,7 +101,7 @@ function getIdentityFilter(pid, id) {
 function getFrontmatterClassifierPageFilter(keys, value) {
   return new Function(
     // @ts-ignore
-    ['page'],
+    'page',
     `
 const keys = ${JSON.stringify(keys)};
 const value = ${JSON.stringify(value)};

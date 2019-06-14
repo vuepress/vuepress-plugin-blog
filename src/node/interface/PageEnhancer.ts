@@ -1,10 +1,10 @@
-import { Page } from './VuePress'
+import { VuePressPage } from './VuePress'
 
 export interface PageEnhancer {
   /**
    * Conditions for enhancer execution
    */
-  when($page: Page): boolean;
+  when($page: VuePressPage): boolean;
 
   /**
    * frontmatter injected to matched pages

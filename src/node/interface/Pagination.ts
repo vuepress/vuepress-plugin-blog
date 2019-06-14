@@ -1,11 +1,14 @@
 /**
  * Config of a Pagination
  */
-import { Page } from './VuePress'
+import { VuePressPage } from './VuePress'
 import { ClassifierTypeEnum } from './Classifier'
 
-export type PageFilter = (page: Page) => boolean
-export type PageSorter = (prev: Page, next: Page) => boolean | number
+export type PageFilter = (page: VuePressPage) => boolean
+export type PageSorter = (
+  prev: VuePressPage,
+  next: VuePressPage,
+) => boolean | number
 export type GetPaginationPageUrl = (index: number) => string
 export type getPaginationPageTitle = (index: number) => string
 
