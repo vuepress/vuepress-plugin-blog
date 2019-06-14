@@ -4,8 +4,8 @@
   "description": "Offical blog plugin for VuePress",
   "scripts": {
     "lint": "xo",
-    "dev": "concurrently \"yarn dev:client\" \"yarn dev:node\" \"yarn build:components\"",
-    "build": "concurrently \"yarn build:client\" \"yarn build:node\" \"yarn build:components\"",
+    "dev": "concurrently \"npm:dev:client\" \"npm:dev:node\" \"npm:build:components\"",
+    "build": "concurrently \"npm:build:client\" \"npm:build:node\" \"npm:build:components\"",
     "dev:client": "tsc -p tsconfig.client.json --watch",
     "dev:node": "tsc -p tsconfig.node.json --watch",
     "build:client": "tsc -p tsconfig.client.json",
