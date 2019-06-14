@@ -11,7 +11,7 @@ module.exports = {
           // Path of the `entry page` (or `list page`)
           path: '/',
           pagination: {
-            perPagePosts: 2,
+            lengthPerPage: 2,
           },
         },
       ],
@@ -21,10 +21,10 @@ module.exports = {
           keys: ['tag', 'tags'],
           path: '/tag/',
           layout: 'Tag',
-          frontmatter: { title: 'Tags' },
+          frontmatter: { title: 'Tag' },
           itemlayout: 'Tag',
           pagination: {
-            perPagePosts: 2
+            lengthPerPage: 3
           }
         },
       ]

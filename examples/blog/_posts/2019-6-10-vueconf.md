@@ -1,6 +1,6 @@
 ---
 tag:
-  - vue 
+  - vue
   - vueconf
 ---
 

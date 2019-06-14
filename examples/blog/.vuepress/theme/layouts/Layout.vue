@@ -9,5 +9,19 @@
       <router-link v-if="$pagination.hasPrev" :to="$pagination.prevLink">Prev</router-link>
       <router-link v-if="$pagination.hasNext" :to="$pagination.nextLink">Next</router-link>
     </div>
+  
+    <Pagination />
   </div>
 </template>
+
+<script>
+  import Pagination from '../../../../../src/components/Pagination'
+  
+  export default {
+    components: { Pagination },
+    created() {
+      console.log(this.$route.meta.pid)
+      console.log(this.$currentTag)
+    }
+  }
+</script>

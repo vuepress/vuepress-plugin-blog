@@ -1,7 +1,7 @@
 <template>
   <div id="global-layout">
     <header style="background-color: #DDD">
-      <router-link to="/">Home</router-link>· <a href="/tag/">Tag</a>
+      <router-link to="/">Home</router-link>· <router-link to="/tag/">Tag</router-link>
     </header>
     <DefaultGlobalLayout/>
     <footer style="background-color: #DDD">Powered by VuePress</footer>
@@ -13,5 +13,8 @@
   
   export default {
     components: { DefaultGlobalLayout: GlobalLayout },
+    created() {
+      console.log()
+    }
   }
 </script>
