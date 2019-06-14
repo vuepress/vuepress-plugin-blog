@@ -51,9 +51,8 @@ export default ({ Vue }) => {
           const classified = new Classifiable(map, pages)
           return classified
         },
-        [`$current${classifiedType.charAt(0).toUpperCase() +
-          classifiedType.slice(1)}`]() {
-          const tagName = this.$route.meta.pid
+        [`$current${classifiedType.charAt(0).toUpperCase() + classifiedType.slice(1)}`]() {
+          const tagName = this.$route.meta.id
           return this[helperName].getItemByName(tagName)
         },
       }
