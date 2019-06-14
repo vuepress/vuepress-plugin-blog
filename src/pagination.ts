@@ -1,84 +1,66 @@
 import { AppContext } from './interface/VuePress'
-import { InternalPagination } from './interface/Pagination'
+import {
+  InternalPagination,
+  PageFilter,
+  GetPaginationPageUrl,
+  getPaginationPageTitle,
+  SerializedPagination,
+} from './interface/Pagination'
 import { logPages } from './util'
 
-export async function registerPagination(paginations: InternalPagination[], ctx: AppContext) {
-  ctx.paginations = []
-  ctx.pageFilters = {}
-  ctx.pageSorters = {}
+export async function registerPagination(
+  paginations: InternalPagination[],
+  ctx: AppContext,
+) {
+  ctx.serializedPaginations = []
+  ctx.pageFilters = []
+  ctx.pageSorters = []
 
   function recordPageFilters(pid, filter) {
-    if (ctx.pageFilters[pid]) {
-      return
-    }
+    if (ctx.pageFilters[pid]) return
     ctx.pageFilters[pid] = filter.toString()
   }
 
   function recordPageSorters(pid, sorter) {
-    if (ctx.pageSorters[pid]) {
-      return
-    }
+    if (ctx.pageSorters[pid]) return
     ctx.pageSorters[pid] = sorter.toString()
   }
 
   for (const {
     pid,
     id,
-    meta,
-    getUrl = index => `/${id}/${index}/`,
-    getTitle = index => `Page ${index + 1} | ${id}`,
-    options,
+    filter,
+    sorter,
+    layout,
+    lengthPerPage,
+    getPaginationPageUrl,
+    getPaginationPageTitle,
   } of paginations) {
-    const defaultPostsFilterMeta = {
-      args: ['page'],
-      body: `return page.pid === ${JSON.stringify(
-        pid,
-      )} && page.id === ${JSON.stringify(id)}`,
-    }
-
-    const defaultPostsFilter = new Function(
-      // @ts-ignore
-      defaultPostsFilterMeta.args,
-      defaultPostsFilterMeta.body,
-    )
-    const defaultPostsSorter = (prev, next) => {
-      const prevTime = new Date(prev.frontmatter.date).getTime()
-      const nextTime = new Date(next.frontmatter.date).getTime()
-      return prevTime - nextTime > 0 ? -1 : 1
-    }
-
-    const {
-      perPagePosts = 10,
-      layout = 'Layout',
-      serverPageFilter = defaultPostsFilter,
-      clientPageFilter = defaultPostsFilter,
-      // @ts-ignore
-      clientPageSorter = defaultPostsSorter,
-    } = options
-
     const { pages: sourcePages } = ctx
-    const pages = sourcePages.filter(serverPageFilter)
+    const pages = sourcePages.filter(filter as PageFilter)
 
-    const intervallers = getIntervallers(pages.length, perPagePosts)
-    const pagination = {
+    const intervallers = getIntervallers(pages.length, lengthPerPage)
+    const pagination: SerializedPagination = {
       pid,
       id,
-      paginationPages: intervallers.map((interval, index) => {
-        const path = getUrl(index)
+      filter: `filters.${pid}`,
+      sorter: `sorters.${pid}`,
+      pages: intervallers.map((interval, index) => {
+        const path = (getPaginationPageUrl as GetPaginationPageUrl)(index)
         return { path, interval }
       }),
     }
 
-    recordPageFilters(pid, clientPageFilter)
-    recordPageSorters(pid, clientPageSorter)
+    recordPageFilters(pid, filter)
+    recordPageSorters(pid, sorter)
 
     logPages(
-      `Automatically Added Pagination Pages`,
-      pagination.paginationPages.slice(1)
+      `Automatically generated pagination pages`,
+      pagination.pages.slice(1),
     )
 
     await Promise.all(
-      pagination.paginationPages.map(async ({ path }, index) => {
+      pagination.pages.map(async ({ path }, index) => {
         if (index === 0) {
           return
         }
@@ -87,16 +69,26 @@ export async function registerPagination(paginations: InternalPagination[], ctx:
           permalink: path,
           frontmatter: {
             layout,
-            title: getTitle(index),
+            title: (getPaginationPageTitle as getPaginationPageTitle)(index),
           },
-          meta,
+          meta: {
+            pid,
+            id,
+          },
         })
       }),
     )
     // @ts-ignore
-    ctx.paginations.push(pagination)
+    ctx.serializedPaginations.push(pagination)
   }
 }
+
+/**
+ * Divided an interval of several lengths into several equal-length intervals.
+ *
+ * @param max
+ * @param interval
+ */
 
 function getIntervallers(max, interval) {
   const count =

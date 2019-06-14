@@ -3,6 +3,9 @@ module.exports = {
   description: 'Offical blog plugin for VuePress',
   themeConfig: {
     repo: 'ulivz/vuepress-plugin-blog',
+    nav: [
+      { text: 'Config', link: '/config/' }
+    ]
   }
 }
 

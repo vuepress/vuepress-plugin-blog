@@ -1,5 +1,5 @@
 import { FrontmatterHandler } from '../util'
-import { PaginationConfig } from './Options'
+import { PaginationConfig } from './Pagination'
 
 export interface FrontmatterClassificationPage {
   id: string;

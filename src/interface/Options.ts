@@ -1,19 +1,8 @@
 /**
- * Config of a Pagination
- */
-export interface PaginationConfig {
-  postsFilter?: typeof Array.prototype.filter
-  postsSorter?: typeof Array.prototype.sort
-  perPagePosts?: number
-  layout?: string
-  serverPageFilter?: any;
-  clientPageFilter?: any;
-  clientPageSorter?: any;
-}
-
-/**
  * A Directory-based Classifier
  */
+import { PaginationConfig } from './Pagination'
+
 export interface DirectoryClassifier {
   /**
    * Unique id for current classifier.
@@ -24,15 +13,15 @@ export interface DirectoryClassifier {
    */
   dirname: string;
   /**
-   * Index page for current classifier.
+   * Entry page for current classifier.
    */
   path: string;
   /**
-   * Layout for index page.
+   * Layout component name for entry page.
    */
   layout?: string;
   /**
-   * Frontmatter for index page.
+   * Frontmatter for entry page.
    */
   frontmatter?: Record<string, any>;
   /**

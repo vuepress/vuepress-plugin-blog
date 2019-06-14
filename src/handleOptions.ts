@@ -2,10 +2,15 @@ import { BlogPluginOptions } from './interface/Options'
 import { ExtraPage } from './interface/ExtraPages'
 import { PageEnhancer } from './interface/PageEnhancer'
 import { AppContext } from './interface/VuePress'
-import { InternalPagination } from './interface/Pagination'
+import { InternalPagination, PaginationConfig } from './interface/Pagination'
 import { FrontmatterClassificationPage } from './interface/Frontmatter'
-import { curryFrontmatterHandler, FrontmatterTempMap } from './util'
-import { DefaultLayoutEnum } from './Config'
+import {
+  curryFrontmatterHandler,
+  FrontmatterTempMap,
+  resolvePaginationConfig,
+  UpperFirstChar,
+} from './util'
+import { ClassifierTypeEnum } from './interface/Classifier'
 
 /**
  * Handle options from users.
@@ -15,21 +20,7 @@ import { DefaultLayoutEnum } from './Config'
  */
 
 export function handleOptions(options: BlogPluginOptions, ctx: AppContext) {
-  const { layoutComponentMap } = ctx.themeAPI
-
   const { directories = [], frontmatters = [] } = options
-
-  /**
-   * A function used to check whether layout exists
-   */
-  const isLayoutExists = name => layoutComponentMap[name] !== undefined
-
-  /**
-   * Get layout
-   */
-  const getLayout = (name?: string, fallback?: string) => {
-    return isLayoutExists(name) ? name : fallback || 'Layout'
-  }
 
   const pageEnhancers: PageEnhancer[] = []
   const frontmatterClassificationPages: FrontmatterClassificationPage[] = []
@@ -43,14 +34,14 @@ export function handleOptions(options: BlogPluginOptions, ctx: AppContext) {
     const {
       id,
       dirname,
-      path: indexPath,
+      path: indexPath = `/${directory.id}/`,
       layout: indexLayout = 'IndexPost',
       frontmatter,
       itemLayout = 'Post',
       itemPermalink = '/:year/:month/:day/:slug',
       pagination = {
-        perPagePosts: 10,
-      },
+        lengthPerPage: 10,
+      } as PaginationConfig,
     } = directory
 
     /**
@@ -65,23 +56,20 @@ export function handleOptions(options: BlogPluginOptions, ctx: AppContext) {
      */
     extraPages.push({
       permalink: indexPath,
-      frontmatter,
+      frontmatter: {
+        // Set layout for index page.
+        layout: ctx.getLayout(indexLayout),
+        title: `${UpperFirstChar(id)}`,
+        ...frontmatter,
+      },
       meta: {
         pid: id,
-        id: id,
+        id,
       },
     })
 
     /**
-     * 1.3 Set layout for index page.
-     */
-    pageEnhancers.push({
-      when: ({ regularPath }) => regularPath === indexPath,
-      frontmatter: { layout: getLayout(indexLayout) },
-    })
-
-    /**
-     * 1.4 Set layout for pages that match current directory pattern.
+     * 1.3 Set layout for pages that match current directory classifier.
      */
     pageEnhancers.push({
       when: ({ regularPath }) =>
@@ -89,7 +77,7 @@ export function handleOptions(options: BlogPluginOptions, ctx: AppContext) {
         regularPath !== indexPath &&
         regularPath.startsWith(`/${dirname}/`),
       frontmatter: {
-        layout: getLayout(itemLayout, 'Post'),
+        layout: ctx.getLayout(itemLayout, 'Post'),
         permalink: itemPermalink,
       },
       data: { id, pid: id },
@@ -99,22 +87,20 @@ export function handleOptions(options: BlogPluginOptions, ctx: AppContext) {
      * 1.5 Set pagination.
      */
     paginations.push({
+      classifierType: ClassifierTypeEnum.Directory,
+      getPaginationPageTitle(index) {
+        return `Page ${index + 1} | ${id}`
+      },
+      ...resolvePaginationConfig(
+        ClassifierTypeEnum.Directory,
+        pagination,
+        indexPath,
+        id,
+        id,
+        ctx,
+      ),
       pid: id,
       id,
-      meta: {
-        pid: id,
-        id: id,
-      },
-      options: {
-        ...pagination,
-        layout: DefaultLayoutEnum.DirectoryPagination,
-      },
-      getUrl(index) {
-        if (index === 0) {
-          return indexPath
-        }
-        return `${indexPath}page/${index + 1}/`
-      },
     })
   }
 
@@ -129,8 +115,8 @@ export function handleOptions(options: BlogPluginOptions, ctx: AppContext) {
       layout: indexLayout,
       frontmatter,
       pagination = {
-        perPagePosts: 10,
-      },
+        lengthPerPage: 10,
+      } as PaginationConfig,
     } = frontmatterPage
 
     if (!indexPath) {
@@ -139,7 +125,12 @@ export function handleOptions(options: BlogPluginOptions, ctx: AppContext) {
 
     extraPages.push({
       permalink: indexPath,
-      frontmatter,
+      frontmatter: {
+        // Set layout for index page.
+        layout: ctx.getLayout(indexLayout),
+        title: `${UpperFirstChar(id)}`,
+        ...frontmatter,
+      },
     })
 
     const map = {} as FrontmatterTempMap
@@ -150,11 +141,6 @@ export function handleOptions(options: BlogPluginOptions, ctx: AppContext) {
       keys,
       map,
       _handler: curryFrontmatterHandler(id, map),
-    })
-
-    pageEnhancers.push({
-      when: ({ regularPath }) => regularPath === indexPath,
-      frontmatter: { layout: getLayout(indexLayout) },
     })
   }
 
