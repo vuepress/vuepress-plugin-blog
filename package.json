@@ -61,7 +61,9 @@
       "typescript/explicit-function-return-type": "off",
       "no-throw-literal": "off",
       "typescript/no-var-requires": "off",
-      "no-implicit-globals": "off"
+      "no-implicit-globals": "off",
+      "import/no-unresolved": "off",
+      "import/no-extraneous-dependencies": "off"
     }
   },
   "husky": {

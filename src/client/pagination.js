@@ -4,27 +4,6 @@ import _debug from 'debug'
 
 const debug = _debug('plugin-blog:pagination')
 
-class PaginationGateway {
-  constructor(paginations) {
-    this.paginations = paginations
-  }
-
-  get pages() {
-    return Vue.$vuepress.$get('siteData').pages
-  }
-
-  getPagination(pid, id, route) {
-    debug('id', id)
-    debug('this.paginations', this.paginations)
-    const pagnination = this.paginations.filter(
-      p => p.id === id && p.pid === pid,
-    )[0]
-    return new Pagination(pagnination, this.pages, route)
-  }
-}
-
-const gateway = new PaginationGateway(paginations)
-
 class Pagination {
   constructor(pagination, pages, route) {
     debug(pagination)
@@ -72,6 +51,7 @@ class Pagination {
       }
       return this._paginationPages[this.paginationIndex - 1].path
     }
+    return null
   }
 
   get hasNext() {
@@ -82,12 +62,34 @@ class Pagination {
     if (this.hasNext) {
       return this._paginationPages[this.paginationIndex + 1].path
     }
+    return null
   }
 
   getSpecificPageLink(index) {
-    return this._paginationPages[this.paginationIndex + 1].path
+    return this._paginationPages[index].path
   }
 }
+
+class PaginationGateway {
+  constructor(paginations) {
+    this.paginations = paginations
+  }
+
+  get pages() {
+    return Vue.$vuepress.$get('siteData').pages
+  }
+
+  getPagination(pid, id, route) {
+    debug('id', id)
+    debug('this.paginations', this.paginations)
+    const pagnination = this.paginations.filter(
+      p => p.id === id && p.pid === pid,
+    )[0]
+    return new Pagination(pagnination, this.pages, route)
+  }
+}
+
+const gateway = new PaginationGateway(paginations)
 
 export default ({ Vue }) => {
   Vue.mixin({
