@@ -4,8 +4,14 @@ module.exports = {
   themeConfig: {
     repo: 'ulivz/vuepress-plugin-blog',
     nav: [
-      { text: 'Config', link: '/config/' }
-    ]
-  }
+      { text: 'Config', link: '/config/' },
+      { text: 'Components', link: '/components/' },
+    ],
+    sidebarDepth: 3,
+    sidebar: [
+      '/config/',
+      '/pagination/'
+    ],
+  },
 }
 

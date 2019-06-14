@@ -1,5 +1,6 @@
 ---
 sidebar: auto
+title: Getting Started
 ---
 
 # @vuepress/plugin-blog
@@ -50,8 +51,10 @@ Directory Classifier, that classifies the source pages placed in a same director
 Suppose you have the following files structure:
 
 ```vue
-. └── _posts    ├── 2018-4-4-intro-to-vuepress.md    └──
-2019-6-8-intro-to-vuepress-next.md
+.
+└── _posts    
+    ├── 2018-4-4-intro-to-vuepress.md    
+    └── 2019-6-8-intro-to-vuepress-next.md
 ```
 
 In the traditional VuePress site, the converted page URLs will be:

@@ -1,7 +1,3 @@
----
-sidebar: auto
----
-
 # Config
 
 ## directories
@@ -93,14 +89,85 @@ For more details about permalinks, please head to [Permalinks](https://v1.vuepre
 ### pagination
 
 - Type: `Pagination`
-- Default: `{ perPagePosts: 10 }`
+- Default: `{ lengthPerPage: 10 }`
 - Required: `false`
 
-All available options of pagination are as follows:
-
-- pagination.perPagePosts: Maximum number of posts per page.
-- pagination.pagesSorter: Maximum number of posts per page.
+Please head to [Pagination Config](../pagination/README.md#config) section to get all available options.
 
 ## frontmatters
 
-> TODO, contribution welcome.
+### id
+
+- Type: `string`
+- Default: `undefined`
+- Required: `true`
+
+Unique id for current classifier, e.g. `tag`.
+
+### keys
+
+- Type: `string`
+- Default: `undefined`
+- Required: `true`
+
+Frontmatter keys used to classify pages.
+
+You can also merge multiple tags with the same meaning, e.g.
+
+```js
+module.exports = {
+  plugins: [
+    ['@vuepress/plugin-blog', {
+      frontmatters: [
+        {
+          id: "tag",
+          keys: ['tag', 'tags'],
+        },
+      ]
+    }],
+  ],
+}
+```
+
+### path
+
+- Type: `string`
+- Default: `/${id}/`
+- Required: `false`
+
+Entry page for current classifier, e.g. `/` or `/post/`.
+
+
+### path
+
+- Type: `string`
+- Default: `/${id}/`
+- Required: `false`
+
+Entry page for current classifier, e.g. `/` or `/post/`.
+
+
+### layout
+
+- Type: `string`
+- Default: `'IndexPost' || 'Layout'`
+- Required: `false`
+
+Layout component name for entry page.
+
+
+### frontmatter
+
+- Type: `Record<string, any>`
+- Default: `{}`
+- Required: `false`
+
+[Frontmatter](https://v1.vuepress.vuejs.org/guide/frontmatter.html) for entry page.
+
+### pagination
+
+- Type: `Pagination`
+- Default: `{ lengthPerPage: 10 }`
+- Required: `false`
+
+Please head to [Pagination Config](../pagination/README.md#config) section to get all available options.
