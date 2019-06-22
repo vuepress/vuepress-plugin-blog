@@ -7,6 +7,7 @@ module.exports = {
       { text: 'Guide', link: '/guide/' },
       { text: 'Config', link: '/config/' },
       { text: 'Pagination', link: '/pagination/' },
+      { text: 'Client API', link: '/client-api/' },
       { text: 'Components', link: '/components/' },
     ],
     sidebarDepth: 3,

@@ -257,7 +257,7 @@ the corresponding layout:
 | `/tag/vue/` | `FrontmatterPagination` / `Layout` |
 | `/tag/js/`  | `FrontmatterPagination` / `Layout` |
 
-In the `Tags` component, you can use `this.$tag.list` to get the tag list. The value would be like:
+In the `<Tag />` component, you can use `this.$tag.list` to get the tag list. The value would be like:
 
 ```json
 [

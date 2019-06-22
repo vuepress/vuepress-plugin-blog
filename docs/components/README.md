@@ -8,7 +8,9 @@ In order to better enjoy the convenience of this plugin, the plugin provides som
 
 ## `<SimplePagination>`
 
-- Using it at your layout component:
+- Source Code: 
+[SimplePagination.vue](https://github.com/ulivz/vuepress-plugin-blog/blob/master/src/client/components/SimplePagination.vue)
+- Usage:
 
 ```vue
 <template>
@@ -36,7 +38,8 @@ default colors of this component.
 
 ## `<Pagination>`
 
-- Using it at your layout component:
+- Source Code: [Pagination.vue](https://github.com/ulivz/vuepress-plugin-blog/blob/master/src/client/components/Pagination.vue)
+- Usage:
 
 ```vue
 <template>

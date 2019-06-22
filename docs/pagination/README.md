@@ -2,15 +2,13 @@
 sidebar: auto
 ---
 
-# Pagination
+# Pagination Config
 
 ::: tip TIP
 We strongly recommend that you read the [Getting Started](../guide/getting-started.md) section before using this plugin.
 :::
 
-## Config
-
-### sorter
+## sorter
 
 - Type: string
 - Default: `See Below`
@@ -25,21 +23,21 @@ function sorter(prev: VuePressPage, next: VuePressPage){
 },
 ```
 
-### lengthPerPage
+## lengthPerPage
 
 - Type: string
 - Default: `10`
 
 Maximum number of posts per page.
 
-### layout
+## layout
 
 - Type: string
 - Default: `DirectoryPagination || Layout`
 
 Layout for pagination page (Except the index page.)
 
-### getPaginationPageUrl
+## getPaginationPageUrl
 
 - Type: string
 - Default: `See Below`
@@ -60,41 +58,6 @@ function getPaginationPageUrl(index) {
 - For [frontmatter classifier](../README.md#frontmatter-classifier), the `indexPath` defaults to `/${classifier
 .pid}/${classifier.id}` (e.g. 
 `/tag/js/`)
-
-
-## Client API
-
-### $pagination
-
-#### $pagination.pages
-
-Matched pages for current route.
-
-#### $pagination.length
-
-Length of current paginations.
-
-#### $pagination.hasPrev
-
-Whether previous pagination page exists.
-
-#### $pagination.prevLink
-
-Link of previous pagination page.
-
-#### $pagination.hasNext
-
-Whether next pagination page exists.
-
-#### $pagination.nextLink
-
-Link of next pagination page.
-
-#### $pagination.getSpecificPageLink
-
-Get specific pagination page via page number.
-
-
 
 
 
