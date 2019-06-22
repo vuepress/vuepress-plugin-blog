@@ -4,8 +4,8 @@
   "description": "Offical blog plugin for VuePress",
   "scripts": {
     "lint": "xo",
-    "dev:lib": "concurrently \"npm:dev:client\" \"npm:dev:node\" \"npm:build:components\"",
-    "build:lib": "concurrently \"npm:build:client\" \"npm:build:node\" \"npm:build:components\"",
+    "dev": "concurrently \"npm:dev:client\" \"npm:dev:node\" \"npm:build:components\"",
+    "build": "concurrently \"npm:build:client\" \"npm:build:node\" \"npm:build:components\"",
     "dev:client": "tsc -p tsconfig.client.json --watch",
     "dev:node": "tsc -p tsconfig.node.json --watch",
     "build:client": "tsc -p tsconfig.client.json",
@@ -14,8 +14,7 @@
     "dev:docs": "vuepress dev docs --temp docs/.temp",
     "build:docs": "vuepress build docs --temp docs/.temp",
     "example": "node examples/launch.js",
-    "prepare": "npm run build",
-    "prepublishOnly": "npm run build:lib && conventional-changelog -p angular -r 2 -i CHANGELOG.md -s"
+    "prepublishOnly": "npm run build && conventional-changelog -p angular -r 2 -i CHANGELOG.md -s"
   },
   "main": "lib/node/index.js",
   "files": [
