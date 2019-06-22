@@ -1,5 +1,10 @@
 # Getting Started
 
+::: tip
+This section is a step-by-step tutorial with some concepts, and we recommend that you read it completely before using 
+this plugin.
+:::
+
 ## Document Classifier
 
 `Document classifier` is a set of functions that can classify pages with the same characteristics. For a blog developer, the same characteristics may exist between different pages as follows:
@@ -7,8 +12,7 @@
 - Pages put in a directory (e.g. `_post`)
 - Pages containing the same specific frontmatter key value (e.g. `tag: js`).
 
-Of course, both of them may be related to another common
-requirement, `pagination`.
+Of course, both of them may be related to another common requirement, `pagination`.
 
 So, how to combine them skillfully? Next, let's take a look at how this plugin solve these problems.
 
@@ -60,14 +64,14 @@ layout:
 
 | url                                   | layout                 |
 | ------------------------------------- | ---------------------- |
-| `/`                                   | `IndexPost` / `Layout` |
+| `/`                                   | `IndexPost` (fallback to `Layout` if not exist) |
 | `/2018/04/04/intro-to-vuepress/`      | `Post`                 |
 | `/2019/06/08/intro-to-vuepress-next/` | `Post`                 |
 
-This means that you need to create two layout components(`IndexPost` and `Post`) to handle the layout of index and post
+This means that you need to create two layout components(`IndexPost` and `Post`) to handle the layout of `index` and `post`
 pages.
 
-You can also custom the layout component name:
+You can also custom the layout component:
 
 ```diff
 // .vuepress/config.js
@@ -88,7 +92,7 @@ module.exports = {
 }
 ```
 
-And custom the root path and the permalink:
+And custom the path of entry page and the permalink of posts:
 
 ```diff
 // .vuepress/config.js
@@ -113,13 +117,17 @@ module.exports = {
 It is noteworthy that the `path` and `itemPermalink` must be uniformly modified, and `itemPermalink` must be prefixed with
 `path`.
 
-The default value of `itemPermalink` is `'/:year/:month/:day/:slug'`.
+The default value of `itemPermalink` is `'/:year/:month/:day/:slug'`,
 :::
+
+**See also**:
+
+- [Config > directories](../config/README.md#directories)
 
 ## Pagination
 
 As your blog articles grew more and more, you began to have the need for paging. By default, this plugin integrates a
-very powerful pagination system that allows you to access paging functions with simple configuration.
+very powerful pagination system that allows you to access pagination functions with simple configuration.
 
 By default, the plugin assumes that the max number of pages per page is `10`. you can also modify it like this:
 
@@ -153,15 +161,11 @@ When the `perPagePosts` is set to `2`, this plugin will help you generate the fo
 
 | url              | layout                           |
 | ---------------- | -------------------------------- |
-| `/`              | `IndexPost` / `Layout`           |
-| `/page/2/` (New) | `DirectoryPagination` / `Layout` |
+| `/`              | `IndexPost` (fallback to `Layout` if not exist) |
+| `/page/2/` (New) | `DirectoryPagination` (fallback to `Layout` if not exist) |
 | `/2019/06/08/a/` | `Post`                           |
 | `/2019/06/08/b/` | `Post`                           |
 | `/2018/06/08/c/` | `Post`                           |
-
-::: tip
-`DirectoryPagination / Layout` means that the layout component will be downgraded to `Layout` when `DirectoryPagination` layout doesn't exist.
-:::
 
 So how to get the matched pages in the layout component? In fact, it will be much simpler than you think.
 
@@ -191,6 +195,10 @@ Isn't this very natural experience? You just need to care about the style of you
 To save the length of docs, we omitted the data structure of the `$page` object. You can get more information about
 the data structure of `$page` at the [official documentation](https://v1.vuepress.vuejs.org/guide/global-computed.html#page).
 :::
+
+**See also**:
+
+- [Pagination Config](../pagination/README.md)
 
 ### Frontmatter Classifier
 
@@ -299,12 +307,22 @@ classification:
 ]
 ```
 
-# Examples
+**See also**:
 
-Actually, there are only 2 necessary layout components to create a blog theme:
+- [Config > frontmatters](../config/README.md#frontmatters)
+
+
+## Writing a blog theme
+
+If everything is ok, you can start to write a blog theme. Actually, there are only 2 necessary layout components to 
+create a blog theme:
 
 - Layout
 - Post
 - Tag (Only required when you set up a `tag` frontmatter classification.)
 
-Here is [live example](https://github.com/ulivz/70-lines-of-vuepress-blog-theme) that implements a functionally qualified VuePress theme in around 70 lines.
+Here are two official examples (A simple & a complex) for you:
+
+- [70-lines-of-vuepress-blog-theme](https://github.com/ulivz/70-lines-of-vuepress-blog-theme): A VuePress Blog Theme implemented in around 70 lines.
+- [@vuepress/theme-blog](https://github.com/ulivz/vuepress-theme-blog): Default blog theme for VuePress.
+
