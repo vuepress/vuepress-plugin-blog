@@ -1,11 +1,19 @@
+---
+sidebar: auto
+---
+
 # Config
+
+::: tip TIP
+We strongly recommend that you read the [Getting Started](../guide/getting-started.md) section before using this plugin.
+:::
 
 ## directories
 
 - Type: `DirectoryClassifier[]`
 - Default: `[]`
 
-Create one or more [directory classifiers](../README.md#directory-classifier), all available options in
+Create one or more [directory classifiers](../guide/getting-started.md#directory-classifier), all available options in
 `DirectoryClassifier` are as
 follows.
 

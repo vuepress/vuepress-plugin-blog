@@ -1,4 +1,10 @@
+---
+sidebar: auto
+---
+
 # Components
+
+In order to better enjoy the convenience of this plugin, the plugin provides some out-of-the-box components.
 
 ## `<SimplePagination>`
 
@@ -19,6 +25,15 @@ export default {
 </script>
 ```
 
+- Output:
+
+<img src="/simple-pagination.png" width="250" height="" style=""/>
+
+::: tip
+You can use `$accentColor` in [palette.styl](https://v1.vuepress.vuejs.org/config/#palette-styl) to adjust the 
+default colors of this component.
+:::
+
 ## `<Pagination>`
 
 - Using it at your layout component:
@@ -37,3 +52,12 @@ export default {
 }
 </script>
 ```
+
+- Output:
+
+<img src="/pagination.png" width="250" height="" style=""/>
+
+::: tip
+You can use `$accentColor` in [palette.styl](https://v1.vuepress.vuejs.org/config/#palette-styl) to adjust the 
+default colors of this component.
+:::

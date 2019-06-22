@@ -4,14 +4,25 @@ module.exports = {
   themeConfig: {
     repo: 'ulivz/vuepress-plugin-blog',
     nav: [
+      { text: 'Guide', link: '/guide/' },
       { text: 'Config', link: '/config/' },
+      { text: 'Pagination', link: '/pagination/' },
       { text: 'Components', link: '/components/' },
     ],
     sidebarDepth: 3,
-    sidebar: [
-      '/config/',
-      '/pagination/'
-    ],
+    sidebar: {
+      '/guide/': [
+        {
+          title: 'Guide',
+          collapsable: false,
+
+          children: [
+            '',
+            'getting-started',
+          ],
+        },
+      ],
+    },
   },
 }
 
