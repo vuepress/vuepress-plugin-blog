@@ -1,3 +1,13 @@
+## [1.1.1](https://github.com/ulivz/vuepress-plugin-blog/compare/v1.1.0...v1.1.1) (2019-06-22)
+
+
+### Bug Fixes
+
+* **$components:** SimplePagination doesn't work ([5622380](https://github.com/ulivz/vuepress-plugin-blog/commit/5622380))
+* **$components:** SimplePagination missed styles ([a2c1944](https://github.com/ulivz/vuepress-plugin-blog/commit/a2c1944))
+
+
+
 # [1.1.0](https://github.com/ulivz/vuepress-plugin-blog/compare/v1.0.0...v1.1.0) (2019-06-14)
 
 
