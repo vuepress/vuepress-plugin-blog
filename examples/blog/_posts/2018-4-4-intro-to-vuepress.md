@@ -1,4 +1,5 @@
 ---
+location: Hubei
 tag: 
   - vue
   - vuepress

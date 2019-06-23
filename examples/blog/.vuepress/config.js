@@ -20,13 +20,22 @@ module.exports = {
           id: "tag",
           keys: ['tag', 'tags'],
           path: '/tag/',
-          layout: 'Tag',
+          // layout: 'Tag', defaults to `FrontmatterKey`.
           frontmatter: { title: 'Tag' },
-          itemlayout: 'Tag',
           pagination: {
             lengthPerPage: 3
           }
         },
+        {
+          id: "location",
+          keys: ['location'],
+          path: '/location/',
+          // layout: 'Location', defaults to `FrontmatterKey`.
+          frontmatter: { title: 'Location' },
+          pagination: {
+            lengthPerPage: 5
+          },
+        }
       ]
     }],
   ],

@@ -1,4 +1,5 @@
 ---
+location: Shanghai
 tag:
   - vue
   - vuepress

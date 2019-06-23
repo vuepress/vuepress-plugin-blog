@@ -1,4 +1,5 @@
 ---
+location: Hangzhou
 tag:
   - vue
   - vuepress
