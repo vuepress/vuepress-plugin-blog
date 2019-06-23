@@ -58,7 +58,7 @@ export async function registerPaginations(
     getPaginationPageTitle,
   } of paginations) {
     const { pages: sourcePages } = ctx
-    const pages = sourcePages.filter(filter as PageFilter)
+    const pages = sourcePages.filter(page => (filter as PageFilter)(page, id, pid))
 
     const intervallers = getIntervallers(pages.length, lengthPerPage)
     const pagination: SerializedPagination = {

@@ -98,8 +98,6 @@ export function handleOptions(
         ClassifierTypeEnum.Directory,
         pagination,
         indexPath,
-        id,
-        id,
         ctx,
       ),
       pid: id,

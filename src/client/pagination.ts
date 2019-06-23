@@ -35,7 +35,9 @@ class Pagination {
 
     this._paginationPages = paginationPages
     this._currentPage = paginationPages[this.paginationIndex]
-    this._matchedPages = pages.filter(pagination.filter).sort(pagination.sorter)
+    this._matchedPages = pages
+      .filter(page => pagination.filter(page, pagination.id, pagination.pid))
+      .sort(pagination.sorter)
   }
 
   setIndexPage(path) {

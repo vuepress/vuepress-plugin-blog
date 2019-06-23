@@ -4,11 +4,17 @@
 import { VuePressPage } from './VuePress'
 import { ClassifierTypeEnum } from './Classifier'
 
-export type PageFilter = (page: VuePressPage) => boolean
+export type PageFilter = (
+  page: VuePressPage,
+  id: string,
+  pid: string,
+) => boolean
+
 export type PageSorter = (
   prev: VuePressPage,
   next: VuePressPage,
 ) => boolean | number
+
 export type GetPaginationPageUrl = (index: number) => string
 export type getPaginationPageTitle = (index: number) => string
 

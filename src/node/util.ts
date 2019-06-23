@@ -56,8 +56,6 @@ export function resolvePaginationConfig(
   classifierType: ClassifierTypeEnum,
   pagination = {} as PaginationConfig,
   indexPath,
-  pid, // post / tag
-  id, // post / js
   ctx: VuePressContext,
   keys: string[] = [''], // ['js']
 ) {
@@ -76,8 +74,10 @@ export function resolvePaginationConfig(
 
       filter:
         classifierType === ClassifierTypeEnum.Directory
-          ? getIdentityFilter(pid, id)
-          : getFrontmatterClassifierPageFilter(keys, id),
+          ? function(page, id, pid) {
+            return page.pid === pid && page.id === id
+          }
+          : getFrontmatterClassifierPageFilter(keys),
 
       sorter: (prev: VuePressPage, next: VuePressPage) => {
         const prevTime = new Date(prev.frontmatter.date).getTime()
@@ -89,22 +89,13 @@ export function resolvePaginationConfig(
   )
 }
 
-function getIdentityFilter(pid, id) {
-  return new Function(
-    'page',
-    `return page.pid === ${JSON.stringify(pid)} && page.id === ${JSON.stringify(
-      id,
-    )}`,
-  )
-}
-
-function getFrontmatterClassifierPageFilter(keys, value) {
+function getFrontmatterClassifierPageFilter(keys) {
   return new Function(
     // @ts-ignore
-    'page',
+    'page', 'id', 'pid',
     `
 const keys = ${JSON.stringify(keys)};
-const value = ${JSON.stringify(value)};
+const value = id;
 return keys.some(key => {
   const _value = page.frontmatter[key]
   if (Array.isArray(_value)) {

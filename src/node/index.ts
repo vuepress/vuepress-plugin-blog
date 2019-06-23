@@ -113,8 +113,6 @@ module.exports = (options: BlogPluginOptions, ctx: VuePressContext) => {
                   ClassifierTypeEnum.Frontmatter,
                   pagination,
                   indexPath,
-                  scope,
-                  key,
                   ctx,
                   keys,
                 ),
