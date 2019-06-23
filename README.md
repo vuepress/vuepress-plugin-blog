@@ -12,7 +12,7 @@ Pagination runs through the entire plugin, and it has never been so simple.
 
 ## Install
 
-We strongly recommend that you read the [Getting Started](http://localhost:8081/guide/getting-started.html) section before using this plugin.
+We strongly recommend that you read the [Getting Started](https://vuepress-plugin-blog.ulivz.com/guide/getting-started.html) section before using this plugin.
 
 ```bash
 yarn add -D @vuepress/plugin-blog
