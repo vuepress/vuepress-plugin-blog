@@ -1,3 +1,4 @@
+import { fs, path, logger, chalk } from '@vuepress/shared-utils'
 import { BlogPluginOptions } from './interface/Options'
 import { ExtraPage } from './interface/ExtraPages'
 import { PageEnhancer } from './interface/PageEnhancer'
@@ -23,7 +24,25 @@ export function handleOptions(
   options: BlogPluginOptions,
   ctx: VuePressContext,
 ) {
-  const { directories = [], frontmatters = [] } = options
+  let { directories = [], frontmatters = [] } = options
+
+  /**
+   * Validate the existence of directory specified by directory classifier.
+   * Fixed https://github.com/ulivz/vuepress-plugin-blog/issues/1
+   */
+  directories = directories.filter(directory => {
+    const targetDir = path.join(ctx.sourceDir, directory.dirname)
+    if (fs.existsSync(targetDir)) {
+      return true
+    }
+
+    logger.warn(
+      `[@vuepress/plugin-blog] Invalid directory classifier: ${chalk.cyan(directory.id)}, ` +
+      `${chalk.gray(targetDir)} doesn't exist!`,
+    )
+
+    return false
+  })
 
   const pageEnhancers: PageEnhancer[] = []
   const frontmatterClassificationPages: FrontmatterClassificationPage[] = []

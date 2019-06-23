@@ -13,7 +13,8 @@
     "build:components": "mkdir -p lib/client/components && cp -r src/client/components lib/client",
     "dev:docs": "vuepress dev docs --temp docs/.temp",
     "build:docs": "vuepress build docs --temp docs/.temp",
-    "example": "node examples/launch.js",
+    "dev:example": "node examples/launch.js dev",
+    "build:example": "node examples/launch.js build",
     "prepublishOnly": "npm run build && conventional-changelog -p angular -r 2 -i CHANGELOG.md -s"
   },
   "main": "lib/node/index.js",

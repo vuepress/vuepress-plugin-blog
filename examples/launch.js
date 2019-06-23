@@ -33,11 +33,11 @@ async function launch() {
   fork(
     require.resolve('vuepress/cli.js'),
     [
-      'dev',
+      process.argv[2],
       `${process.cwd()}/examples/${target}`,
       '--temp',
       `examples/${target}/.temp`,
-      ...process.argv.slice(2),
+      ...process.argv.slice(3),
     ],
     { stdio: 'inherit' },
   )

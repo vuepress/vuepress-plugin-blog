@@ -3,6 +3,7 @@ lib
 .temp
 types
 src/**/*.js
+dist
 
 ### Code ###
 # Visual Studio Code - https://code.visualstudio.com/
