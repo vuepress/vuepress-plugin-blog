@@ -1,5 +1,7 @@
 <template>
-  <paginate
+  <component
+    v-if="comp"
+    :is="comp"
     v-model="page"
     :page-count="$pagination.length"
     :click-handler="clickCallback"
@@ -7,22 +9,28 @@
     :next-text="'Next'"
     :container-class="'pagination'"
     :page-class="'page-item'">
-  </paginate>
+  </component>
 </template>
 
 <script>
-  import Paginate from 'vuejs-paginate'
-
   export default {
     data() {
       return {
         page: 0,
+        comp: null,
       }
     },
-    components: { Paginate },
+    
     created() {
       this.page = this.$pagination.paginationIndex + 1
     },
+    
+    mounted() {
+      import(/* webpackChunkName: "vuejs-paginate" */ 'vuejs-paginate').then(comp => {
+        this.comp = comp.default
+      })
+    },
+    
     methods: {
       clickCallback(pageNum) {
         const link = this.$pagination.getSpecificPageLink(pageNum - 1)
@@ -59,17 +67,20 @@
     background-color: #fff;
     border: 1px solid #ddd;
   }
+  
   .pagination > li:first-child > a,
   .pagination > li:first-child > span {
     margin-left: 0;
     border-top-left-radius: 4px;
     border-bottom-left-radius: 4px;
   }
+  
   .pagination > li:last-child > a,
   .pagination > li:last-child > span {
     border-top-right-radius: 4px;
     border-bottom-right-radius: 4px;
   }
+  
   .pagination > li > a:hover,
   .pagination > li > span:hover,
   .pagination > li > a:focus,
@@ -79,6 +90,7 @@
     background-color: #eee;
     border-color: #ddd;
   }
+  
   .pagination > .active > a,
   .pagination > .active > span,
   .pagination > .active > a:hover,
@@ -91,6 +103,7 @@
     background-color: $accentColor;
     border-color: $accentColor;
   }
+  
   .pagination > .disabled > span,
   .pagination > .disabled > span:hover,
   .pagination > .disabled > span:focus,
@@ -102,33 +115,39 @@
     background-color: #fff;
     border-color: #ddd;
   }
+  
   .pagination-lg > li > a,
   .pagination-lg > li > span {
     padding: 10px 16px;
     font-size: 18px;
     line-height: 1.3333333;
   }
+  
   .pagination-lg > li:first-child > a,
   .pagination-lg > li:first-child > span {
     border-top-left-radius: 6px;
     border-bottom-left-radius: 6px;
   }
+  
   .pagination-lg > li:last-child > a,
   .pagination-lg > li:last-child > span {
     border-top-right-radius: 6px;
     border-bottom-right-radius: 6px;
   }
+  
   .pagination-sm > li > a,
   .pagination-sm > li > span {
     padding: 5px 10px;
     font-size: 12px;
     line-height: 1.5;
   }
+  
   .pagination-sm > li:first-child > a,
   .pagination-sm > li:first-child > span {
     border-top-left-radius: 3px;
     border-bottom-left-radius: 3px;
   }
+  
   .pagination-sm > li:last-child > a,
   .pagination-sm > li:last-child > span {
     border-top-right-radius: 3px;
