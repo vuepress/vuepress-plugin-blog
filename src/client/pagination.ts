@@ -118,7 +118,7 @@ export default ({ Vue }) => {
       $pagination() {
         // @ts-ignore
         if (!this.$route.meta.pid || !this.$route.meta.id) {
-          return {}
+          return null
         }
 
         // @ts-ignore
