@@ -1,3 +1,12 @@
+## [1.2.1](https://github.com/ulivz/vuepress-plugin-blog/compare/v1.2.0...v1.2.1) (2019-06-23)
+
+
+### Bug Fixes
+
+* cannot filter correct pages for frontmatter classifier ([de1d61a](https://github.com/ulivz/vuepress-plugin-blog/commit/de1d61a))
+
+
+
 # [1.2.0](https://github.com/ulivz/vuepress-plugin-blog/compare/v1.1.1...v1.2.0) (2019-06-23)
 
 
