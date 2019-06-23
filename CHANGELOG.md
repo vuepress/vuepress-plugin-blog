@@ -1,3 +1,12 @@
+## [1.2.4](https://github.com/ulivz/vuepress-plugin-blog/compare/v1.2.3...v1.2.4) (2019-06-23)
+
+
+### Features
+
+* **$core:** expose frontmatter classification key to client ([b04a154](https://github.com/ulivz/vuepress-plugin-blog/commit/b04a154))
+
+
+
 ## [1.2.3](https://github.com/ulivz/vuepress-plugin-blog/compare/v1.2.2...v1.2.3) (2019-06-23)
 
 
