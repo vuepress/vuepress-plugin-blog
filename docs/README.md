@@ -11,7 +11,7 @@ features:
 - title: Client APIs
   details: Simple client APIs make it easier for you to write a blog theme.
 
-footer: MIT Licensed | Copyright © 2018-present Evan You
+footer: MIT Licensed | Copyright © 2019-present ULIVZ
 ---
 
 ## Install
