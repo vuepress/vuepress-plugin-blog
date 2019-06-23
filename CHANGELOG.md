@@ -1,3 +1,12 @@
+## [1.2.2](https://github.com/ulivz/vuepress-plugin-blog/compare/v1.2.1...v1.2.2) (2019-06-23)
+
+
+### Bug Fixes
+
+* ssr unfriendly ([3e03666](https://github.com/ulivz/vuepress-plugin-blog/commit/3e03666))
+
+
+
 ## [1.2.1](https://github.com/ulivz/vuepress-plugin-blog/compare/v1.2.0...v1.2.1) (2019-06-23)
 
 
