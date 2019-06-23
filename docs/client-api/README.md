@@ -10,6 +10,14 @@ We strongly recommend that you read the [Getting Started](../guide/getting-start
 
 ## $pagination
 
+::: warning WARN
+Note that if you're accessing `$pagination` at a route which doesn't match any classification, the  value of
+`$pagination` will be `null`.
+
+So when you develop layout components, you need to verify that `$pagination` exists.
+:::
+
+
 ### $pagination.pages
 
 Matched pages for current route. example:
