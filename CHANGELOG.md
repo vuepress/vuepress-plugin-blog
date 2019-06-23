@@ -1,3 +1,13 @@
+# [1.2.0](https://github.com/ulivz/vuepress-plugin-blog/compare/v1.1.1...v1.2.0) (2019-06-23)
+
+
+### Features
+
+* more abstract `$frontmatterKey` to yield multiple frontmatter classifiers ([7eb1ef4](https://github.com/ulivz/vuepress-plugin-blog/commit/7eb1ef4))
+* return `null` when `$pagination` doesn't exist ([4f08432](https://github.com/ulivz/vuepress-plugin-blog/commit/4f08432))
+
+
+
 ## [1.1.1](https://github.com/ulivz/vuepress-plugin-blog/compare/v1.1.0...v1.1.1) (2019-06-22)
 
 
