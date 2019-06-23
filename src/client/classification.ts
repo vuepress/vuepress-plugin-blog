@@ -76,6 +76,15 @@ export default ({ Vue }) => {
       return map
     }, {})
 
+  computed.$frontmatterKey = function() {
+    // @ts-ignore
+    const target = this[`$${this.$route.meta.id}`]
+    if (target) {
+      return target
+    }
+    return null
+  }
+
   Vue.mixin({
     computed,
   })

@@ -200,7 +200,7 @@ the data structure of `$page` at the [official documentation](https://v1.vuepres
 
 - [Pagination Config](../pagination/README.md)
 
-### Frontmatter Classifier
+## Frontmatter Classifier
 
 Frontmatter Classifier, which classifies pages that have the same frontmatter key values.
 
@@ -261,11 +261,14 @@ the corresponding layout:
 
 | url         | layout                             |
 | ----------- | ---------------------------------- |
-| `/tag/`     | `Tag`                              |
-| `/tag/vue/` | `FrontmatterPagination` / `Layout` |
-| `/tag/js/`  | `FrontmatterPagination` / `Layout` |
+| `/tag/`     | `Tag` (fallback to `FrontmatterKey` if not exist)  |
+| `/tag/vue/` | `FrontmatterPagination` (fallback to `Layout` if not exist)  |
+| `/tag/js/`  | `FrontmatterPagination` (fallback to `Layout` if not exist)  |
 
-In the `<Tag />` component, you can use `this.$tag.list` to get the tag list. The value would be like:
+In the `<Tag />` component, you can use [this.$frontmatterKey.list](../client-api/README.md#frontmatterkey) to get the 
+tag 
+list. The value 
+would be like:
 
 ```json
 [
@@ -287,7 +290,8 @@ In the `<Tag />` component, you can use `this.$tag.list` to get the tag list. Th
 ]
 ```
 
-In the `FrontmatterPagination` component, you can use `this.$pagination.pages` to get the matched pages in current tag
+In the `FrontmatterPagination` component, you can use 
+[this.$pagination.pages](../client-api/README.md#pagination) to get the matched pages in current tag
 classification:
 
 - If you visit `/tag/vue/`, the `this.$pagination.pages` will be:
@@ -319,7 +323,7 @@ create a blog theme:
 
 - Layout
 - Post
-- Tag (Only required when you set up a `tag` frontmatter classification.)
+- FrontmatterKey (Only required when you set up a frontmatter classification.)
 
 Here are two official examples (A simple & a complex) for you:
 

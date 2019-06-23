@@ -59,10 +59,9 @@ You can use this function to custom the pagination component as the internal
 :::
 
 
-## `$${FCID}`
+## $frontmatterKey
 
-FCID, i.e the id of [Frontmatter Classifier](../guide/getting-started.md#frontmatter-classifier), if you create a 
-[Frontmatter Classifier](../guide/getting-started.md#frontmatter-classifier) as follows:
+if you create a [Frontmatter Classifier](../guide/getting-started.md#frontmatter-classifier) as follows:
 
 ```js
 module.exports = {
@@ -88,17 +87,17 @@ module.exports = {
 }
 ```
 
-Then this plugin will inject a `$tag` object to the prototype of Vue, so you can use it directly at your 
+Then this plugin will inject a `$frontmatterKey` object to the prototype of Vue, so you can use it directly at your 
 layout component (`<Tag />`).
 
-### `$${FCID}.list`
+### `$frontmatterKey.list`
 
 Get the list of matched frontmatter classifier types.
 
 The interface is as follows:
 
 ```typescript
-type FCID = Array<{
+type FrontmatterKeyList = Array<{
   name: string;
   path: string;
   pages: Array<VuePressPage>;
@@ -107,3 +106,12 @@ type FCID = Array<{
 
 You can re-read the [Frontmatter Classifier](../guide/getting-started.md#frontmatter-classifier) to see the live 
 example of `tag`.
+
+::: tip Multiple Frontmatter Classifiers
+
+If you create two frontmatter classifiers, e.g. `tag` and `category`, then in `/tag/` route, the `$frontmatterKey` will 
+automatically point to `tag`, while in `/category/`, it will point to `category`.
+
+This variable is essentially designed to generalize the list page of frontmatter keys
+
+:::

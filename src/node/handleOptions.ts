@@ -130,9 +130,13 @@ export function handleOptions(
       permalink: indexPath,
       frontmatter: {
         // Set layout for index page.
-        layout: ctx.getLayout(indexLayout),
+        layout: ctx.getLayout(indexLayout, 'FrontmatterKey'),
         title: `${UpperFirstChar(id)}`,
         ...frontmatter,
+      },
+      meta: {
+        pid: id,
+        id,
       },
     })
 
