@@ -142,7 +142,7 @@ module.exports = {
           dirname: '_posts',
           path: '/',
 +         pagination: {
-+           perPagePosts: 2,
++           lengthPerPage: 2,
 +         },
         },
       ],
@@ -157,7 +157,7 @@ Suppose you have 3 pages at `_posts` direcotry:
 - `_posts/2019-6-8-b.md`
 - `_posts/2019-6-8-c.md`
 
-When the `perPagePosts` is set to `2`, this plugin will help you generate the following pages:
+When the `lengthPerPage` is set to `2`, this plugin will help you generate the following pages:
 
 | url              | layout                           |
 | ---------------- | -------------------------------- |
