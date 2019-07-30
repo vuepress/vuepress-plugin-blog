@@ -1,5 +1,7 @@
 # @vuepress/plugin-blog
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/ulivz/vuepress-plugin-blog.svg)](https://greenkeeper.io/)
+
 > Official blog plugin for VuePress. 
 
 ## Status: WIP
