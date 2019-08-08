@@ -2,7 +2,7 @@
 import { findPageByKey } from '@app/util'
 // @ts-ignore
 import frontmatterClassifiedMap from '@dynamic/vuepress_blog/frontmatterClassified'
-import { VuePressPage } from '../types/VuePress'
+import { VuePressPage } from '../interface/VuePress'
 
 class Classifiable {
   private _metaMap: any
@@ -76,7 +76,7 @@ export default ({ Vue }) => {
       return map
     }, {})
 
-  computed.$frontmatterKey = function() {
+  computed.$frontmatterKey = function () {
     // @ts-ignore
     const target = this[`$${this.$route.meta.id}`]
     if (target) {
