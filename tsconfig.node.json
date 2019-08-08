@@ -3,7 +3,9 @@
   "compilerOptions": {
     "target": "esnext",
     "module": "commonjs",
-    "outDir": "./lib/node"
+    "outDir": "./lib"
   },
-  "include": ["./src/node/**/*.ts"]
+  "include": [
+    "./src/node/**/*.ts"
+  ]
 }
