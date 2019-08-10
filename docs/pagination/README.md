@@ -10,7 +10,7 @@ We strongly recommend that you read the [Getting Started](../guide/getting-start
 
 ## sorter
 
-- Type: string
+- Type: function
 - Default: `See Below`
 
 Sorter for matched pages, the default sorter is as follows:
@@ -22,10 +22,11 @@ function sorter(prev: VuePressPage, next: VuePressPage){
   return prevTime - nextTime > 0 ? -1 : 1
 },
 ```
+The function will be a parameter of [Array.sort()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort).
 
 ## lengthPerPage
 
-- Type: string
+- Type: number
 - Default: `10`
 
 Maximum number of posts per page.
@@ -39,7 +40,7 @@ Layout for pagination page (Except the index page.)
 
 ## getPaginationPageUrl
 
-- Type: string
+- Type: function
 - Default: `See Below`
 
 A function to get the url of pagination page dynamically:
@@ -55,9 +56,8 @@ function getPaginationPageUrl(index) {
 
 - For [directory classifier](../README.md#directory-classifier), the `indexPath` defaults to `/${classifier.id}/` (e.g
 . `/post/`)
-- For [frontmatter classifier](../README.md#frontmatter-classifier), the `indexPath` defaults to `/${classifier
-.pid}/${classifier.id}` (e.g. 
-`/tag/js/`)
+- For [frontmatter classifier](../README.md#frontmatter-classifier), the `indexPath` defaults to `/${classifier.pid}/${classifier.id}` 
+(e.g. `/tag/js/`)
 
 
 
