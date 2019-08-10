@@ -146,15 +146,6 @@ module.exports = {
 Entry page for current classifier, e.g. `/` or `/post/`.
 
 
-### path
-
-- Type: `string`
-- Default: `/${id}/`
-- Required: `false`
-
-Entry page for current classifier, e.g. `/` or `/post/`.
-
-
 ### layout
 
 - Type: `string`
