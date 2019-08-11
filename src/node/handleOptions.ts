@@ -61,9 +61,7 @@ export function handleOptions(
       frontmatter,
       itemLayout = 'Post',
       itemPermalink = '/:year/:month/:day/:slug',
-      pagination = {
-        lengthPerPage: 10,
-      } as PaginationConfig,
+      pagination = {} as PaginationConfig,
     } = directory
 
     /**
@@ -136,9 +134,7 @@ export function handleOptions(
       layout: indexLayout,
       scopeLayout,
       frontmatter,
-      pagination = {
-        lengthPerPage: 10,
-      } as PaginationConfig,
+      pagination = {} as PaginationConfig,
     } = frontmatterPage
 
     if (!indexPath) {

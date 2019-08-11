@@ -55,9 +55,9 @@ export function logPages(title, pages) {
 
 export function resolvePaginationConfig(
   classifierType: ClassifierTypeEnum,
-  globalPagination = {} as PaginationConfig,
-  pagination = {} as PaginationConfig,
-  indexPath,
+  globalPagination: PaginationConfig,
+  pagination: PaginationConfig,
+  indexPath: string,
   ctx: VuePressContext,
   keys: string[] = [''], // ['js']
 ) {
