@@ -24,7 +24,7 @@ export function handleOptions(
   options: BlogPluginOptions,
   ctx: VuePressContext,
 ) {
-  let { directories = [], frontmatters = [] } = options
+  let { directories = [], frontmatters = [], globalPagination = {} as PaginationConfig } = options
 
   /**
    * Validate the existence of directory specified by directory classifier.
@@ -115,6 +115,7 @@ export function handleOptions(
       },
       ...resolvePaginationConfig(
         ClassifierTypeEnum.Directory,
+        globalPagination,
         pagination,
         indexPath,
         ctx,
