@@ -21,9 +21,6 @@ module.exports = {
           // layout: 'IndexArchive', defaults to `Layout.vue`
           itemLayout: 'Post',
           itemPermalink: '/archive/:year/:month/:day/:slug',
-          pagination: {
-            lengthPerPage: 5,
-          },
         },
       ],
       frontmatters: [
@@ -33,9 +30,6 @@ module.exports = {
           path: '/tag/',
           // layout: 'Tag', defaults to `FrontmatterKey`.
           frontmatter: { title: 'Tag' },
-          pagination: {
-            lengthPerPage: 3
-          }
         },
         {
           id: "location",
@@ -43,11 +37,11 @@ module.exports = {
           path: '/location/',
           // layout: 'Location', defaults to `FrontmatterKey`.
           frontmatter: { title: 'Location' },
-          pagination: {
-            lengthPerPage: 5
-          },
         }
-      ]
+      ],
+      globalPagination: {
+        lengthPerPage: 5
+      }
     }],
   ],
 }
