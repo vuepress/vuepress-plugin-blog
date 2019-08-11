@@ -111,6 +111,7 @@ module.exports = (options: BlogPluginOptions, ctx: VuePressContext) => {
                 },
                 ...resolvePaginationConfig(
                   ClassifierTypeEnum.Frontmatter,
+                  options.globalPagination,
                   pagination,
                   indexPath,
                   ctx,
@@ -215,7 +216,7 @@ function mapToString(map, unstringedKeys: string[] | boolean = []) {
       keys === true || (Array.isArray(keys) && keys.includes(key))
         ? map[key]
         : JSON.stringify(map[key])
-    },\n`
+      },\n`
   }
   str += '}'
   return str

@@ -40,13 +40,13 @@ export function logPages(title, pages) {
     data.push(
       ...pages.map(({ // @ts-ignore
         path, permalink, meta, pid, id, frontmatter }) => [
-        // @ts-ignore // @ts-ignore
-        permalink || path || '',
-        JSON.stringify(meta) || '',
-        pid || '',
-        id || '',
-        JSON.stringify(frontmatter) || '',
-      ]),
+          // @ts-ignore // @ts-ignore
+          permalink || path || '',
+          JSON.stringify(meta) || '',
+          pid || '',
+          id || '',
+          JSON.stringify(frontmatter) || '',
+        ]),
     )
     console.log(table(data))
     console.log()
@@ -55,6 +55,7 @@ export function logPages(title, pages) {
 
 export function resolvePaginationConfig(
   classifierType: ClassifierTypeEnum,
+  globalPagination = {} as PaginationConfig,
   pagination = {} as PaginationConfig,
   indexPath,
   ctx: VuePressContext,
@@ -86,6 +87,7 @@ export function resolvePaginationConfig(
         return prevTime - nextTime > 0 ? -1 : 1
       },
     },
+    globalPagination,
     pagination,
   )
 }
