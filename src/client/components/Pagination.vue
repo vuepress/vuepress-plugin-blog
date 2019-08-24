@@ -20,7 +20,13 @@
         comp: null,
       }
     },
-    
+
+    watch: {
+      $pagination() {
+        this.page = this.$pagination.paginationIndex + 1
+      }
+    },
+
     created() {
       this.page = this.$pagination.paginationIndex + 1
     },
