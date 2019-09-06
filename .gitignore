@@ -2,6 +2,7 @@
 lib
 .temp
 types
+!src/types
 src/**/*.js
 dist
 
