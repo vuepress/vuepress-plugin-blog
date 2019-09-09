@@ -1,3 +1,13 @@
+## [1.2.5](https://github.com/ulivz/vuepress-plugin-blog/compare/0084208...v1.2.5) (2019-09-09)
+
+
+### Bug Fixes
+
+* add mising types ([#22](https://github.com/ulivz/vuepress-plugin-blog/issues/22)) ([303c619](https://github.com/ulivz/vuepress-plugin-blog/commit/303c619))
+* Pagination Number in Nav Change is unchanged ([#21](https://github.com/ulivz/vuepress-plugin-blog/issues/21)) ([6fae794](https://github.com/ulivz/vuepress-plugin-blog/commit/6fae794))
+
+
+
 ## [1.2.4](https://github.com/ulivz/vuepress-plugin-blog/compare/v1.2.3...v1.2.4) (2019-06-23)
 
 
@@ -40,7 +50,6 @@
 ### Features
 
 * more abstract `$frontmatterKey` to yield multiple frontmatter classifiers ([7eb1ef4](https://github.com/ulivz/vuepress-plugin-blog/commit/7eb1ef4))
-* return `null` when `$pagination` doesn't exist ([4f08432](https://github.com/ulivz/vuepress-plugin-blog/commit/4f08432))
 
 
 
@@ -49,8 +58,6 @@
 
 ### Bug Fixes
 
-* **$components:** SimplePagination doesn't work ([5622380](https://github.com/ulivz/vuepress-plugin-blog/commit/5622380))
-* **$components:** SimplePagination missed styles ([a2c1944](https://github.com/ulivz/vuepress-plugin-blog/commit/a2c1944))
 
 
 
@@ -83,7 +90,7 @@
 
 ### Features
 
-* some enhancements (debug / api name) ([ab57080](https://github.com/ulivz/vuepress-plugin-blog/commit/ab57080))
+*  (debug / api name) ([ab57080](https://github.com/ulivz/vuepress-plugin-blog/commit/ab57080))
 
 
 
