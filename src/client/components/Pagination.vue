@@ -2,7 +2,7 @@
   <component
     v-if="comp"
     :is="comp"
-    v-model="page"
+    :value="page"
     :page-count="$pagination.length"
     :click-handler="clickCallback"
     :prev-text="'Prev'"
@@ -16,21 +16,16 @@
   export default {
     data() {
       return {
-        page: 0,
         comp: null,
       }
     },
 
-    watch: {
-      $pagination() {
-        this.page = this.$pagination.paginationIndex + 1
+    computed: {
+      page() {
+        return this.$pagination.paginationIndex + 1
       }
     },
 
-    created() {
-      this.page = this.$pagination.paginationIndex + 1
-    },
-    
     mounted() {
       import(/* webpackChunkName: "vuejs-paginate" */ 'vuejs-paginate').then(comp => {
         this.comp = comp.default
