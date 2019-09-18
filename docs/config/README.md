@@ -154,6 +154,13 @@ Entry page for current classifier, e.g. `/` or `/post/`.
 
 Layout component name for entry page.
 
+### scopeLayout
+
+- Type: `string`
+- Default: `undefined`
+- Required: `false`
+
+Layout component name for scope page.
 
 ### frontmatter
 

@@ -1,7 +1,7 @@
 # Getting Started
 
 ::: tip
-This section is a step-by-step tutorial with some concepts, and we recommend that you read it completely before using 
+This section is a step-by-step tutorial with some concepts, and we recommend that you read it completely before using
 this plugin.
 :::
 
@@ -24,8 +24,8 @@ Suppose you have the following files structure:
 
 ```vue
 .
-└── _posts    
-    ├── 2018-4-4-intro-to-vuepress.md    
+└── _posts   
+    ├── 2018-4-4-intro-to-vuepress.md   
     └── 2019-6-8-intro-to-vuepress-next.md
 ```
 
@@ -247,7 +247,9 @@ module.exports = {
             // Path of the `entry page` (or `list page`)
             path: '/tag/',
             // Layout of the `entry page`
-            layout: 'Tag',
+            layout: 'Tags',
+            // Layout of the `scope page`
+            scopeLayout: 'Tag'
           },
         ],
       },
@@ -261,13 +263,13 @@ the corresponding layout:
 
 | url         | layout                             |
 | ----------- | ---------------------------------- |
-| `/tag/`     | `Tag` (fallback to `FrontmatterKey` if not exist)  |
-| `/tag/vue/` | `FrontmatterPagination` (fallback to `Layout` if not exist)  |
-| `/tag/js/`  | `FrontmatterPagination` (fallback to `Layout` if not exist)  |
+| `/tag/`     | `Tags` (fallback to `FrontmatterKey` if not exist)  |
+| `/tag/vue/` | `Tag` (fallback to `FrontmatterPagination` or `Layout` if not exist)  |
+| `/tag/js/`  | `Tag` (fallback to `FrontmatterPagination` or `Layout` if not exist)  |
 
-In the `<Tag />` component, you can use [this.$frontmatterKey.list](../client-api/README.md#frontmatterkey) to get the 
-tag 
-list. The value 
+In the `<Tags />` component, you can use [this.$frontmatterKey.list](../client-api/README.md#frontmatterkey) to get the
+tag
+list. The value
 would be like:
 
 ```json
@@ -290,7 +292,7 @@ would be like:
 ]
 ```
 
-In the `FrontmatterPagination` component, you can use 
+In the `FrontmatterPagination` component, you can use
 [this.$pagination.pages](../client-api/README.md#pagination) to get the matched pages in current tag
 classification:
 
@@ -318,7 +320,7 @@ classification:
 
 ## Writing a blog theme
 
-If everything is ok, you can start to write a blog theme. Actually, there are only 2 necessary layout components to 
+If everything is ok, you can start to write a blog theme. Actually, there are only 2 necessary layout components to
 create a blog theme:
 
 - Layout
@@ -329,4 +331,3 @@ Here are two official examples (A simple & a complex) for you:
 
 - [70-lines-of-vuepress-blog-theme](https://github.com/ulivz/70-lines-of-vuepress-blog-theme): A VuePress Blog Theme implemented in around 70 lines.
 - [@vuepress/theme-blog](https://github.com/ulivz/vuepress-theme-blog): Default blog theme for VuePress.
-
