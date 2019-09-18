@@ -5,6 +5,7 @@ export interface FrontmatterClassificationPage {
   id: string;
   pagination: PaginationConfig;
   keys: string[];
+  scopeLayout: string;
   map: Record<string, any>;
   _handler: FrontmatterHandler;
 }

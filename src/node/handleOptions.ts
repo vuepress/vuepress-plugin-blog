@@ -133,6 +133,7 @@ export function handleOptions(
       keys,
       path: indexPath,
       layout: indexLayout,
+      scopeLayout = '',
       frontmatter,
       pagination = {
         lengthPerPage: 10,
@@ -164,6 +165,7 @@ export function handleOptions(
       pagination,
       keys,
       map,
+      scopeLayout,
       _handler: curryFrontmatterHandler(id, map),
     })
   }
