@@ -129,7 +129,7 @@ module.exports = (options: BlogPluginOptions, ctx: VuePressContext) => {
                 pid: scope,
                 id: key,
                 frontmatter: {
-                  layout: scopeLayout || DefaultLayoutEnum.FrontmatterPagination,
+                  layout: ctx.getLayout(scopeLayout, DefaultLayoutEnum.FrontmatterPagination),
                   title: `${key} ${scope}`,
                 },
               }

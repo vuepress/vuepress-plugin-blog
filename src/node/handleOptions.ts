@@ -133,7 +133,7 @@ export function handleOptions(
       keys,
       path: indexPath,
       layout: indexLayout,
-      scopeLayout = '',
+      scopeLayout,
       frontmatter,
       pagination = {
         lengthPerPage: 10,
