@@ -264,8 +264,8 @@ the corresponding layout:
 | url         | layout                             |
 | ----------- | ---------------------------------- |
 | `/tag/`     | `Tags` (fallback to `FrontmatterKey` if not exist)  |
-| `/tag/vue/` | `Tag` (fallback to `FrontmatterPagination` or `Layout` if not exist)  |
-| `/tag/js/`  | `Tag` (fallback to `FrontmatterPagination` or `Layout` if not exist)  |
+| `/tag/vue/` | `Tag` (fallback to `FrontmatterPagination` if not exist)  |
+| `/tag/js/`  | `Tag` (fallback to `FrontmatterPagination` if not exist)  |
 
 In the `<Tags />` component, you can use [this.$frontmatterKey.list](../client-api/README.md#frontmatterkey) to get the
 tag
