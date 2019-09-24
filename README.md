@@ -2,6 +2,8 @@
 
 > Official blog plugin for VuePress. 
 
+[**中文文档**](./README.zh-CN.md)
+
 ## Status: WIP
 
 Most of the planned features in place but there may still be bugs. API may still change until we remove this status tip. Do not use in production yet unless you are adventurous.
