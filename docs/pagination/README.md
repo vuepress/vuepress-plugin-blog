@@ -22,6 +22,7 @@ function sorter(prev: VuePressPage, next: VuePressPage){
   return prevTime - nextTime > 0 ? -1 : 1
 },
 ```
+
 The function will be a parameter of [Array.sort()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort).
 
 ## lengthPerPage
