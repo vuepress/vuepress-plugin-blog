@@ -7,7 +7,6 @@ module.exports = {
     },
     '/zh/': {
       lang: 'zh-CN',
-      title: 'Blog DEMO',
       description: 'Vuepress 官方博客插件',
     }
   },

@@ -238,7 +238,7 @@ module.exports = {
           {
             // 当前分类的唯一ID
             id: 'tag',
-            // 决定将f rontmatter 键值归到该类别下
+            // 决定将 frontmatter 键值归到该类别下
             keys: ['tag'],
             // `entry page` (或者 `list page`) 的路径
             path: '/tag/',
