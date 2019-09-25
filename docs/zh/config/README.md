@@ -8,7 +8,7 @@ sidebar: auto
 我们强烈建议您在使用此插件之前阅读 [Getting Started](../guide/getting-started.md) 部分。
 :::
 
-## 目录
+## directories
 
 - 类型: `DirectoryClassifier[]`
 - 默认值: `[]`
