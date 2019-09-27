@@ -95,7 +95,7 @@ module.exports = (options: BlogPluginOptions, ctx: VuePressContext) => {
         ...extraPages,
         ...frontmatterClassificationPages
           .map(frontmatterClassifiedPage => {
-            const { map, pagination, keys } = frontmatterClassifiedPage
+            const { map, pagination, keys, scopeLayout } = frontmatterClassifiedPage
             return Object.keys(map).map(key => {
               const { path, scope } = map[key]
 
@@ -129,7 +129,7 @@ module.exports = (options: BlogPluginOptions, ctx: VuePressContext) => {
                 pid: scope,
                 id: key,
                 frontmatter: {
-                  layout: DefaultLayoutEnum.FrontmatterPagination,
+                  layout: ctx.getLayout(scopeLayout, DefaultLayoutEnum.FrontmatterPagination),
                   title: `${key} ${scope}`,
                 },
               }

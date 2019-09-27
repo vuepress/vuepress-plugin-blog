@@ -62,6 +62,12 @@ export interface FrontmatterClassifier {
    */
   layout?: string;
   /**
+   * Layout for scope page.
+   * e.g. {id: 'tag', keys: ['tag'], scopeLayout: 'Foo'}
+   * `/tag/vue` will use `Foo.vue` as the layout
+   */
+  scopeLayout?: string;
+  /**
    * Frontmatter for index page.
    */
   frontmatter?: Record<string, any>;
