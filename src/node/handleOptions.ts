@@ -24,7 +24,7 @@ export function handleOptions(
   options: BlogPluginOptions,
   ctx: VuePressContext,
 ) {
-  let { directories = [], frontmatters = [] } = options
+  let { directories = [], frontmatters = [], globalPagination = {} as PaginationConfig } = options
 
   /**
    * Validate the existence of directory specified by directory classifier.
@@ -61,9 +61,7 @@ export function handleOptions(
       frontmatter,
       itemLayout = 'Post',
       itemPermalink = '/:year/:month/:day/:slug',
-      pagination = {
-        lengthPerPage: 10,
-      } as PaginationConfig,
+      pagination = {} as PaginationConfig,
     } = directory
 
     /**
@@ -115,6 +113,7 @@ export function handleOptions(
       },
       ...resolvePaginationConfig(
         ClassifierTypeEnum.Directory,
+        globalPagination,
         pagination,
         indexPath,
         ctx,
@@ -135,9 +134,7 @@ export function handleOptions(
       layout: indexLayout,
       scopeLayout,
       frontmatter,
-      pagination = {
-        lengthPerPage: 10,
-      } as PaginationConfig,
+      pagination = {} as PaginationConfig,
     } = frontmatterPage
 
     if (!indexPath) {
