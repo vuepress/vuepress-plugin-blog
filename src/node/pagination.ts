@@ -3,7 +3,7 @@ import {
   InternalPagination,
   PageFilter,
   GetPaginationPageUrl,
-  getPaginationPageTitle,
+  GetPaginationPageTitle,
   SerializedPagination,
 } from './interface/Pagination'
 import { logPages } from './util'
@@ -82,7 +82,7 @@ export async function registerPaginations(
           permalink: path,
           frontmatter: {
             layout,
-            title: (getPaginationPageTitle as getPaginationPageTitle)(index),
+            title: (getPaginationPageTitle as GetPaginationPageTitle)(index, id, pid),
           },
           meta: {
             pid,

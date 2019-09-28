@@ -16,7 +16,7 @@ export type PageSorter = (
 ) => boolean | number
 
 export type GetPaginationPageUrl = (index: number) => string
-export type getPaginationPageTitle = (index: number) => string
+export type GetPaginationPageTitle = (index: number, id: string, scope: string) => string
 
 /**
  * Pagination config options for users.
@@ -45,7 +45,7 @@ export interface PaginationConfig {
   /**
    * A function to get the title of pagination page dynamically.
    */
-  getPaginationPageTitle?: getPaginationPageTitle;
+  getPaginationPageTitle?: GetPaginationPageTitle;
 }
 
 export interface PaginationIdentity {
@@ -64,7 +64,7 @@ export interface PaginationIdentity {
  */
 export interface InternalPagination
   extends PaginationConfig,
-    PaginationIdentity {
+  PaginationIdentity {
   /**
    * Record which classfier create this pagination.
    */
