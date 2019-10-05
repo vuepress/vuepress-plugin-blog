@@ -8,8 +8,8 @@ features:
   details: 强大的分类系统可让您快速对帖子进行分类。
 - title: 分页
   details: 分页贯穿整个插件，它从未如此简单。
-- title: 客户端API
-  details: 简单的客户端API使您可以更轻松地编写博客主题。
+- title: 客户端 API
+  details: 简单的客户端 API 使您可以更轻松地编写博客主题。
 
 footer: MIT Licensed | Copyright © 2019-present ULIVZ
 ---
