@@ -33,15 +33,15 @@ sidebar: auto
 
 ### $pagination.hasPrev
 
-Whether previous pagination page exists.
+是否存在上一个分页。
 
 ### $pagination.prevLink
 
-是否存在上一个分页。
+上一个分页的链接。
 
 ### $pagination.hasNext
 
-下一个分页的链接。
+是否存在下一个分页。
 
 ### $pagination.nextLink
 
@@ -67,9 +67,9 @@ module.exports = {
       {
         frontmatters: [
           {
-            // 当前分类的唯一ID
+            // 当前分类的唯一 ID
             id: 'tag',
-            // 决定将f rontmatter 键值归到该类别下
+            // 决定将 frontmatter 键值归到该类别下
             keys: ['tag'],
             // `entry page` (或者 `list page`) 的路径
             path: '/tag/',
