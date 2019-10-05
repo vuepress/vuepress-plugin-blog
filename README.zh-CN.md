@@ -1,6 +1,6 @@
 # @vuepress/plugin-blog
 
-> VuePress的官方博客插件。
+> VuePress 的官方博客插件。
 
 ## 状态：在制品
 
