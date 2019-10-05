@@ -4,7 +4,7 @@
 
 ## 状态：在制品
 
-大多数计划中的功能都已就绪，但可能仍然存在错误。在我们删除此状态提示之前，API可能仍会更改。除非您喜欢冒险，否则请勿在生产环境中使用。
+大多数计划中的功能都已就绪，但可能仍然存在错误。在我们删除此状态提示之前，API 可能仍会更改。除非您喜欢冒险，否则请勿在生产环境中使用。
 
 ## 特性
 
@@ -12,7 +12,7 @@
 强大的分类系统可让您快速对帖子进行分类。
 - [**分页**](https://vuepress-plugin-blog.ulivz.com/zh/guide/getting-started.html#pagination)：
 分页贯穿整个插件，它从未如此简单。
-- [**客户端 API**](https://vuepress-plugin-blog.ulivz.com/zh/client-api/)：简单的客户端API使您可以更轻松地编写博客主题。
+- [**客户端 API**](https://vuepress-plugin-blog.ulivz.com/zh/client-api/)：简单的客户端 API 使您可以更轻松地编写博客主题。
 
 ## 安装
 
@@ -31,11 +31,11 @@ module.exports = {
 }
 ```
 
-请转到 [documentation](https://vuepress-theme-blog.ulivz.com/zh/) 查看所有可用选项。
+请转到 [文档](https://vuepress-theme-blog.ulivz.com/zh/) 查看所有可用选项。
 
 ## 正在使用 `@vuepress/plugin-blog` 的项目
 
-- [70-lines-of-vuepress-blog-theme](https://github.com/ulivz/70-lines-of-vuepress-blog-theme): 大约70行实现的VuePress 博客主题。
+- [70-lines-of-vuepress-blog-theme](https://github.com/ulivz/70-lines-of-vuepress-blog-theme): 大约 70 行实现的 VuePress 博客主题。
 - [@vuepress/theme-blog](https://github.com/ulivz/vuepress-theme-blog): VuePress 的默认博客主题。
 
 随时在这里添加您的主题...
