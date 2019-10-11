@@ -41,6 +41,9 @@ module.exports = {
       ],
       globalPagination: {
         lengthPerPage: 5
+      },
+      sitemap: {
+        hostname: 'https://yourdomain'
       }
     }],
   ],
