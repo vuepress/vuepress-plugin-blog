@@ -59,5 +59,28 @@ function getPaginationPageUrl(index) {
 - For [frontmatter classifier](../README.md#frontmatter-classifier), the `indexPath` defaults to `/${classifier.pid}/${classifier.id}` 
 (e.g. `/tag/js/`)
 
+## getPaginationPageTitle
+
+- Type: function
+- Default: `See Below`
+
+A function to get the title of pagination page dynamically:
+
+```js
+// directories
+function getPaginationPageTitle (index, id) {
+  return `Page ${index + 1} | ${id}`
+}
+
+// frontmatters
+function getPaginationPageTitle (index, id, scope) {
+  return `Page ${index + 1} - ${id} | ${scope}`
+}
+```
+
+There are three args to help you customize your title: 
+- `index` is the index of pages.
+- `id` is the id in the [config](../config/#id).
+- `scope` is the [key](../config/#keys) while configuring frontmatters or same as `id` while configuring directories.
 
 
