@@ -188,3 +188,18 @@ Pagination config for all directories and frontmatters.
 - Required: `false`
 
 Please head to [Pagination Config](../pagination/README.md#config) section to get all available options.
+
+## sitemap
+
+- Type: `object`
+- Default: `{}`
+- Required: `false`
+
+It will be enabled when `hostname` is provided. e.g.
+
+```js
+{
+  hostname: 'https://yourdomain'
+}
+```
+The 404 page is excluded by default. Further options, please head to [vuepress-plugin-sitemap](https://github.com/ekoeryanto/vuepress-plugin-sitemap#options).

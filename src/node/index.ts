@@ -32,6 +32,17 @@ module.exports = (options: BlogPluginOptions, ctx: VuePressContext) => {
     paginations,
   } = handleOptions(options, ctx)
 
+  /**
+   * Leverage other plugins
+   */
+  let plugins
+
+  if (options.sitemap && options.sitemap.hostname) {
+    const sitemapOptions = { ...options.sitemap, exclude: ['/404.html'] }
+    // Temporarily use a fork of vuepress-plugin-sitemap. Should switch back when it release the next version.
+    plugins = [['vuepress-plugin-forked-sitemap', sitemapOptions], ['@vuepress/last-updated']]
+  }
+
   return {
     name: 'vuepress-plugin-blog',
 
@@ -195,6 +206,8 @@ export default ${serializePaginations(ctx.serializedPaginations, [
       path.resolve(__dirname, '../client/classification.js'),
       path.resolve(__dirname, '../client/pagination.js'),
     ],
+
+    plugins
   }
 }
 

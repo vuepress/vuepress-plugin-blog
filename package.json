@@ -29,7 +29,8 @@
   "author": "ULIVZ <chl814@foxmail.com>",
   "license": "MIT",
   "dependencies": {
-    "vuejs-paginate": "^2.1.0"
+    "vuejs-paginate": "^2.1.0",
+    "vuepress-plugin-forked-sitemap": "^0.0.1"
   },
   "devDependencies": {
     "concurrently": "^4.1.0",
