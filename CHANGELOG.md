@@ -1,3 +1,13 @@
+# [1.4.0](https://github.com/ulivz/vuepress-plugin-blog/compare/v1.3.0...v1.4.0) (2019-10-11)
+
+
+### Features
+
+* add getPaginationPageTitle ([#26](https://github.com/ulivz/vuepress-plugin-blog/issues/26)) ([dddb231](https://github.com/ulivz/vuepress-plugin-blog/commit/dddb231ea5cc024c3f282ef8726505370a13006c))
+* intergrate sitemap ([#28](https://github.com/ulivz/vuepress-plugin-blog/issues/28)) ([c780100](https://github.com/ulivz/vuepress-plugin-blog/commit/c78010085ccaa63224b88ba5fbaeef19c3439c51))
+
+
+
 # [1.3.0](https://github.com/ulivz/vuepress-plugin-blog/compare/v1.2.5...v1.3.0) (2019-09-28)
 
 
