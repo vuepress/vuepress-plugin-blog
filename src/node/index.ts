@@ -1,4 +1,4 @@
-import * as path from 'path'
+import { path, logger, chalk, } from '@vuepress/shared-utils'
 import { handleOptions } from './handleOptions'
 import { registerPaginations } from './pagination'
 import { BlogPluginOptions } from './interface/Options'
@@ -43,6 +43,23 @@ module.exports = (options: BlogPluginOptions, ctx: VuePressContext) => {
     // Temporarily use a fork of vuepress-plugin-sitemap. Should switch back when it release the next version.
     const sitemapDependencies = [['vuepress-plugin-forked-sitemap', sitemapOptions], ['@vuepress/last-updated']]
     plugins.push(...sitemapDependencies)
+  }
+
+  if (options.comment) {
+    const { service: commentService, ...commentOptions } = options.comment
+    switch (commentService) {
+      case 'vssue':
+        plugins.push(['@vssue/vuepress-plugin-vssue', commentOptions])
+        break;
+      case 'disqus':
+        plugins.push(['vuepress-plugin-disqus-comment', commentOptions])
+        break;
+      default:
+        logger.warn(
+          `[@vuepress/plugin-blog] Invalid comment service: ${chalk.cyan(commentService)}`
+        )
+        break;
+    }
   }
 
   return {
@@ -209,7 +226,11 @@ export default ${serializePaginations(ctx.serializedPaginations, [
       path.resolve(__dirname, '../client/pagination.js'),
     ],
 
-    plugins
+    plugins,
+
+    define: {
+      COMMENT_SERVICE: options.comment && options.comment.service
+    }
   }
 }
 
