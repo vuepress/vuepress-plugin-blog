@@ -35,12 +35,14 @@ module.exports = (options: BlogPluginOptions, ctx: VuePressContext) => {
   /**
    * Leverage other plugins
    */
-  let plugins
+  let plugins: any[][] = []
 
   if (options.sitemap && options.sitemap.hostname) {
-    const sitemapOptions = { ...options.sitemap, exclude: ['/404.html'] }
+    const defaultSitemapOptions = { exclude: ['/404.html'] }
+    const sitemapOptions = Object.assign({}, defaultSitemapOptions, options.sitemap)
     // Temporarily use a fork of vuepress-plugin-sitemap. Should switch back when it release the next version.
-    plugins = [['vuepress-plugin-forked-sitemap', sitemapOptions], ['@vuepress/last-updated']]
+    const sitemapDependencies = [['vuepress-plugin-forked-sitemap', sitemapOptions], ['@vuepress/last-updated']]
+    plugins.push(...sitemapDependencies)
   }
 
   return {
