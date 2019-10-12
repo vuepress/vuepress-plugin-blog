@@ -203,3 +203,18 @@ It will be enabled when `hostname` is provided. e.g.
 }
 ```
 The 404 page is excluded by default. Further options, please head to [vuepress-plugin-sitemap](https://github.com/ekoeryanto/vuepress-plugin-sitemap#options).
+
+## comment
+
+### service 
+
+Service to accomplish commenting. 
+
+- Type: `'vssue' | 'disqus';`
+- Default: `undefined`
+- Required: `false`
+
+### others
+Other options depend on which service you pick since this feature is accomplished by the plugins below. All options except `service` will be passed directly to the plugin, so take a look at their documentation for more details:
+- [vuepress-plugin-disqus-comment](https://vuepress-plugin-disqus.netlify.com/#config)
+- [vuepress-plugin-vssue](https://vssue.js.org/guide/vuepress.html#usage)

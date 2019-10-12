@@ -78,11 +78,62 @@ export interface FrontmatterClassifier {
 }
 
 /**
+ * Comment configuration
+ */
+
+/**
+ * Vssue configuration
+ * For details, head Vssue documentation: https://vssue.js.org/
+ */
+export interface VssueOptions {
+  platform: 'github' | 'github-v4' | 'gitlab' | 'bitbucket' | 'gitee';
+  owner: string;
+  repo: string;
+  clientId: string;
+  clientSecret: string;
+  baseURL: string;
+  state: string;
+  labels: Array<string>;
+  prefix: string;
+  admins: Array<string>;
+  perPage: number;
+  locale: string;
+  proxy: string | ((url: string) => string);
+  issueContent: ((param: { options: VssueOptions, url: string }) => string | Promise<string>);
+  autoCreateIssue: boolean;
+}
+
+/**
+ * Disqus configuration
+ * For details, head vue-disqus documentation: https://github.com/ktquez/vue-disqus#props
+ */
+export interface DisqusOptions {
+  shortname: string;
+  identifier: string;
+  url: string;
+  title: string;
+  remote_auth_s3: string;
+  api_key: string;
+  sso_config: any;
+  language: string;
+}
+
+export interface Comment extends Partial<VssueOptions>, Partial<DisqusOptions> {
+  /**
+   * The comment service
+   */
+  service: 'vssue' | 'disqus';
+}
+
+
+/**
  * Options for this plugin.
  */
 export interface BlogPluginOptions {
   directories: DirectoryClassifier[];
   frontmatters: FrontmatterClassifier[];
   globalPagination: PaginationConfig;
-  sitemap:any
+  //TODO: define types
+  sitemap: any;
+  comment: Comment;
 }

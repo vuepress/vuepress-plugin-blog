@@ -44,6 +44,10 @@ module.exports = {
       },
       sitemap: {
         hostname: 'https://yourdomain'
+      },
+      comment: {
+        service: 'disqus',
+        shortname: 'vuepress-plugin-blog'
       }
     }],
   ],
