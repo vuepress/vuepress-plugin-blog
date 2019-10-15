@@ -1,3 +1,17 @@
+# [1.5.0](https://github.com/ulivz/vuepress-plugin-blog/compare/v1.4.0...v1.5.0) (2019-10-15)
+
+
+### Bug Fixes
+
+* cannot override default sitemap options ([fb5e00f](https://github.com/ulivz/vuepress-plugin-blog/commit/fb5e00f7cf23dc083bdf573ec379f0b826db27a9))
+
+
+### Features
+
+* integrate comment services ([aea4305](https://github.com/ulivz/vuepress-plugin-blog/commit/aea430535a6498e3d8e9472a1bf781bd9d12525f))
+
+
+
 # [1.4.0](https://github.com/ulivz/vuepress-plugin-blog/compare/v1.3.0...v1.4.0) (2019-10-11)
 
 
