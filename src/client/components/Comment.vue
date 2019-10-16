@@ -1,13 +1,11 @@
 <template>
   <Vssue
     v-if="commentService === 'vssue'"
-    v-bind="propsWithoutEmptyProperties"
-    :title="$page.title"
+    v-bind="vssueProps"
   />
   <vue-disqus
     v-else-if="commentService === 'disqus'"
-    v-bind="propsWithoutEmptyProperties"
-    :identifier="$page.key"
+    v-bind="disqusProps"
   />
 </template>
 
@@ -74,6 +72,18 @@
     computed: {
       propsWithoutEmptyProperties () {
         return pickBy(this.$props, identity);
+      },
+
+      commentProps () {
+        return Object.assign({}, this.propsWithoutEmptyProperties, this.$frontmatter.comment)
+      },
+
+      vssueProps () {
+        return Object.assign({ title: this.$page.title }, this.commentProps)
+      },
+
+      disqusProps () {
+        return Object.assign({ identifier: this.$page.key }, this.commentProps)
       }
     },
 
