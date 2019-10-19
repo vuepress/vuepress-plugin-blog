@@ -317,6 +317,63 @@ classification:
 
 - [Config > frontmatters](../config/README.md#frontmatters)
 
+## Comment
+
+Comment is a great way to make your blog much more lively. We integrate client side comment services: [Vssue](https://vssue.js.org/) and [Disqus](https://disqus.com/) in this plugin. The former is a vue-powered and issue-based open source project which can enable comments for your static pages, while the latter is a networked platform that provides comment service used by hundreds of thousands of websites. 
+
+> A plugin can contain several plugins like a preset.
+
+Since comment is implemented by other plugins, make sure you've read [vuepress-plugin-vssue](https://vssue.js.org/) or [vuepress-plugin-disqus-comment](https://vuepress-plugin-disqus.netlify.com) before using them:
+```js
+// .vuepress/config.js
+module.exports = {
+  plugins: [
+    [
+      '@vuepress/blog',
+      {
+        comment: [
+          {
+            // Which service you'd like to use
+            service: 'vssue',
+            // The owner's name of repository to store the issues and comments.
+            owner: 'You',
+            // The name of repository to store the issues and comments.
+            repo: 'Your repo',
+            // The clientId & clientSecret introduced in OAuth2 spec.
+            clientId: 'Your clientId',
+            clientSecret: 'Your clientSecret',
+          },
+        ],
+      },
+    ],
+  ],
+}
+```
+```js
+// .vuepress/config.js
+module.exports = {
+  plugins: [
+    [
+      '@vuepress/blog',
+      {
+        comment: [
+          {
+            // Which service you'd like to use
+            service: 'disqus',
+            // The owner's name of repository to store the issues and comments.
+            shortname: 'vuepress-plugin-blog',
+          },
+        ],
+      },
+    ],
+  ],
+}
+```
+
+::: tip
+Of course you can use whatever service you like or roll your own comment system. Just simply ignore the config.
+:::
+
 
 ## Writing a blog theme
 
