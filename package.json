@@ -4,7 +4,7 @@
   "description": "Offical blog plugin for VuePress",
   "scripts": {
     "lint": "xo",
-    "dev": "concurrently \"rimraf lib\" \"npm:dev:client\" \"npm:dev:node\" \"npm:build:components\"",
+    "dev": "concurrently \"rimraf lib\" \"npm:dev:client\" \"npm:dev:node\" \"nodemon\"",
     "build": "concurrently \"rimraf lib\" \"npm:build:client\" \"npm:build:node\" \"npm:build:components\"",
     "dev:client": "tsc -p tsconfig.client.json --watch",
     "dev:node": "tsc -p tsconfig.node.json --watch",
@@ -44,6 +44,13 @@
     "ts-node": "^7.0.1",
     "typescript": "3.1.4",
     "vuepress": "^1.0.0"
+  },
+  "nodemonConfig": {
+    "exec": "yarn build:components",
+    "ext": "vue",
+    "watch": [
+      "src/client/components/"
+    ]
   },
   "xo": {
     "extends": [
