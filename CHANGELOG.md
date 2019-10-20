@@ -1,3 +1,13 @@
+## [1.5.1](https://github.com/ulivz/vuepress-plugin-blog/compare/v1.5.0...v1.5.1) (2019-10-20)
+
+
+### Features
+
+* pass comment props via frontmatter ([de002ec](https://github.com/ulivz/vuepress-plugin-blog/commit/de002ec69267cb8093f92fb0d75aaffcdd654bb3))
+* switch back vuepress-plugin-sitemap ([456c31e](https://github.com/ulivz/vuepress-plugin-blog/commit/456c31efebb1f8b924282bf3c9beaaf4f12523d3))
+
+
+
 # [1.5.0](https://github.com/ulivz/vuepress-plugin-blog/compare/v1.4.0...v1.5.0) (2019-10-15)
 
 
