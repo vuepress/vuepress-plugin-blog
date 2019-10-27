@@ -1,5 +1,9 @@
 # @vuepress/plugin-blog
 
+[![NPM version](https://badgen.net/npm/v/@vuepress/plugin-blog)](https://npmjs.com/package/@vuepress/plugin-blog) 
+[![NPM downloads](https://badgen.net/npm/dm/@vuepress/plugin-blog)](https://npmjs.com/package/@vuepress/plugin-blog) 
+[![NPM LICENSE](https://badgen.net/npm/license/@vuepress/plugin-blog)](https://github.com/vuepressjs/vuepress-plugin-blog/blob/master/LICENSE)
+
 > Official blog plugin for VuePress. 
 
 ## Status: WIP
