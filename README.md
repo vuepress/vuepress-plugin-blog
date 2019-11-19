@@ -42,7 +42,7 @@ Please head [documentation](https://vuepress-theme-blog.ulivz.com/) to see all a
 
 - [70-lines-of-vuepress-blog-theme](https://github.com/ulivz/70-lines-of-vuepress-blog-theme): A VuePress Blog Theme implemented in around 70 lines.
 - [@vuepress/theme-blog](https://github.com/ulivz/vuepress-theme-blog): Default blog theme for VuePress.
-
+- [vuepress-theme-modern-blog](https://github.com/z3by/vuepress-theme-modern-blog)
 Feel free to add yours here...
 
 
