@@ -4,8 +4,8 @@
   "description": "Offical blog plugin for VuePress",
   "scripts": {
     "lint": "xo",
-    "dev": "concurrently \"rimraf lib\" \"npm:dev:client\" \"npm:dev:node\" \"nodemon\"",
-    "build": "concurrently \"rimraf lib\" \"npm:build:client\" \"npm:build:node\" \"npm:build:components\"",
+    "dev": "rimraf lib && concurrently  \"npm:dev:client\" \"npm:dev:node\" \"nodemon\"",
+    "build": "rimraf lib && concurrently \"npm:build:client\" \"npm:build:node\" \"npm:build:components\"",
     "dev:client": "tsc -p tsconfig.client.json --watch",
     "dev:node": "tsc -p tsconfig.node.json --watch",
     "build:client": "tsc -p tsconfig.client.json",
