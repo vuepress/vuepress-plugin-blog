@@ -10,7 +10,7 @@
     "dev:node": "tsc -p tsconfig.node.json --watch",
     "build:client": "tsc -p tsconfig.client.json",
     "build:node": "tsc -p tsconfig.node.json",
-    "build:components": "mkdir -p lib/client/components && cp -r src/client/components lib/client",
+    "build:components": "cpx \"src/client/components/**/*\" lib/client/components",
     "dev:docs": "vuepress dev docs --temp docs/.temp",
     "build:docs": "vuepress build docs --temp docs/.temp",
     "dev:example": "node examples/launch.js dev",
@@ -38,6 +38,7 @@
   "devDependencies": {
     "concurrently": "^4.1.0",
     "conventional-changelog-cli": "^2.0.1",
+    "cpx": "^1.5.0",
     "inquirer": "^6.3.1",
     "nodemon": "^1.18.7",
     "rimraf": "^3.0.0",
