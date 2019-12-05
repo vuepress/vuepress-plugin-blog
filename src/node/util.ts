@@ -14,15 +14,16 @@ export interface FrontmatterTempMap {
 export function curryFrontmatterHandler(
   scope: string,
   map: FrontmatterTempMap,
+  path: string,
 ): FrontmatterHandler
-export function curryFrontmatterHandler(scope, map) {
+export function curryFrontmatterHandler(scope, map, path) {
   return (key, pageKey) => {
     if (key) {
       if (!map[key]) {
         map[key] = {}
         map[key].key = key
         map[key].scope = scope
-        map[key].path = `/${scope}/${key}/`
+        map[key].path = path ? `${path}${key}` : `/${scope}/${key}/`
         map[key].pageKeys = []
       }
       map[key].pageKeys.push(pageKey)

@@ -131,7 +131,7 @@ module.exports = (options: BlogPluginOptions, ctx: VuePressContext) => {
               /**
                * Register pagination
                */
-              const indexPath = `/${scope}/${key}/`
+              const indexPath = path ? `${path}${key}` : `/${scope}/${key}/`;
 
               paginations.push({
                 classifierType: ClassifierTypeEnum.Frontmatter,
