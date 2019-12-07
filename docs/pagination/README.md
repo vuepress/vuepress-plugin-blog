@@ -69,12 +69,12 @@ A function to get the title of pagination page dynamically:
 ```js
 // directories
 function getPaginationPageTitle (index, id) {
-  return `Page ${index + 1} | ${id}`
+  return `Page ${index + 2} | ${id}`
 }
 
 // frontmatters
 function getPaginationPageTitle (index, id, scope) {
-  return `Page ${index + 1} - ${id} | ${scope}`
+  return `Page ${index + 2} - ${id} | ${scope}`
 }
 ```
 
