@@ -136,7 +136,7 @@ module.exports = (options: BlogPluginOptions, ctx: VuePressContext) => {
               paginations.push({
                 classifierType: ClassifierTypeEnum.Frontmatter,
                 getPaginationPageTitle(index, id, scope) {
-                  return `Page ${index + 1} - ${id} | ${scope}`
+                  return `Page ${index + 2} - ${id} | ${scope}`
                 },
                 ...resolvePaginationConfig(
                   ClassifierTypeEnum.Frontmatter,

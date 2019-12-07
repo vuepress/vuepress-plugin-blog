@@ -109,7 +109,7 @@ export function handleOptions(
     paginations.push({
       classifierType: ClassifierTypeEnum.Directory,
       getPaginationPageTitle(index, id) {
-        return `Page ${index + 1} | ${id}`
+        return `Page ${index + 2} | ${id}`
       },
       ...resolvePaginationConfig(
         ClassifierTypeEnum.Directory,
