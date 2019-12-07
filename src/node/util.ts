@@ -23,7 +23,7 @@ export function curryFrontmatterHandler(scope, map, path) {
         map[key] = {}
         map[key].key = key
         map[key].scope = scope
-        map[key].path = path ? `${path}${key}` : `/${scope}/${key}/`
+        map[key].path = `${path}${key}/`
         map[key].pageKeys = []
       }
       map[key].pageKeys.push(pageKey)
