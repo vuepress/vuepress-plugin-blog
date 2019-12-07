@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/plugin-blog",
-  "version": "1.5.1",
+  "version": "1.5.2",
   "description": "Offical blog plugin for VuePress",
   "scripts": {
     "lint": "xo",
