@@ -83,4 +83,9 @@ There are three args to help you customize your title:
 - `id` is the id in the [config](../config/#id).
 - `scope` is the [key](../config/#keys) while configuring frontmatters or same as `id` while configuring directories.
 
+::: tip TIP
+`${index + 2}`: why `+2`?
 
+Plus 1 since index starts at 0. <br>
+Plus another 1 since the index page won't show page number.
+:::
