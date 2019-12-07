@@ -1,3 +1,14 @@
+## [1.5.2](https://github.com/ulivz/vuepress-plugin-blog/compare/v1.5.1...v1.5.2) (2019-12-07)
+
+
+### Bug Fixes
+
+* generate pagination title correctly (fix: [#41](https://github.com/ulivz/vuepress-plugin-blog/issues/41)) ([#42](https://github.com/ulivz/vuepress-plugin-blog/issues/42)) ([586bf14](https://github.com/ulivz/vuepress-plugin-blog/commit/586bf1405402e42e920db6d5f92e19e5ff71edc2))
+* generate paths of frontmatter scope pages properly  (fix [#39](https://github.com/ulivz/vuepress-plugin-blog/issues/39)) ([#40](https://github.com/ulivz/vuepress-plugin-blog/issues/40)) ([af32668](https://github.com/ulivz/vuepress-plugin-blog/commit/af3266802200ee25ba90577215f4cab7e2db0dc2))
+* support platform-independent build (fix: [#36](https://github.com/ulivz/vuepress-plugin-blog/issues/36)) ([#37](https://github.com/ulivz/vuepress-plugin-blog/issues/37)) ([cc09e81](https://github.com/ulivz/vuepress-plugin-blog/commit/cc09e81106ef7b63e41965d9296f1083226447dd))
+
+
+
 ## [1.5.1](https://github.com/ulivz/vuepress-plugin-blog/compare/v1.5.0...v1.5.1) (2019-10-20)
 
 
