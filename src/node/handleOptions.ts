@@ -163,7 +163,7 @@ export function handleOptions(
       keys,
       map,
       scopeLayout,
-      _handler: curryFrontmatterHandler(id, map),
+      _handler: curryFrontmatterHandler(id, map, indexPath),
     })
   }
 

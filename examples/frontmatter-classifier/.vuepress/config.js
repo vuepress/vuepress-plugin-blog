@@ -12,6 +12,7 @@ module.exports = {
           path: '/tag/',
           // Layout of the `entry page`
           layout: 'Tags',
+          scopeLayout: 'FrontmatterClassifier',
         },
       ],
     }],
