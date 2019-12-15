@@ -4,7 +4,7 @@ import {
   PageFilter,
   GetPaginationPageUrl,
   GetPaginationPageTitle,
-  SerializedPagination,
+  SerializedPagination
 } from './interface/Pagination'
 import { logPages } from './util'
 
@@ -14,9 +14,9 @@ import { logPages } from './util'
 
 function getIntervallers(max, interval) {
   const count =
-    max % interval === 0
-      ? Math.floor(max / interval)
-      : Math.floor(max / interval) + 1
+    max % interval === 0 ?
+      Math.floor(max / interval) :
+      Math.floor(max / interval) + 1
   const arr = [...new Array(count)]
   // @ts-ignore
   return arr.map((v, index) => {
@@ -31,7 +31,7 @@ function getIntervallers(max, interval) {
  */
 export async function registerPaginations(
   paginations: InternalPagination[],
-  ctx: VuePressContext,
+  ctx: VuePressContext
 ) {
   ctx.serializedPaginations = []
   ctx.pageFilters = []
@@ -55,10 +55,12 @@ export async function registerPaginations(
     layout,
     lengthPerPage,
     getPaginationPageUrl,
-    getPaginationPageTitle,
+    getPaginationPageTitle
   } of paginations) {
     const { pages: sourcePages } = ctx
-    const pages = sourcePages.filter(page => (filter as PageFilter)(page, id, pid))
+    const pages = sourcePages.filter(page =>
+      (filter as PageFilter)(page, id, pid)
+    )
 
     const intervallers = getIntervallers(pages.length, lengthPerPage)
     const pagination: SerializedPagination = {
@@ -69,7 +71,7 @@ export async function registerPaginations(
       pages: intervallers.map((interval, index) => {
         const path = (getPaginationPageUrl as GetPaginationPageUrl)(index)
         return { path, interval }
-      }),
+      })
     }
 
     recordPageFilters(pid, filter)
@@ -82,17 +84,22 @@ export async function registerPaginations(
           permalink: path,
           frontmatter: {
             layout,
-            title: (getPaginationPageTitle as GetPaginationPageTitle)(index, id, pid),
+            title: (getPaginationPageTitle as GetPaginationPageTitle)(
+              index,
+              id,
+              pid
+            )
           },
           meta: {
             pid,
-            id,
-          },
+            id
+          }
         }
       })
 
-    logPages(`Automatically generated pagination pages`, extraPages)
+    logPages('Automatically generated pagination pages', extraPages)
 
+    // eslint-disable-next-line no-await-in-loop
     await Promise.all(extraPages.map(page => ctx.addPage(page)))
 
     // @ts-ignore

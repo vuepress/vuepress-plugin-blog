@@ -14,7 +14,7 @@ export interface FrontmatterTempMap {
 export function curryFrontmatterHandler(
   scope: string,
   map: FrontmatterTempMap,
-  path: string,
+  path: string
 ): FrontmatterHandler
 export function curryFrontmatterHandler(scope, map, path) {
   return (key, pageKey) => {
@@ -26,6 +26,7 @@ export function curryFrontmatterHandler(scope, map, path) {
         map[key].path = `${path}${key}/`
         map[key].pageKeys = []
       }
+
       map[key].pageKeys.push(pageKey)
     }
   }
@@ -41,13 +42,13 @@ export function logPages(title, pages) {
     data.push(
       ...pages.map(({ // @ts-ignore
         path, permalink, meta, pid, id, frontmatter }) => [
-          // @ts-ignore // @ts-ignore
-          permalink || path || '',
-          JSON.stringify(meta) || '',
-          pid || '',
-          id || '',
-          JSON.stringify(frontmatter) || '',
-        ]),
+        // @ts-ignore // @ts-ignore
+        permalink || path || '',
+        JSON.stringify(meta) || '',
+        pid || '',
+        id || '',
+        JSON.stringify(frontmatter) || ''
+      ])
     )
     console.log(table(data))
     console.log()
@@ -60,7 +61,7 @@ export function resolvePaginationConfig(
   pagination: PaginationConfig,
   indexPath: string,
   ctx: VuePressContext,
-  keys: string[] = [''], // ['js']
+  keys: string[] = [''] // ['js']
 ) {
   return Object.assign(
     {},
@@ -72,31 +73,34 @@ export function resolvePaginationConfig(
         if (index === 0) {
           return indexPath
         }
+
         return `${indexPath}page/${index + 1}/`
       },
 
       filter:
-        classifierType === ClassifierTypeEnum.Directory
-          ? function(page, id, pid) {
+        classifierType === ClassifierTypeEnum.Directory ?
+          function (page, id, pid) {
             return page.pid === pid && page.id === id
-          }
-          : getFrontmatterClassifierPageFilter(keys),
+          } :
+          getFrontmatterClassifierPageFilter(keys),
 
       sorter: (prev: VuePressPage, next: VuePressPage) => {
         const prevTime = new Date(prev.frontmatter.date).getTime()
         const nextTime = new Date(next.frontmatter.date).getTime()
         return prevTime - nextTime > 0 ? -1 : 1
-      },
+      }
     },
     globalPagination,
-    pagination,
+    pagination
   )
 }
 
 function getFrontmatterClassifierPageFilter(keys) {
   return new Function(
     // @ts-ignore
-    'page', 'id', 'pid',
+    'page',
+    'id',
+    'pid',
     `
 const keys = ${JSON.stringify(keys)};
 const value = id;
@@ -107,10 +111,10 @@ return keys.some(key => {
   }
   return _value === value
 })
-    `,
+    `
   )
 }
 
-export function UpperFirstChar(str) {
+export function UpperFirstChar(str): string {
   return str.charAt(0).toUpperCase() + str.slice(1)
 }

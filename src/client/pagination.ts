@@ -62,8 +62,10 @@ class Pagination {
       if (this.paginationIndex - 1 === 0 && this._indexPage) {
         return this._indexPage
       }
+
       return this._paginationPages[this.paginationIndex - 1].path
     }
+
     return null
   }
 
@@ -75,6 +77,7 @@ class Pagination {
     if (this.hasNext) {
       return this._paginationPages[this.paginationIndex + 1].path
     }
+
     return null
   }
 
@@ -84,10 +87,10 @@ class Pagination {
 }
 
 class PaginationGateway {
-  private paginations: any
+  private readonly _paginations: any
 
   constructor(paginations) {
-    this.paginations = paginations
+    this._paginations = paginations
   }
 
   get pages() {
@@ -97,9 +100,9 @@ class PaginationGateway {
 
   getPagination(pid, id, route) {
     debug('id', id)
-    debug('this.paginations', this.paginations)
-    const pagnination = this.paginations.filter(
-      p => p.id === id && p.pid === pid,
+    debug('this.paginations', this._paginations)
+    const pagnination = this._paginations.filter(
+      p => p.id === id && p.pid === pid
     )[0]
     return new Pagination(pagnination, this.pages, route)
   }
@@ -114,7 +117,7 @@ export default ({ Vue }) => {
         id = id || pid
         // @ts-ignore
         return gateway.getPagination(pid, id, this.$route)
-      },
+      }
     },
     computed: {
       $pagination() {
@@ -125,7 +128,7 @@ export default ({ Vue }) => {
 
         // @ts-ignore
         return this.$getPagination(this.$route.meta.pid, this.$route.meta.id)
-      },
-    },
+      }
+    }
   })
 }

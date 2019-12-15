@@ -5,13 +5,15 @@ import frontmatterClassifiedMap from '@dynamic/vuepress_blog/frontmatterClassifi
 import { VuePressPage } from '../types/VuePress'
 
 class Classifiable {
-  private _metaMap: any
+  private readonly _metaMap: any
 
   constructor(metaMap, pages) {
     this._metaMap = Object.assign({}, metaMap)
     Object.keys(this._metaMap).forEach(name => {
       const { pageKeys } = this._metaMap[name]
-      this._metaMap[name].pages = pageKeys.map(key => findPageByKey(pages, key))
+      this._metaMap[name].pages = pageKeys.map(key =>
+        findPageByKey(pages, key)
+      )
     })
   }
 
@@ -33,9 +35,9 @@ class Classifiable {
 
   toArray() {
     const tags: Array<{
-      name: string
-      pages: VuePressPage[]
-      path: string
+      name: string;
+      pages: VuePressPage[];
+      path: string;
     }> = []
 
     Object.keys(this._metaMap).forEach(name => {
@@ -68,7 +70,7 @@ export default ({ Vue }) => {
           const tagName = this.$route.meta.id
           // @ts-ignore
           return this[helperName].getItemByName(tagName)
-        },
+        }
       }
     })
     .reduce((map, item) => {
@@ -76,16 +78,17 @@ export default ({ Vue }) => {
       return map
     }, {})
 
-  computed.$frontmatterKey = function() {
+  computed.$frontmatterKey = function () {
     // @ts-ignore
     const target = this[`$${this.$route.meta.id}`]
     if (target) {
       return target
     }
+
     return null
   }
 
   Vue.mixin({
-    computed,
+    computed
   })
 }

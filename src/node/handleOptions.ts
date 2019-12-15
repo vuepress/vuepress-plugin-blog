@@ -9,7 +9,7 @@ import {
   curryFrontmatterHandler,
   FrontmatterTempMap,
   resolvePaginationConfig,
-  UpperFirstChar,
+  UpperFirstChar
 } from './util'
 import { ClassifierTypeEnum } from './interface/Classifier'
 
@@ -22,9 +22,13 @@ import { ClassifierTypeEnum } from './interface/Classifier'
 
 export function handleOptions(
   options: BlogPluginOptions,
-  ctx: VuePressContext,
+  ctx: VuePressContext
 ) {
-  let { directories = [], frontmatters = [], globalPagination = {} as PaginationConfig } = options
+  let {
+    directories = [],
+    frontmatters = [],
+    globalPagination = {} as PaginationConfig
+  } = options
 
   /**
    * Validate the existence of directory specified by directory classifier.
@@ -37,8 +41,9 @@ export function handleOptions(
     }
 
     logger.warn(
-      `[@vuepress/plugin-blog] Invalid directory classifier: ${chalk.cyan(directory.id)}, ` +
-      `${chalk.gray(targetDir)} doesn't exist!`,
+      `[@vuepress/plugin-blog] Invalid directory classifier: ${chalk.cyan(
+        directory.id
+      )}, ${chalk.gray(targetDir)} doesn't exist!`
     )
 
     return false
@@ -61,7 +66,7 @@ export function handleOptions(
       frontmatter,
       itemLayout = 'Post',
       itemPermalink = '/:year/:month/:day/:slug',
-      pagination = {} as PaginationConfig,
+      pagination = {} as PaginationConfig
     } = directory
 
     /**
@@ -80,12 +85,12 @@ export function handleOptions(
         // Set layout for index page.
         layout: ctx.getLayout(indexLayout),
         title: `${UpperFirstChar(id)}`,
-        ...frontmatter,
+        ...frontmatter
       },
       meta: {
         pid: id,
-        id,
-      },
+        id
+      }
     })
 
     /**
@@ -98,9 +103,9 @@ export function handleOptions(
         regularPath.startsWith(`/${dirname}/`),
       frontmatter: {
         layout: ctx.getLayout(itemLayout, 'Post'),
-        permalink: itemPermalink,
+        permalink: itemPermalink
       },
-      data: { id, pid: id },
+      data: { id, pid: id }
     })
 
     /**
@@ -116,10 +121,10 @@ export function handleOptions(
         globalPagination,
         pagination,
         indexPath,
-        ctx,
+        ctx
       ),
       pid: id,
-      id,
+      id
     })
   }
 
@@ -134,7 +139,7 @@ export function handleOptions(
       layout: indexLayout,
       scopeLayout,
       frontmatter,
-      pagination = {} as PaginationConfig,
+      pagination = {} as PaginationConfig
     } = frontmatterPage
 
     if (!indexPath) {
@@ -147,12 +152,12 @@ export function handleOptions(
         // Set layout for index page.
         layout: ctx.getLayout(indexLayout, 'FrontmatterKey'),
         title: `${UpperFirstChar(id)}`,
-        ...frontmatter,
+        ...frontmatter
       },
       meta: {
         pid: id,
-        id,
-      },
+        id
+      }
     })
 
     const map = {} as FrontmatterTempMap
@@ -163,7 +168,7 @@ export function handleOptions(
       keys,
       map,
       scopeLayout,
-      _handler: curryFrontmatterHandler(id, map, indexPath),
+      _handler: curryFrontmatterHandler(id, map, indexPath)
     })
   }
 
@@ -171,6 +176,6 @@ export function handleOptions(
     pageEnhancers,
     frontmatterClassificationPages,
     extraPages,
-    paginations,
+    paginations
   }
 }

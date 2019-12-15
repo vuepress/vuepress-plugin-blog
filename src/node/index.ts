@@ -1,4 +1,4 @@
-import { path, logger, chalk, } from '@vuepress/shared-utils'
+import { path, logger, chalk } from '@vuepress/shared-utils'
 import { handleOptions } from './handleOptions'
 import { registerPaginations } from './pagination'
 import { BlogPluginOptions } from './interface/Options'
@@ -29,18 +29,25 @@ module.exports = (options: BlogPluginOptions, ctx: VuePressContext) => {
     pageEnhancers,
     frontmatterClassificationPages,
     extraPages,
-    paginations,
+    paginations
   } = handleOptions(options, ctx)
 
   /**
    * Leverage other plugins
    */
-  let plugins: any[][] = []
+  const plugins: any[][] = []
 
   if (options.sitemap && options.sitemap.hostname) {
     const defaultSitemapOptions = { exclude: ['/404.html'] }
-    const sitemapOptions = Object.assign({}, defaultSitemapOptions, options.sitemap)
-    const sitemapDependencies = [['vuepress-plugin-sitemap', sitemapOptions], ['@vuepress/last-updated']]
+    const sitemapOptions = Object.assign(
+      {},
+      defaultSitemapOptions,
+      options.sitemap
+    )
+    const sitemapDependencies = [
+      ['vuepress-plugin-sitemap', sitemapOptions],
+      ['@vuepress/last-updated']
+    ]
     plugins.push(...sitemapDependencies)
   }
 
@@ -49,15 +56,17 @@ module.exports = (options: BlogPluginOptions, ctx: VuePressContext) => {
     switch (commentService) {
       case 'vssue':
         plugins.push(['@vssue/vuepress-plugin-vssue', commentOptions])
-        break;
+        break
       case 'disqus':
         plugins.push(['vuepress-plugin-disqus-comment', commentOptions])
-        break;
+        break
       default:
         logger.warn(
-          `[@vuepress/plugin-blog] Invalid comment service: ${chalk.cyan(commentService)}`
+          `[@vuepress/plugin-blog] Invalid comment service: ${chalk.cyan(
+            commentService
+          )}`
         )
-        break;
+        break
     }
   }
 
@@ -102,9 +111,9 @@ module.exports = (options: BlogPluginOptions, ctx: VuePressContext) => {
         for (const { keys, _handler } of frontmatterClassificationPages) {
           for (const key of keys) {
             const fieldValue = frontmatter[key]
-            Array.isArray(fieldValue)
-              ? fieldValue.forEach(v => _handler(v, pageKey))
-              : _handler(fieldValue, pageKey)
+            Array.isArray(fieldValue) ?
+              fieldValue.forEach(v => _handler(v, pageKey)) :
+              _handler(fieldValue, pageKey)
           }
         }
       }
@@ -124,7 +133,12 @@ module.exports = (options: BlogPluginOptions, ctx: VuePressContext) => {
         ...extraPages,
         ...frontmatterClassificationPages
           .map(frontmatterClassifiedPage => {
-            const { map, pagination, keys, scopeLayout } = frontmatterClassifiedPage
+            const {
+              map,
+              pagination,
+              keys,
+              scopeLayout
+            } = frontmatterClassifiedPage
             return Object.keys(map).map(key => {
               const { path, scope } = map[key]
 
@@ -142,31 +156,34 @@ module.exports = (options: BlogPluginOptions, ctx: VuePressContext) => {
                   pagination,
                   path,
                   ctx,
-                  keys,
+                  keys
                 ),
                 pid: scope,
-                id: key,
+                id: key
               })
 
               return {
                 permalink: path,
                 meta: {
                   pid: scope,
-                  id: key,
+                  id: key
                 },
                 pid: scope,
                 id: key,
                 frontmatter: {
-                  layout: ctx.getLayout(scopeLayout, DefaultLayoutEnum.FrontmatterPagination),
-                  title: `${key} ${scope}`,
-                },
+                  layout: ctx.getLayout(
+                    scopeLayout,
+                    DefaultLayoutEnum.FrontmatterPagination
+                  ),
+                  title: `${key} ${scope}`
+                }
               }
             })
           })
-          .reduce((arr, next) => arr.concat(next), []),
+          .reduce((arr, next) => arr.concat(next), [])
       ]
 
-      logPages(`Automatically Added Index Pages`, allExtraPages)
+      logPages('Automatically Added Index Pages', allExtraPages)
 
       await Promise.all(allExtraPages.map(async page => ctx.addPage(page)))
       await registerPaginations(paginations, ctx)
@@ -181,7 +198,7 @@ module.exports = (options: BlogPluginOptions, ctx: VuePressContext) => {
           map[page.id] = page.map
           return map
         },
-        {},
+        {}
       )
 
       const PREFIX = 'vuepress_blog'
@@ -192,8 +209,8 @@ module.exports = (options: BlogPluginOptions, ctx: VuePressContext) => {
           content: `export default ${JSON.stringify(
             frontmatterClassifiedMap,
             null,
-            2,
-          )}`,
+            2
+          )}`
         },
         {
           name: `${PREFIX}/paginations.js`,
@@ -202,25 +219,25 @@ import sorters from './pageSorters'
 import filters from './pageFilters'
 
 export default ${serializePaginations(ctx.serializedPaginations, [
-            'filter',
-            'sorter',
-          ])}
-`,
+    'filter',
+    'sorter'
+  ])}
+`
         },
         {
           name: `${PREFIX}/pageFilters.js`,
-          content: `export default ${mapToString(ctx.pageFilters, true)}`,
+          content: `export default ${mapToString(ctx.pageFilters, true)}`
         },
         {
           name: `${PREFIX}/pageSorters.js`,
-          content: `export default ${mapToString(ctx.pageSorters, true)}`,
-        },
+          content: `export default ${mapToString(ctx.pageSorters, true)}`
+        }
       ]
     },
 
     enhanceAppFiles: [
       path.resolve(__dirname, '../client/classification.js'),
-      path.resolve(__dirname, '../client/pagination.js'),
+      path.resolve(__dirname, '../client/pagination.js')
     ],
 
     plugins,
@@ -232,7 +249,9 @@ export default ${serializePaginations(ctx.serializedPaginations, [
 }
 
 function serializePaginations(paginations, unstringedKeys: string[] = []) {
-  return `[${paginations.map(p => mapToString(p, unstringedKeys)).join(',\n')}]`
+  return `[${paginations
+    .map(p => mapToString(p, unstringedKeys))
+    .join(',\n')}]`
 }
 
 /**
@@ -243,14 +262,15 @@ function serializePaginations(paginations, unstringedKeys: string[] = []) {
  */
 function mapToString(map, unstringedKeys: string[] | boolean = []) {
   const keys = unstringedKeys
-  let str = `{\n`
+  let str = '{\n'
   for (const key of Object.keys(map)) {
     str += `  ${key}: ${
-      keys === true || (Array.isArray(keys) && keys.includes(key))
-        ? map[key]
-        : JSON.stringify(map[key])
-      },\n`
+      keys === true || (Array.isArray(keys) && keys.includes(key)) ?
+        map[key] :
+        JSON.stringify(map[key])
+    },\n`
   }
+
   str += '}'
   return str
 }

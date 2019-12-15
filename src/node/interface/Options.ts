@@ -93,13 +93,16 @@ export interface VssueOptions {
   clientSecret: string;
   baseURL: string;
   state: string;
-  labels: Array<string>;
+  labels: string[];
   prefix: string;
-  admins: Array<string>;
+  admins: string[];
   perPage: number;
   locale: string;
   proxy: string | ((url: string) => string);
-  issueContent: ((param: { options: VssueOptions, url: string }) => string | Promise<string>);
+  issueContent: (param: {
+    options: VssueOptions;
+    url: string;
+  }) => string | Promise<string>;
   autoCreateIssue: boolean;
 }
 
@@ -125,7 +128,6 @@ export interface Comment extends Partial<VssueOptions>, Partial<DisqusOptions> {
   service: 'vssue' | 'disqus';
 }
 
-
 /**
  * Options for this plugin.
  */
@@ -133,7 +135,7 @@ export interface BlogPluginOptions {
   directories: DirectoryClassifier[];
   frontmatters: FrontmatterClassifier[];
   globalPagination: PaginationConfig;
-  //TODO: define types
+  // TODO: define types
   sitemap: any;
   comment: Comment;
 }

@@ -1,6 +1,6 @@
 import {
   VuePressContext as BaseContext,
-  VuePressPage as BasePage,
+  VuePressPage as BasePage
 } from '../../types/VuePress'
 import { FrontmatterClassificationPage } from './Frontmatter'
 import { SerializedPagination } from './Pagination'

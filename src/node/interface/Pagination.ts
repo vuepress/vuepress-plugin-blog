@@ -7,16 +7,20 @@ import { ClassifierTypeEnum } from './Classifier'
 export type PageFilter = (
   page: VuePressPage,
   id: string,
-  pid: string,
+  pid: string
 ) => boolean
 
 export type PageSorter = (
   prev: VuePressPage,
-  next: VuePressPage,
+  next: VuePressPage
 ) => boolean | number
 
 export type GetPaginationPageUrl = (index: number) => string
-export type GetPaginationPageTitle = (index: number, id: string, scope: string) => string
+export type GetPaginationPageTitle = (
+  index: number,
+  id: string,
+  scope: string
+) => string
 
 /**
  * Pagination config options for users.
@@ -100,5 +104,5 @@ interface PaginationPage {
   /**
    * Store the first and last page index matched
    */
-  interval: Array<number>;
+  interval: number[];
 }
