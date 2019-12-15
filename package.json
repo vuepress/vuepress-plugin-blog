@@ -2,32 +2,32 @@
   "name": "@vuepress/plugin-blog",
   "version": "1.5.2",
   "description": "Offical blog plugin for VuePress",
-  "scripts": {
-    "lint": "eslint src --ext .ts,.vue",
-    "dev": "concurrently \"rimraf lib\" \"npm:dev:client\" \"npm:dev:node\" \"nodemon\"",
-    "build": "concurrently \"rimraf lib\" \"npm:build:client\" \"npm:build:node\" \"npm:build:components\"",
-    "dev:client": "tsc -p tsconfig.client.json --watch",
-    "dev:node": "tsc -p tsconfig.node.json --watch",
-    "build:client": "tsc -p tsconfig.client.json",
-    "build:node": "tsc -p tsconfig.node.json",
-    "build:components": "cpx \"src/client/components/**/*\" lib/client/components",
-    "dev:docs": "vuepress dev docs --temp docs/.temp",
-    "build:docs": "vuepress build docs --temp docs/.temp",
-    "dev:example": "node examples/launch.js dev",
-    "build:example": "node examples/launch.js build",
-    "prepublishOnly": "npm run build && conventional-changelog -p angular -r 2 -i CHANGELOG.md -s"
+  "repository": {
+    "type": "git",
+    "url": "ulivz/vuepress-plugin-blog"
   },
-  "main": "lib/node/index.js",
+  "license": "MIT",
+  "author": "ULIVZ <chl814@foxmail.com>",
   "files": [
     "lib",
     "types"
   ],
-  "repository": {
-    "url": "ulivz/vuepress-plugin-blog",
-    "type": "git"
+  "main": "lib/node/index.js",
+  "scripts": {
+    "build": "concurrently \"rimraf lib\" \"npm:build:client\" \"npm:build:node\" \"npm:build:components\"",
+    "build:client": "tsc -p tsconfig.client.json",
+    "build:components": "cpx \"src/client/components/**/*\" lib/client/components",
+    "build:docs": "vuepress build docs --temp docs/.temp",
+    "build:example": "node examples/launch.js build",
+    "build:node": "tsc -p tsconfig.node.json",
+    "dev": "concurrently \"rimraf lib\" \"npm:dev:client\" \"npm:dev:node\" \"nodemon\"",
+    "dev:client": "tsc -p tsconfig.client.json --watch",
+    "dev:docs": "vuepress dev docs --temp docs/.temp",
+    "dev:example": "node examples/launch.js dev",
+    "dev:node": "tsc -p tsconfig.node.json --watch",
+    "lint": "eslint src --ext .ts,.vue",
+    "prepublishOnly": "npm run build && conventional-changelog -p angular -r 2 -i CHANGELOG.md -s"
   },
-  "author": "ULIVZ <chl814@foxmail.com>",
-  "license": "MIT",
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged"
@@ -37,6 +37,17 @@
     "*.{js,ts,vue}": [
       "eslint --fix",
       "git add"
+    ],
+    "package.json": [
+      "sort-package-json",
+      "git add"
+    ]
+  },
+  "nodemonConfig": {
+    "exec": "yarn build:components",
+    "ext": "vue",
+    "watch": [
+      "src/client/components/"
     ]
   },
   "dependencies": {
@@ -63,16 +74,10 @@
     "nodemon": "^1.18.7",
     "prettier": "^1.19.1",
     "rimraf": "^3.0.0",
+    "sort-package-json": "^1.31.0",
     "ts-node": "^7.0.1",
     "typescript": "3.1.4",
     "vuepress": "^1.0.0"
-  },
-  "nodemonConfig": {
-    "exec": "yarn build:components",
-    "ext": "vue",
-    "watch": [
-      "src/client/components/"
-    ]
   },
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
