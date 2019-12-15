@@ -12,8 +12,8 @@ export interface FrontmatterClassifiedIdMap<T = undefined> {
   [id: string]: T & {
     scope: string;
     path: string;
-    pageKeys: string[]
-  }
+    pageKeys: string[];
+  };
 }
 
 export interface FrontmatterClassifiedMap {

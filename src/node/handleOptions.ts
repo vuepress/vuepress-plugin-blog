@@ -1,17 +1,17 @@
-import { fs, path, logger, chalk } from '@vuepress/shared-utils'
-import { BlogPluginOptions } from './interface/Options'
-import { ExtraPage } from './interface/ExtraPages'
-import { PageEnhancer } from './interface/PageEnhancer'
-import { VuePressContext } from './interface/VuePress'
-import { InternalPagination, PaginationConfig } from './interface/Pagination'
-import { FrontmatterClassificationPage } from './interface/Frontmatter'
+import { fs, path, logger, chalk } from '@vuepress/shared-utils';
+import { BlogPluginOptions } from './interface/Options';
+import { ExtraPage } from './interface/ExtraPages';
+import { PageEnhancer } from './interface/PageEnhancer';
+import { VuePressContext } from './interface/VuePress';
+import { InternalPagination, PaginationConfig } from './interface/Pagination';
+import { FrontmatterClassificationPage } from './interface/Frontmatter';
 import {
   curryFrontmatterHandler,
   FrontmatterTempMap,
   resolvePaginationConfig,
   UpperFirstChar,
-} from './util'
-import { ClassifierTypeEnum } from './interface/Classifier'
+} from './util';
+import { ClassifierTypeEnum } from './interface/Classifier';
 
 /**
  * Handle options from users.
@@ -22,32 +22,38 @@ import { ClassifierTypeEnum } from './interface/Classifier'
 
 export function handleOptions(
   options: BlogPluginOptions,
-  ctx: VuePressContext,
+  ctx: VuePressContext
 ) {
-  let { directories = [], frontmatters = [], globalPagination = {} as PaginationConfig } = options
+  let { directories = [] } = options;
+
+  const {
+    frontmatters = [],
+    globalPagination = {} as PaginationConfig,
+  } = options;
 
   /**
    * Validate the existence of directory specified by directory classifier.
    * Fixed https://github.com/ulivz/vuepress-plugin-blog/issues/1
    */
   directories = directories.filter(directory => {
-    const targetDir = path.join(ctx.sourceDir, directory.dirname)
+    const targetDir = path.join(ctx.sourceDir, directory.dirname);
     if (fs.existsSync(targetDir)) {
-      return true
+      return true;
     }
 
     logger.warn(
-      `[@vuepress/plugin-blog] Invalid directory classifier: ${chalk.cyan(directory.id)}, ` +
-      `${chalk.gray(targetDir)} doesn't exist!`,
-    )
+      `[@vuepress/plugin-blog] Invalid directory classifier: ${chalk.cyan(
+        directory.id
+      )}, ` + `${chalk.gray(targetDir)} doesn't exist!`
+    );
 
-    return false
-  })
+    return false;
+  });
 
-  const pageEnhancers: PageEnhancer[] = []
-  const frontmatterClassificationPages: FrontmatterClassificationPage[] = []
-  const extraPages: ExtraPage[] = []
-  const paginations: InternalPagination[] = []
+  const pageEnhancers: PageEnhancer[] = [];
+  const frontmatterClassificationPages: FrontmatterClassificationPage[] = [];
+  const extraPages: ExtraPage[] = [];
+  const paginations: InternalPagination[] = [];
 
   /**
    * 1. Directory-based classification
@@ -62,13 +68,13 @@ export function handleOptions(
       itemLayout = 'Post',
       itemPermalink = '/:year/:month/:day/:slug',
       pagination = {} as PaginationConfig,
-    } = directory
+    } = directory;
 
     /**
      * 1.1 Required index path.
      */
     if (!indexPath) {
-      continue
+      continue;
     }
 
     /**
@@ -86,7 +92,7 @@ export function handleOptions(
         pid: id,
         id,
       },
-    })
+    });
 
     /**
      * 1.3 Set layout for pages that match current directory classifier.
@@ -101,7 +107,7 @@ export function handleOptions(
         permalink: itemPermalink,
       },
       data: { id, pid: id },
-    })
+    });
 
     /**
      * 1.5 Set pagination.
@@ -109,18 +115,18 @@ export function handleOptions(
     paginations.push({
       classifierType: ClassifierTypeEnum.Directory,
       getPaginationPageTitle(index, id) {
-        return `Page ${index + 2} | ${id}`
+        return `Page ${index + 2} | ${id}`;
       },
       ...resolvePaginationConfig(
         ClassifierTypeEnum.Directory,
         globalPagination,
         pagination,
         indexPath,
-        ctx,
+        ctx
       ),
       pid: id,
       id,
-    })
+    });
   }
 
   /**
@@ -135,10 +141,10 @@ export function handleOptions(
       scopeLayout,
       frontmatter,
       pagination = {} as PaginationConfig,
-    } = frontmatterPage
+    } = frontmatterPage;
 
     if (!indexPath) {
-      continue
+      continue;
     }
 
     extraPages.push({
@@ -153,9 +159,9 @@ export function handleOptions(
         pid: id,
         id,
       },
-    })
+    });
 
-    const map = {} as FrontmatterTempMap
+    const map = {} as FrontmatterTempMap;
 
     frontmatterClassificationPages.push({
       id,
@@ -164,7 +170,7 @@ export function handleOptions(
       map,
       scopeLayout,
       _handler: curryFrontmatterHandler(id, map, indexPath),
-    })
+    });
   }
 
   return {
@@ -172,5 +178,5 @@ export function handleOptions(
     frontmatterClassificationPages,
     extraPages,
     paginations,
-  }
+  };
 }

@@ -1,22 +1,26 @@
 /**
  * Config of a Pagination
  */
-import { VuePressPage } from './VuePress'
-import { ClassifierTypeEnum } from './Classifier'
+import { VuePressPage } from './VuePress';
+import { ClassifierTypeEnum } from './Classifier';
 
 export type PageFilter = (
   page: VuePressPage,
   id: string,
-  pid: string,
-) => boolean
+  pid: string
+) => boolean;
 
 export type PageSorter = (
   prev: VuePressPage,
-  next: VuePressPage,
-) => boolean | number
+  next: VuePressPage
+) => boolean | number;
 
-export type GetPaginationPageUrl = (index: number) => string
-export type GetPaginationPageTitle = (index: number, id: string, scope: string) => string
+export type GetPaginationPageUrl = (index: number) => string;
+export type GetPaginationPageTitle = (
+  index: number,
+  id: string,
+  scope: string
+) => string;
 
 /**
  * Pagination config options for users.
@@ -64,7 +68,7 @@ export interface PaginationIdentity {
  */
 export interface InternalPagination
   extends PaginationConfig,
-  PaginationIdentity {
+    PaginationIdentity {
   /**
    * Record which classfier create this pagination.
    */

@@ -1,7 +1,7 @@
 /**
  * A Directory-based Classifier
  */
-import { PaginationConfig } from './Pagination'
+import { PaginationConfig } from './Pagination';
 
 export interface DirectoryClassifier {
   /**
@@ -99,7 +99,10 @@ export interface VssueOptions {
   perPage: number;
   locale: string;
   proxy: string | ((url: string) => string);
-  issueContent: ((param: { options: VssueOptions, url: string }) => string | Promise<string>);
+  issueContent: (param: {
+    options: VssueOptions;
+    url: string;
+  }) => string | Promise<string>;
   autoCreateIssue: boolean;
 }
 
@@ -124,7 +127,6 @@ export interface Comment extends Partial<VssueOptions>, Partial<DisqusOptions> {
    */
   service: 'vssue' | 'disqus';
 }
-
 
 /**
  * Options for this plugin.

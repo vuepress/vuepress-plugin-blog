@@ -1,9 +1,9 @@
 import {
   VuePressContext as BaseContext,
   VuePressPage as BasePage,
-} from '../../types/VuePress'
-import { FrontmatterClassificationPage } from './Frontmatter'
-import { SerializedPagination } from './Pagination'
+} from '../../types/VuePress';
+import { FrontmatterClassificationPage } from './Frontmatter';
+import { SerializedPagination } from './Pagination';
 
 export interface VuePressContext extends BaseContext {
   frontmatterClassificationPages: FrontmatterClassificationPage[];
@@ -13,4 +13,4 @@ export interface VuePressContext extends BaseContext {
   getLayout: (name?: string, fallback?: string) => string | undefined;
 }
 
-export interface VuePressPage extends BasePage {}
+export type VuePressPage = BasePage;

@@ -1,4 +1,4 @@
-import { VuePressPage } from './VuePress'
+import { VuePressPage } from './VuePress';
 
 export interface PageEnhancer {
   /**

@@ -1,4 +1,4 @@
-import Vue from 'vue'
+import Vue from 'vue';
 
 export declare interface VuePressPage {
   key: string;
@@ -10,7 +10,7 @@ export declare interface VuePressContext {
   sourceDir: string;
   pages: VuePressPage[];
   themeAPI: {
-    layoutComponentMap: Record<string, Vue>
+    layoutComponentMap: Record<string, Vue>;
   };
   addPage: any;
 }
