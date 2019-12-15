@@ -3,7 +3,7 @@
   "version": "1.5.2",
   "description": "Offical blog plugin for VuePress",
   "scripts": {
-    "lint": "xo",
+    "lint": "eslint src --ext .ts,.vue",
     "dev": "concurrently \"rimraf lib\" \"npm:dev:client\" \"npm:dev:node\" \"nodemon\"",
     "build": "concurrently \"rimraf lib\" \"npm:build:client\" \"npm:build:node\" \"npm:build:components\"",
     "dev:client": "tsc -p tsconfig.client.json --watch",
@@ -28,6 +28,17 @@
   },
   "author": "ULIVZ <chl814@foxmail.com>",
   "license": "MIT",
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,ts,vue}": [
+      "eslint --fix",
+      "git add"
+    ]
+  },
   "dependencies": {
     "@vssue/api-github-v3": "^1.1.2",
     "@vssue/vuepress-plugin-vssue": "^1.2.0",
@@ -36,11 +47,21 @@
     "vuepress-plugin-sitemap": "^2.3.0"
   },
   "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^2.11.0",
+    "@typescript-eslint/parser": "^2.11.0",
+    "babel-eslint": "^10.0.3",
     "concurrently": "^4.1.0",
     "conventional-changelog-cli": "^2.0.1",
     "cpx": "^1.5.0",
+    "eslint": "^6.7.2",
+    "eslint-config-prettier": "^6.7.0",
+    "eslint-plugin-prettier": "^3.1.1",
+    "eslint-plugin-vue": "^6.0.1",
+    "husky": "^3.1.0",
     "inquirer": "^6.3.1",
+    "lint-staged": "^9.5.0",
     "nodemon": "^1.18.7",
+    "prettier": "^1.19.1",
     "rimraf": "^3.0.0",
     "ts-node": "^7.0.1",
     "typescript": "3.1.4",
@@ -52,30 +73,6 @@
     "watch": [
       "src/client/components/"
     ]
-  },
-  "xo": {
-    "extends": [
-      "rem",
-      "plugin:prettier/recommended",
-      "xo-typescript"
-    ],
-    "extensions": [
-      "ts"
-    ],
-    "rules": {
-      "unicorn/filename-case": "off",
-      "new-cap": "off",
-      "typescript/no-inferrable-types": "off",
-      "import/no-unassigned-import": "off",
-      "typescript/explicit-function-return-type": "off",
-      "no-throw-literal": "off",
-      "typescript/no-var-requires": "off",
-      "no-implicit-globals": "off",
-      "import/no-unresolved": "off",
-      "import/no-extraneous-dependencies": "off",
-      "typescript/no-use-before-define": "off",
-      "typescript/no-type-alias": "off"
-    }
   },
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
