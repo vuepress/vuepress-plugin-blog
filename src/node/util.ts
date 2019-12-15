@@ -39,9 +39,7 @@ export function logPages(title, pages) {
     console.log(chalk.cyan(`[@vuepress/plugin-blog] ====== ${title} ======`));
     const data: any[] = [['permalink', 'meta', 'pid', 'id', 'frontmatter']];
     data.push(
-      ...pages.map(({ // @ts-ignore
-        path, permalink, meta, pid, id, frontmatter }) => [
-        // @ts-ignore // @ts-ignore
+      ...pages.map(({ path, permalink, meta, pid, id, frontmatter }) => [
         permalink || path || '',
         JSON.stringify(meta) || '',
         pid || '',
@@ -95,7 +93,6 @@ export function resolvePaginationConfig(
 
 function getFrontmatterClassifierPageFilter(keys) {
   return new Function(
-    // @ts-ignore
     'page',
     'id',
     'pid',
