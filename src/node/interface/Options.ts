@@ -128,6 +128,19 @@ export interface Comment extends Partial<VssueOptions>, Partial<DisqusOptions> {
   service: 'vssue' | 'disqus';
 }
 
+export interface Newsletter {
+  endpoint: string;
+  title: string;
+  content: string;
+  popupConfig: PopupConfig;
+}
+
+interface PopupConfig {
+  enabled: boolean;
+  popupComponent: string;
+  timeout: number;
+}
+
 /**
  * Options for this plugin.
  */
@@ -138,4 +151,5 @@ export interface BlogPluginOptions {
   //TODO: define types
   sitemap: any;
   comment: Comment;
+  newsletter: Newsletter;
 }

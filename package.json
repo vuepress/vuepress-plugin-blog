@@ -55,6 +55,7 @@
     "@vssue/vuepress-plugin-vssue": "^1.2.0",
     "vuejs-paginate": "^2.1.0",
     "vuepress-plugin-disqus-comment": "^0.2.3",
+    "vuepress-plugin-mailchimp": "^1.2.0",
     "vuepress-plugin-sitemap": "^2.3.0"
   },
   "devDependencies": {

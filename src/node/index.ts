@@ -70,6 +70,10 @@ module.exports = (options: BlogPluginOptions, ctx: VuePressContext) => {
     }
   }
 
+  if (options.newsletter && options.newsletter.endpoint) {
+    plugins.push(['vuepress-plugin-mailchimp', options.newsletter]);
+  }
+
   return {
     name: 'vuepress-plugin-blog',
 
