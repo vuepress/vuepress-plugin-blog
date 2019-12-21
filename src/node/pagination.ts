@@ -18,7 +18,7 @@ function getIntervallers(max, interval) {
       ? Math.floor(max / interval)
       : Math.floor(max / interval) + 1;
   const arr = [...new Array(count)];
-  return arr.map((v, index) => {
+  return arr.map((_, index) => {
     const start = index * interval;
     const end = (index + 1) * interval - 1;
     return [start, end > max ? max : end];
