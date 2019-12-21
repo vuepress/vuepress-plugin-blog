@@ -1,3 +1,11 @@
+# [1.6.0](https://github.com/ulivz/vuepress-plugin-blog/compare/v1.5.2...v1.6.0) (2019-12-21)
+
+### Features
+
+* integrate mailchimp ([#49](https://github.com/ulivz/vuepress-plugin-blog/issues/49)) ([f7dbd92](https://github.com/ulivz/vuepress-plugin-blog/commit/f7dbd92ad07d17146c18da2719d1c47965178cce))
+
+
+
 ## [1.5.2](https://github.com/ulivz/vuepress-plugin-blog/compare/v1.5.1...v1.5.2) (2019-12-07)
 
 
