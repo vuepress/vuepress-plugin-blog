@@ -18,7 +18,6 @@ function getIntervallers(max, interval) {
       ? Math.floor(max / interval)
       : Math.floor(max / interval) + 1;
   const arr = [...new Array(count)];
-  // @ts-ignore
   return arr.map((v, index) => {
     const start = index * interval;
     const end = (index + 1) * interval - 1;
@@ -101,7 +100,6 @@ export async function registerPaginations(
 
     await Promise.all(extraPages.map(page => ctx.addPage(page)));
 
-    // @ts-ignore
     ctx.serializedPaginations.push(pagination);
   }
 }
