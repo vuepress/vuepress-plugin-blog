@@ -393,7 +393,27 @@ module.exports = {
 Of course you can use whatever service you like or roll your own comment system. Just simply ignore the config.
 :::
 
+## Newsletter
 
+A blog newsletter is an email to notify subscribers you’ve published a new blog post. Emails are a great way to build relationships and engage with your readers. 
+
+Just like [Comment](#comment), we integrate a service to help you accomplish it easily. [MailChimp](https://mailchimp.com/) is probably the most well-known email marketing tool. The only required config option is `endpoint`, please head [vuepress-plugin-mailchimp](https://vuepress-plugin-mailchimp.billyyyyy3320.com/#install) to see how to get your own endpoint.
+```js
+// .vuepress/config.js
+module.exports = {
+  plugins: [
+    [
+      '@vuepress/blog',
+      {
+        newsletter: {
+          // Put your endpoint, not mine.
+          endpoint: "https://billyyyyy3320.us4.list-manage.com/subscribe/post?u=4905113ee00d8210c2004e038&amp;id=bd18d40138"
+        },
+      },
+    ],
+  ],
+}
+```
 ## Writing a blog theme
 
 If everything is ok, you can start to write a blog theme. Actually, there are only 2 necessary layout components to

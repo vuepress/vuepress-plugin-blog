@@ -218,3 +218,20 @@ Service to accomplish commenting.
 Other options depend on which service you pick since this feature is accomplished by the plugins below. All options except `service` will be passed directly to the plugin, so take a look at their documentation for more details:
 - [vuepress-plugin-disqus-comment](https://vuepress-plugin-disqus.netlify.com/#config)
 - [vuepress-plugin-vssue](https://vssue.js.org/guide/vuepress.html#usage)
+
+## newsletter
+
+- Type: `object`
+- Default: `{}`
+- Required: `false`
+
+It will be enabled when `endpoint` is provided. e.g.
+
+```js
+{
+  endpoint: 'https://billyyyyy3320.us4.list-manage.com/subscribe/post?u=4905113ee00d8210c2004e038&amp;id=bd18d40138'
+}
+```
+[vuepress-plugin-mailchimp](https://vuepress-plugin-mailchimp.billyyyyy3320.com/) is how we implement the feature. This config will be pass directly to it, so please head [vuepress-plugin-mailchimp](https://vuepress-plugin-mailchimp.billyyyyy3320.com/#config) for more details.  
+
+
