@@ -1,16 +1,16 @@
 <template>
 <div>
   <Content />
-  <SimpleNewsletter />
+  <Newsletter />
 </div>
 
 </template>
 
 <script>
-import SimpleNewsletter from "vuepress-plugin-mailchimp/src/components/SimpleNewsletter";
+import { Newsletter } from "../../../../../lib/client/components.js";
 export default {
   components: {
-    SimpleNewsletter
+    Newsletter
   }
 };
 </script>

@@ -9,7 +9,8 @@ module.exports = {
   },
 
   globals: {
-    COMMENT_SERVICE: true
+    COMMENT_SERVICE: true,
+    IS_NEWSLETTER_ENABLED: true
   },
 
   extends: [

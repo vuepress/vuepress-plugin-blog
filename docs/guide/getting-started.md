@@ -435,6 +435,30 @@ module.exports = {
   ],
 }
 ```
+
+Again, a out-of-box component `<Newsletter>`. you can import it from `'@vuepress/plugin-blog/lib/client/components'`.
+
+```vue
+// layouts/Post.vue
+<template>
+  <div>
+      <Content />
+      <Newsletter />
+      <Comment />
+  </div>
+</template>
+
+<script>
+import { Comment, Newsletter } from '@vuepress/plugin-blog/lib/client/components'
+
+export default {
+  components: {
+    Comment,
+    Newsletter
+  },
+}
+</script>
+```
 ## Writing a blog theme
 
 If everything is ok, you can start to write a blog theme. Actually, there are only 2 necessary layout components to

@@ -70,7 +70,11 @@ module.exports = (options: BlogPluginOptions, ctx: VuePressContext) => {
     }
   }
 
-  if (options.newsletter && options.newsletter.endpoint) {
+  const isNewsletterEnabled = !!(
+    options.newsletter && options.newsletter.endpoint
+  );
+
+  if (isNewsletterEnabled) {
     plugins.push(['vuepress-plugin-mailchimp', options.newsletter]);
   }
 
@@ -248,6 +252,7 @@ export default ${serializePaginations(ctx.serializedPaginations, [
 
     define: {
       COMMENT_SERVICE: options.comment && options.comment.service,
+      IS_NEWSLETTER_ENABLED: isNewsletterEnabled,
     },
   };
 };
