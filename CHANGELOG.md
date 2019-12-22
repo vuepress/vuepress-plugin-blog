@@ -1,3 +1,12 @@
+## [1.6.1](https://github.com/ulivz/vuepress-plugin-blog/compare/v1.6.0...v1.6.1) (2019-12-22)
+
+
+### Features
+
+* create out-of-box component <newsletter> ([3825854](https://github.com/ulivz/vuepress-plugin-blog/commit/38258540a1f02a6f374f78332495c8e7444101a4))
+
+
+
 # [1.6.0](https://github.com/ulivz/vuepress-plugin-blog/compare/v1.5.2...v1.6.0) (2019-12-21)
 
 ### Features
