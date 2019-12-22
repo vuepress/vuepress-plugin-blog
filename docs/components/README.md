@@ -64,3 +64,36 @@ export default {
 You can use `$accentColor` in [palette.styl](https://v1.vuepress.vuejs.org/config/#palette-styl) to adjust the 
 default colors of this component.
 :::
+
+## `<Comment>`
+
+ This component will automatically render the layout of comment service you pick. And if comment is not enabled, it'll render nothing.
+
+- Source Code: [Comment.vue](https://github.com/ulivz/vuepress-plugin-blog/blob/master/src/client/components/Comment.vue)
+
+- Usage:
+
+```vue
+<template>
+  <Comment />
+</template>
+
+<script>
+import { Comment } from '@vuepress/plugin-blog/lib/client/components'
+export default {
+  components: {
+    Comment
+  }
+}
+</script>
+```
+
+- Output:
+  - Disqus:
+<img src="/Disqus.png" />
+
+  - Vssue:
+
+<img src="/Vssue.png" />
+
+

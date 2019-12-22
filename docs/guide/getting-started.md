@@ -340,8 +340,29 @@ module.exports = {
 
 Comment is a great way to make your blog much more lively. We integrate client side comment services: [Vssue](https://vssue.js.org/) and [Disqus](https://disqus.com/) in this plugin. The former is a vue-powered and issue-based open source project which can enable comments for your static pages, while the latter is a networked platform that provides comment service used by hundreds of thousands of websites. 
 
-> A plugin can contain several plugins like a preset.
+We provide you a out-of-box component `<Comment>`. you can import it from `'@vuepress/plugin-blog/lib/client/components'`. It might be useful when you're creating layout component `Post` which handle all the layout of post pages:
 
+```vue
+// layouts/Post.vue
+<template>
+  <div>
+      <Content />
+      <Comment />
+  </div>
+</template>
+
+<script>
+import { Comment } from '@vuepress/plugin-blog/lib/client/components'
+
+export default {
+  components: {
+    Comment,
+  },
+}
+</script>
+```
+
+You have to tell the plugin which service you're going to use.
 Since comment is implemented by other plugins, make sure you've read [vuepress-plugin-vssue](https://vssue.js.org/) or [vuepress-plugin-disqus-comment](https://vuepress-plugin-disqus.netlify.com) before using them:
 ```js
 // .vuepress/config.js
@@ -390,7 +411,7 @@ module.exports = {
 ```
 
 ::: tip
-Of course you can use whatever service you like or roll your own comment system. Just simply ignore the config.
+Of course you can use whatever service you like or roll your own comment system. You can simply ignore this config as you wish so that this build-in comment feature won't be enabled.
 :::
 
 ## Newsletter
