@@ -436,29 +436,30 @@ module.exports = {
 }
 ```
 
-Again, a out-of-box component `<Newsletter>`. you can import it from `'@vuepress/plugin-blog/lib/client/components'`.
-
+`vuepress-plugin-mailchimp` has already registered a global component `SimpleNewsletter`. Here's a simple usage:
 ```vue
 // layouts/Post.vue
 <template>
-  <div>
-      <Content />
-      <Newsletter />
-      <Comment />
-  </div>
+<div>
+  <Content />
+  <SimpleNewsletter />
+</div>
 </template>
-
-<script>
-import { Comment, Newsletter } from '@vuepress/plugin-blog/lib/client/components'
-
-export default {
-  components: {
-    Comment,
-    Newsletter
-  },
-}
-</script>
 ```
+
+In your theme, You'll probably offer users options whether to enable or not. You can use `this.$service.email.enabled` to access it:
+```vue
+// layouts/Post.vue
+<template>
+<div>
+  <Content />
+  <SimpleNewsletter v-if="$service.email.enabled"/>
+</div>
+</template>
+```
+
+Please head [UI-customization](https://vuepress-plugin-mailchimp.billyyyyy3320.com/#ui-customization) if you don't like the default UI.
+
 ## Writing a blog theme
 
 If everything is ok, you can start to write a blog theme. Actually, there are only 2 necessary layout components to
