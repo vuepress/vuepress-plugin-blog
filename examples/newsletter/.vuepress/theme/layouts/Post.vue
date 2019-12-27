@@ -1,16 +1,7 @@
 <template>
 <div>
   <Content />
-  <Newsletter />
+  <SimpleNewsletter v-if="$service.email.enabled"/>
 </div>
-
 </template>
 
-<script>
-import { Newsletter } from "../../../../../lib/client/components.js";
-export default {
-  components: {
-    Newsletter
-  }
-};
-</script>
