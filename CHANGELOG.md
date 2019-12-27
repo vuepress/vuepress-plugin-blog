@@ -1,3 +1,12 @@
+# [1.7.0](https://github.com/ulivz/vuepress-plugin-blog/compare/v1.6.1...v1.7.0) (2019-12-27)
+
+
+### Features
+
+* add client apis ([fceda2f](https://github.com/ulivz/vuepress-plugin-blog/commit/fceda2f8735b4a84dfa15aebc3bf19d707c3f035))
+
+
+
 ## [1.6.1](https://github.com/ulivz/vuepress-plugin-blog/compare/v1.6.0...v1.6.1) (2019-12-22)
 
 
