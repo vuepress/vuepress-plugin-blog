@@ -115,3 +115,22 @@ automatically point to `tag`, while in `/category/`, it will point to `category`
 This variable is essentially designed to generalize the list page of frontmatter keys
 
 :::
+
+
+## $service
+
+### `$service.comment`
+
+#### `$service.comment.enabled`
+
+Whether comment is enabled.
+
+#### `$service.comment.service`
+
+Get the comment service 
+
+### `$service.email`
+
+#### `$service.email.enabled`
+
+Whether email (newsletter) service is enabled.
