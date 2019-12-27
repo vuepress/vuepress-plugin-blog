@@ -8,11 +8,6 @@ module.exports = {
     "node": true
   },
 
-  globals: {
-    COMMENT_SERVICE: true,
-    IS_NEWSLETTER_ENABLED: true
-  },
-
   extends: [
     'plugin:vue/recommended',
     'plugin:prettier/recommended',

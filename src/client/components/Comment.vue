@@ -1,6 +1,9 @@
 <template>
-  <Vssue v-if="commentService === 'vssue'" v-bind="vssueProps" />
-  <vue-disqus v-else-if="commentService === 'disqus'" v-bind="disqusProps" />
+  <Vssue v-if="$service.comment.service === 'vssue'" v-bind="vssueProps" />
+  <vue-disqus
+    v-else-if="$service.comment.service === 'disqus'"
+    v-bind="disqusProps"
+  />
 </template>
 
 <script>
@@ -53,12 +56,6 @@ export default {
     },
   },
 
-  data() {
-    return {
-      commentService: COMMENT_SERVICE,
-    };
-  },
-
   computed: {
     propsWithoutEmptyProperties() {
       return pickBy(this.$props, identity);
@@ -79,11 +76,6 @@ export default {
     disqusProps() {
       return Object.assign({ identifier: this.$page.key }, this.commentProps);
     },
-  },
-
-  mounted() {
-    if (typeof COMMENT_SERVICE === 'undefined')
-      console.warn("There's no comment service!");
   },
 };
 </script>

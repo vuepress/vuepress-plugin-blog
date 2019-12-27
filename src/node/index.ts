@@ -36,6 +36,10 @@ module.exports = (options: BlogPluginOptions, ctx: VuePressContext) => {
    * Leverage other plugins
    */
   const plugins: any[][] = [];
+  const services = {
+    comment: { enabled: false, service: '' },
+    email: { enabled: false },
+  };
 
   if (options.sitemap && options.sitemap.hostname) {
     const defaultSitemapOptions = { exclude: ['/404.html'] };
@@ -56,9 +60,13 @@ module.exports = (options: BlogPluginOptions, ctx: VuePressContext) => {
     switch (commentService) {
       case 'vssue':
         plugins.push(['@vssue/vuepress-plugin-vssue', commentOptions]);
+        services.comment.enabled = true;
+        services.comment.service = commentService;
         break;
       case 'disqus':
         plugins.push(['vuepress-plugin-disqus-comment', commentOptions]);
+        services.comment.enabled = true;
+        services.comment.service = commentService;
         break;
       default:
         logger.warn(
@@ -70,12 +78,9 @@ module.exports = (options: BlogPluginOptions, ctx: VuePressContext) => {
     }
   }
 
-  const isNewsletterEnabled = !!(
-    options.newsletter && options.newsletter.endpoint
-  );
-
-  if (isNewsletterEnabled) {
+  if (!!(options.newsletter && options.newsletter.endpoint)) {
     plugins.push(['vuepress-plugin-mailchimp', options.newsletter]);
+    services.email.enabled = true;
   }
 
   return {
@@ -240,20 +245,20 @@ export default ${serializePaginations(ctx.serializedPaginations, [
           name: `${PREFIX}/pageSorters.js`,
           content: `export default ${mapToString(ctx.pageSorters, true)}`,
         },
+        {
+          name: `${PREFIX}/services.js`,
+          content: `export default ${JSON.stringify(services, null, 2)}`,
+        },
       ];
     },
 
     enhanceAppFiles: [
       path.resolve(__dirname, '../client/classification.js'),
       path.resolve(__dirname, '../client/pagination.js'),
+      path.resolve(__dirname, '../client/services.js'),
     ],
 
     plugins,
-
-    define: {
-      COMMENT_SERVICE: options.comment && options.comment.service,
-      IS_NEWSLETTER_ENABLED: isNewsletterEnabled,
-    },
   };
 };
 
