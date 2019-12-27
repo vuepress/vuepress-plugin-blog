@@ -18,7 +18,7 @@ So when you develop layout components, you need to verify that `$pagination` exi
 :::
 
 
-### $pagination.pages
+### `$pagination.pages`
 
 Matched pages for current route. example:
 
@@ -29,27 +29,27 @@ Matched pages for current route. example:
 ]
 ```
 
-### $pagination.length
+### `$pagination.length`
 
 Length of current paginations.
 
-### $pagination.hasPrev
+### `$pagination.hasPrev`
 
 Whether previous pagination page exists.
 
-### $pagination.prevLink
+### `$pagination.prevLink`
 
 Link of previous pagination page.
 
-### $pagination.hasNext
+### `$pagination.hasNext`
 
 Whether next pagination page exists.
 
-### $pagination.nextLink
+### `$pagination.nextLink`
 
 Link of next pagination page.
 
-### $pagination.getSpecificPageLink
+### `$pagination.getSpecificPageLink`
 
 Get specific pagination page via page number.
 
@@ -119,7 +119,7 @@ This variable is essentially designed to generalize the list page of frontmatter
 
 ## $service
 
-### `$service.comment`
+### $service.comment
 
 #### `$service.comment.enabled`
 
@@ -129,7 +129,7 @@ Whether comment is enabled.
 
 Get the comment service 
 
-### `$service.email`
+### $service.email
 
 #### `$service.email.enabled`
 
