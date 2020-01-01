@@ -9852,18 +9852,18 @@ vuepress-plugin-disqus-comment@^0.2.3:
   dependencies:
     vue-disqus "^3.0.5"
 
-vuepress-plugin-mailchimp@^1.3.1:
-  version "1.3.1"
-  resolved "https://registry.yarnpkg.com/vuepress-plugin-mailchimp/-/vuepress-plugin-mailchimp-1.3.1.tgz#c2001d4b5dc526617094d834cba8c961d5792a40"
-  integrity sha512-oyS2DrM5Wnr2/dYoGEig/IQff+vRtt7YXj/yRWDMy+fu/yscdwVvkLjBwVsJBeqDx+GWL4pXQtHY3majHIwH8g==
+vuepress-plugin-mailchimp@^1.4.1:
+  version "1.4.1"
+  resolved "https://registry.yarnpkg.com/vuepress-plugin-mailchimp/-/vuepress-plugin-mailchimp-1.4.1.tgz#458c4a65f633b0690acd650400e3af6769c947f2"
+  integrity sha512-U1KJe7zso1sMmhBnv9TL3wFj2yYrsTZe0+RqhQ4O8dvBinb2gdRMSuCOgtvTTaSeKTbL/jxD4g5LLnVJHaD9HA==
   dependencies:
     jsonp "^0.2.1"
     query-string "^6.9.0"
 
-vuepress-plugin-sitemap@^2.3.0:
-  version "2.3.0"
-  resolved "https://registry.yarnpkg.com/vuepress-plugin-sitemap/-/vuepress-plugin-sitemap-2.3.0.tgz#4fc2573b62235ca80db237fe5e407a241067318b"
-  integrity sha512-ClEpb/sUpLbiFqRi885532EcfLdB8KQ7CSU4Q8VEsk95h7Vk/MpDsdptAKvDTstY/3Rxua2xFEx2dcjTjeF8Gw==
+vuepress-plugin-sitemap@^2.3.1:
+  version "2.3.1"
+  resolved "https://registry.yarnpkg.com/vuepress-plugin-sitemap/-/vuepress-plugin-sitemap-2.3.1.tgz#51298aca77a5de96396fdbd1103e1637dd61ae6a"
+  integrity sha512-n+8lbukhrKrsI9H/EX0EBgkE1pn85LAQFvQ5dIvrZP4Kz6JxPOPPNTQmZMhahQV1tXbLZQCEN7A1WZH4x+arJQ==
   dependencies:
     sitemap "^3.0.0"
 
