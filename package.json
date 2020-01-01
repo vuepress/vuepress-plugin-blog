@@ -78,7 +78,7 @@
     "sort-package-json": "^1.31.0",
     "ts-node": "^7.0.1",
     "typescript": "3.1.4",
-    "vuepress": "^1.0.0"
+    "vuepress": "^1.2.0"
   },
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
