@@ -17,7 +17,7 @@ class Pagination {
   public _indexPage: string;
 
   constructor(pagination, pages, route) {
-    debug(pagination);
+    debug('pagination', pagination);
     const { pages: paginationPages } = pagination;
     const { path } = route;
 
@@ -97,7 +97,7 @@ class PaginationGateway {
 
   getPagination(pid, id, route) {
     debug('id', id);
-    debug('this.paginations', this.paginations);
+    debug('pid', pid);
     const pagnination = this.paginations.filter(
       p => p.id === id && p.pid === pid
     )[0];

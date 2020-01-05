@@ -31,12 +31,40 @@ export function curryFrontmatterHandler(scope, map, path) {
   };
 }
 
+function PluginBlogLog(title) {
+  const chalk = require('chalk'); // eslint-disable-line
+  console.log();
+  console.log(chalk.cyan(`[@vuepress/plugin-blog] ====== ${title} ======`));
+}
+
+export function logObject(title, o, spread = false) {
+  if (env.isDebug) {
+    PluginBlogLog(title);
+    if (spread) {
+      for (const key in o) {
+        console.log(key, o[key]);
+        console.log();
+      }
+    } else {
+      console.log(o);
+      console.log();
+    }
+  }
+}
+
+export function logTable(title, data) {
+  if (env.isDebug) {
+    PluginBlogLog(title);
+    console.table(data);
+    console.log();
+  }
+}
+
 export function logPages(title, pages) {
   if (env.isDebug) {
     const table = require('text-table'); // eslint-disable-line
-    const chalk = require('chalk'); // eslint-disable-line
-    console.log();
-    console.log(chalk.cyan(`[@vuepress/plugin-blog] ====== ${title} ======`));
+
+    PluginBlogLog(title);
     const data: any[] = [['permalink', 'meta', 'pid', 'id', 'frontmatter']];
     data.push(
       ...pages.map(({ path, permalink, meta, pid, id, frontmatter }) => [

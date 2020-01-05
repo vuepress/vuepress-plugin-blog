@@ -10,6 +10,7 @@ import {
   FrontmatterTempMap,
   resolvePaginationConfig,
   UpperFirstChar,
+  logObject,
 } from './util';
 import { ClassifierTypeEnum } from './interface/Classifier';
 
@@ -173,10 +174,14 @@ export function handleOptions(
     });
   }
 
-  return {
+  const processedData = {
     pageEnhancers,
     frontmatterClassificationPages,
     extraPages,
     paginations,
   };
+
+  logObject('Handle options', processedData, true);
+
+  return processedData;
 }

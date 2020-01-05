@@ -2,7 +2,7 @@ import { path, logger, chalk } from '@vuepress/shared-utils';
 import { handleOptions } from './handleOptions';
 import { registerPaginations } from './pagination';
 import { BlogPluginOptions } from './interface/Options';
-import { logPages, resolvePaginationConfig } from './util';
+import { logPages, logTable, logObject, resolvePaginationConfig } from './util';
 import { ClassifierTypeEnum, DefaultLayoutEnum } from './interface/Classifier';
 import { VuePressContext, VuePressPage } from './interface/VuePress';
 
@@ -131,6 +131,10 @@ module.exports = (options: BlogPluginOptions, ctx: VuePressContext) => {
         }
       }
 
+      for (const { map } of frontmatterClassificationPages) {
+        logTable('frontmatterClassificationPages.map', map);
+      }
+
       /**
        * 2.2 Store frontmatterClassificationPages in current context.
        */
@@ -197,6 +201,7 @@ module.exports = (options: BlogPluginOptions, ctx: VuePressContext) => {
       ];
 
       logPages(`Automatically Added Index Pages`, allExtraPages);
+      logObject(`Pagination data sources`, paginations);
 
       await Promise.all(allExtraPages.map(async page => ctx.addPage(page)));
       await registerPaginations(paginations, ctx);

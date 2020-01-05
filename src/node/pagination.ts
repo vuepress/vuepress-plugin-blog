@@ -6,7 +6,7 @@ import {
   GetPaginationPageTitle,
   SerializedPagination,
 } from './interface/Pagination';
-import { logPages } from './util';
+import { logPages, logObject } from './util';
 
 /**
  * Divided an interval of several lengths into several equal-length intervals.
@@ -62,6 +62,9 @@ export async function registerPaginations(
     );
 
     const intervallers = getIntervallers(pages.length, lengthPerPage);
+
+    logObject(`${id}'s page intervaller`, intervallers);
+
     const pagination: SerializedPagination = {
       pid,
       id,
@@ -76,29 +79,31 @@ export async function registerPaginations(
     recordPageFilters(pid, filter);
     recordPageSorters(pid, sorter);
 
-    const extraPages = pagination.pages
-      .slice(1) // The index page has been generated.
-      .map(({ path }, index) => {
-        return {
-          permalink: path,
-          frontmatter: {
-            layout,
-            title: (getPaginationPageTitle as GetPaginationPageTitle)(
-              index,
+    if (pagination.pages.length > 1) {
+      const extraPages = pagination.pages
+        .slice(1) // The index page has been generated.
+        .map(({ path }, index) => {
+          return {
+            permalink: path,
+            frontmatter: {
+              layout,
+              title: (getPaginationPageTitle as GetPaginationPageTitle)(
+                index,
+                id,
+                pid
+              ),
+            },
+            meta: {
+              pid,
               id,
-              pid
-            ),
-          },
-          meta: {
-            pid,
-            id,
-          },
-        };
-      });
+            },
+          };
+        });
 
-    logPages(`Automatically generated pagination pages`, extraPages);
+      logPages(`Automatically generated pagination pages`, extraPages);
 
-    await Promise.all(extraPages.map(page => ctx.addPage(page)));
+      await Promise.all(extraPages.map(page => ctx.addPage(page)));
+    }
 
     ctx.serializedPaginations.push(pagination);
   }
