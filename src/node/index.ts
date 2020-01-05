@@ -252,7 +252,7 @@ export default ${serializePaginations(ctx.serializedPaginations, [
         },
         {
           name: `${PREFIX}/services.js`,
-          content: `export default ${JSON.stringify(services, null, 2)}`,
+          content: `export default ${mapToString(services)}`,
         },
       ];
     },
