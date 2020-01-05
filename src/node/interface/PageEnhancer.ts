@@ -4,7 +4,7 @@ export interface PageEnhancer {
   /**
    * Conditions for enhancer execution
    */
-  when($page: VuePressPage): boolean;
+  filter($page: VuePressPage): boolean;
 
   /**
    * frontmatter injected to matched pages

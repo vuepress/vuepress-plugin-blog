@@ -99,10 +99,20 @@ export function handleOptions(
      * 1.3 Set layout for pages that match current directory classifier.
      */
     pageEnhancers.push({
-      when: ({ regularPath }) =>
-        Boolean(regularPath) &&
-        regularPath !== indexPath &&
-        regularPath.startsWith(`/${dirname}/`),
+      /**
+       * Exclude index pages
+       * Exclude pagination pages
+       * Pick pages matched directory name
+       */
+      filter({ regularPath }) {
+        const regex = new RegExp(`^/${dirname}/page/\\d+/`);
+        return (
+          Boolean(regularPath) &&
+          regularPath !== indexPath &&
+          !regex.test(regularPath) &&
+          regularPath.startsWith(`/${dirname}/`)
+        );
+      },
       frontmatter: {
         layout: ctx.getLayout(itemLayout, 'Post'),
         permalink: itemPermalink,
