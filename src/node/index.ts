@@ -90,10 +90,10 @@ module.exports = (options: BlogPluginOptions, ctx: VuePressContext) => {
      * 1. Execute `pageEnhancers` generated in handleOptions
      */
     extendPageData(pageCtx: VuePressPage) {
-      const { frontmatter: rawFrontmatter } = pageCtx;
+      pageEnhancers.forEach(({ filter, data = {}, frontmatter = {} }) => {
+        const { frontmatter: rawFrontmatter } = pageCtx;
 
-      pageEnhancers.forEach(({ when, data = {}, frontmatter = {} }) => {
-        if (when(pageCtx)) {
+        if (filter(pageCtx)) {
           Object.keys(frontmatter).forEach(key => {
             /**
              * Respect the original frontmatter in markdown
