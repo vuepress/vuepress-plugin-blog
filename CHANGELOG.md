@@ -1,3 +1,17 @@
+## [1.7.1](https://github.com/ulivz/vuepress-plugin-blog/compare/v1.7.0...v1.7.1) (2020-01-06)
+
+
+### Bug Fixes
+
+* extend page data on wrong pages (fix [#32](https://github.com/ulivz/vuepress-plugin-blog/issues/32))([#53](https://github.com/ulivz/vuepress-plugin-blog/issues/53)) ([876ca8d](https://github.com/ulivz/vuepress-plugin-blog/commit/876ca8d723d6724a57e13addf66ab5d3e3bb585f))
+
+
+### Features
+
+* bump deps ([977b229](https://github.com/ulivz/vuepress-plugin-blog/commit/977b229aa8cc014828fd78c657fa66249798b1c2))
+
+
+
 # [1.7.0](https://github.com/ulivz/vuepress-plugin-blog/compare/v1.6.1...v1.7.0) (2019-12-27)
 
 
