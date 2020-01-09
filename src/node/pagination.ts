@@ -83,12 +83,13 @@ export async function registerPaginations(
       const extraPages = pagination.pages
         .slice(1) // The index page has been generated.
         .map(({ path }, index) => {
+          const pageNumber = index + 2;
           return {
             permalink: path,
             frontmatter: {
               layout,
               title: (getPaginationPageTitle as GetPaginationPageTitle)(
-                index,
+                pageNumber,
                 id,
                 pid
               ),

@@ -17,6 +17,10 @@ export interface DirectoryClassifier {
    */
   path: string;
   /**
+   * Entry and pagination page titles for current classifier.
+   */
+  title?: string;
+  /**
    * Layout component name for entry page.
    */
   layout?: string;
@@ -57,6 +61,10 @@ export interface FrontmatterClassifier {
    * Index page for current classifier.
    */
   path: string;
+  /**
+   * Entry, scope and pagination page titles for current classifier.
+   */
+  title?: string;
   /**
    * Layout for index page.
    */

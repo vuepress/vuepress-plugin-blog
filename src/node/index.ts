@@ -151,6 +151,7 @@ module.exports = (options: BlogPluginOptions, ctx: VuePressContext) => {
         ...frontmatterClassificationPages
           .map(frontmatterClassifiedPage => {
             const {
+              entryTitle,
               map,
               pagination,
               keys,
@@ -164,8 +165,8 @@ module.exports = (options: BlogPluginOptions, ctx: VuePressContext) => {
                */
               paginations.push({
                 classifierType: ClassifierTypeEnum.Frontmatter,
-                getPaginationPageTitle(index, id, scope) {
-                  return `Page ${index + 2} - ${id} | ${scope}`;
+                getPaginationPageTitle(pageNumber, key) {
+                  return `Page ${pageNumber} - ${key} | ${entryTitle}`;
                 },
                 ...resolvePaginationConfig(
                   ClassifierTypeEnum.Frontmatter,
@@ -192,7 +193,7 @@ module.exports = (options: BlogPluginOptions, ctx: VuePressContext) => {
                     scopeLayout,
                     DefaultLayoutEnum.FrontmatterPagination
                   ),
-                  title: `${key} ${scope}`,
+                  title: `${key} ${entryTitle}`,
                 },
               };
             });

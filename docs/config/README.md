@@ -44,6 +44,14 @@ Entry page for current classifier, e.g. `/` or `/post/`.
 If you set `DirectoryClassifier.path` to `/`, it means that you want to access the matched pages list at `/`. set
 to `/post/` is the same.
 
+### title
+
+- Type: `string`
+- Default: `id` 
+- Required: `false`
+ 
+Entry and pagination page titles for current classifier.
+
 ### layout
 
 - Type: `string`
@@ -146,6 +154,13 @@ module.exports = {
 
 Entry page for current classifier, e.g. `/` or `/post/`.
 
+### title
+
+- Type: `string`
+- Default: `id` 
+- Required: `false`
+ 
+Entry, scope and pagination  page titles for current classifier.
 
 ### layout
 

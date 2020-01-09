@@ -71,6 +71,7 @@ export function handleOptions(
       pagination = {} as PaginationConfig,
     } = directory;
 
+    const { title = UpperFirstChar(id) } = directory;
     /**
      * 1.1 Required index path.
      */
@@ -86,7 +87,7 @@ export function handleOptions(
       frontmatter: {
         // Set layout for index page.
         layout: ctx.getLayout(indexLayout),
-        title: `${UpperFirstChar(id)}`,
+        title,
         ...frontmatter,
       },
       meta: {
@@ -125,8 +126,8 @@ export function handleOptions(
      */
     paginations.push({
       classifierType: ClassifierTypeEnum.Directory,
-      getPaginationPageTitle(index, id) {
-        return `Page ${index + 2} | ${id}`;
+      getPaginationPageTitle(pageNumber) {
+        return `Page ${pageNumber} | ${title}`;
       },
       ...resolvePaginationConfig(
         ClassifierTypeEnum.Directory,
@@ -153,6 +154,7 @@ export function handleOptions(
       frontmatter,
       pagination = {} as PaginationConfig,
     } = frontmatterPage;
+    const { title = UpperFirstChar(id) } = frontmatterPage;
 
     if (!indexPath) {
       continue;
@@ -163,7 +165,7 @@ export function handleOptions(
       frontmatter: {
         // Set layout for index page.
         layout: ctx.getLayout(indexLayout, 'FrontmatterKey'),
-        title: `${UpperFirstChar(id)}`,
+        title,
         ...frontmatter,
       },
       meta: {
@@ -176,6 +178,7 @@ export function handleOptions(
 
     frontmatterClassificationPages.push({
       id,
+      entryTitle: title,
       pagination,
       keys,
       map,
