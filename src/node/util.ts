@@ -108,9 +108,19 @@ export function resolvePaginationConfig(
             }
           : getFrontmatterClassifierPageFilter(keys),
 
+      /**
+       * You might be intrigued by `replace(/\-/g, '/')`.
+       * Because only the dates in frontmatter written in 2-digits will be transformed,
+       * other dates written in single-digit, such as `2020-1-1` will be treated as string.
+       * Some browsers (e.g. Safari) don't support this format.
+       */
       sorter: (prev: VuePressPage, next: VuePressPage) => {
-        const prevTime = new Date(prev.frontmatter.date).getTime();
-        const nextTime = new Date(next.frontmatter.date).getTime();
+        const prevTime = new Date(
+          prev.frontmatter.date.replace(/\-/g, '/')
+        ).getTime();
+        const nextTime = new Date(
+          next.frontmatter.date.replace(/\-/g, '/')
+        ).getTime();
         return prevTime - nextTime > 0 ? -1 : 1;
       },
     },

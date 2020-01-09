@@ -17,12 +17,16 @@ Sorter for matched pages, the default sorter is as follows:
 
 ```typescript
 function sorter(prev: VuePressPage, next: VuePressPage){
-  const prevTime = new Date(prev.frontmatter.date).getTime()
-  const nextTime = new Date(next.frontmatter.date).getTime()
+  const prevTime = new Date(prev.frontmatter.date.replace(/\-/g, '/')).getTime()
+  const nextTime = new Date(next.frontmatter.date.replace(/\-/g, '/')).getTime()
   return prevTime - nextTime > 0 ? -1 : 1
 },
 ```
 The function will be a parameter of [Array.sort()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort).
+
+::: warning Note
+You might be intrigued by `replace(/\-/g, '/')`. Because only the dates in frontmatter written in 2-digits will be transformed, other dates written in single-digit, such as `2020-1-1` will be treated as string. Some browsers (e.g. Safari) don't support this format.
+:::
 
 ## lengthPerPage
 
@@ -83,7 +87,7 @@ There are three args to help you customize your title:
 - `id` is the id in the [config](../config/#id).
 - `scope` is the [key](../config/#keys) while configuring frontmatters or same as `id` while configuring directories.
 
-::: tip TIP
+::: warning Note
 `${index + 2}`: why `+2`?
 
 Plus 1 since index starts at 0. <br>
