@@ -72,24 +72,16 @@ A function to get the title of pagination page dynamically:
 
 ```js
 // directories
-function getPaginationPageTitle (index, id) {
-  return `Page ${index + 2} | ${id}`
+function getPaginationPageTitle (pageNumber) {
+  return `Page ${pageNumber} | ${entryTitle}`
 }
 
 // frontmatters
-function getPaginationPageTitle (index, id, scope) {
-  return `Page ${index + 2} - ${id} | ${scope}`
+function getPaginationPageTitle (pageNumber, key) {
+  return `Page ${pageNumber} - ${key} | ${entryTitle}`
 }
 ```
 
-There are three args to help you customize your title: 
-- `index` is the index of pages.
-- `id` is the id in the [config](../config/#id).
-- `scope` is the [key](../config/#keys) while configuring frontmatters or same as `id` while configuring directories.
-
-::: warning Note
-`${index + 2}`: why `+2`?
-
-Plus 1 since index starts at 0. <br>
-Plus another 1 since the index page won't show page number.
-:::
+There are two args to help you customize your title: 
+- `pageNumber`
+- `key` : the [key](../config/#keys) while configuring frontmatters
