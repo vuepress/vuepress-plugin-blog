@@ -1,3 +1,18 @@
+# [1.8.0](https://github.com/ulivz/vuepress-plugin-blog/compare/v1.7.1...v1.8.0) (2020-01-10)
+
+
+### Bug Fixes
+
+* default sorter doesn't work fine in Safari ([#54](https://github.com/ulivz/vuepress-plugin-blog/issues/54)) ([3fdc6a3](https://github.com/ulivz/vuepress-plugin-blog/commit/3fdc6a318e3e8b65ce21fe1b9b224e1295a0a061))
+
+
+### Features
+
+* support configuring pagination link text ([c3d8065](https://github.com/ulivz/vuepress-plugin-blog/commit/c3d8065f2fcbaaa0c72014eec990ef987d5392d4))
+* support configuring title for directories and frontmatters (close [#52](https://github.com/ulivz/vuepress-plugin-blog/issues/52))([#55](https://github.com/ulivz/vuepress-plugin-blog/issues/55)) ([b6325cd](https://github.com/ulivz/vuepress-plugin-blog/commit/b6325cd06a8e66e4fb6939e82c23107f45c33742))
+
+
+
 ## [1.7.1](https://github.com/ulivz/vuepress-plugin-blog/compare/v1.7.0...v1.7.1) (2020-01-06)
 
 
