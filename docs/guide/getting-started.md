@@ -460,6 +460,22 @@ In your theme, You'll probably offer users options whether to enable or not. You
 
 Please head [UI-customization](https://vuepress-plugin-mailchimp.billyyyyy3320.com/#ui-customization) if you don't like the default UI.
 
+## Examples
+
+There're some [examples](https://github.com/vuepressjs/vuepress-plugin-blog/tree/master/examples) under this project help us test this plugin. They're also simplest examples for you after reading all the concept above. 
+
+Clone [this repo](https://github.com/vuepressjs/vuepress-plugin-blog) and start the example to see the output:
+```shell
+yarn dev:example # serves example
+yarn build:example # builds example
+```
+
+:::tip Tip
+It's worth telling that [the `zh` folder](https://github.com/vuepressjs/vuepress-plugin-blog/tree/master/examples/zh) is an example to build the blog in your native language. It took Traditional Chinese for example.
+:::
+
+
+
 ## Writing a blog theme
 
 If everything is ok, you can start to write a blog theme. Actually, there are only 2 necessary layout components to
