@@ -5,8 +5,8 @@
     :value="page"
     :page-count="$pagination.length"
     :click-handler="clickCallback"
-    :prev-text="'Prev'"
-    :next-text="'Next'"
+    :prev-text="$pagination.prevText"
+    :next-text="$pagination.nextText"
     :container-class="'pagination'"
     :page-class="'page-item'"
   >

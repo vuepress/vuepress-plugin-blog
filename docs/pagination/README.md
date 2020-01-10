@@ -28,6 +28,20 @@ The function will be a parameter of [Array.sort()](https://developer.mozilla.org
 You might be intrigued by `replace(/\-/g, '/')`. Because only the dates in frontmatter written in 2-digits will be transformed, other dates written in single-digit, such as `2020-1-1` will be treated as string. Some browsers (e.g. Safari) don't support this format.
 :::
 
+## prevText
+
+- Type: string
+- Default: `Prev`
+
+Text for previous links.
+
+## nextText
+
+- Type: string
+- Default: `Next`
+
+Text for next links.
+
 ## lengthPerPage
 
 - Type: number

@@ -16,10 +16,17 @@ class Pagination {
 
   public _indexPage: string;
 
+  private _prevText: string;
+
+  private _nextText: string;
+
   constructor(pagination, pages, route) {
     debug('pagination', pagination);
-    const { pages: paginationPages } = pagination;
+    const { pages: paginationPages, prevText, nextText } = pagination;
     const { path } = route;
+
+    this._prevText = prevText;
+    this._nextText = nextText;
 
     for (let i = 0, l = paginationPages.length; i < l; i++) {
       const page = paginationPages[i];
@@ -76,6 +83,14 @@ class Pagination {
       return this._paginationPages[this.paginationIndex + 1].path;
     }
     return null;
+  }
+
+  get prevText() {
+    return this._prevText;
+  }
+
+  get nextText() {
+    return this._nextText;
   }
 
   getSpecificPageLink(index) {

@@ -53,6 +53,8 @@ export async function registerPaginations(
     sorter,
     layout,
     lengthPerPage,
+    prevText = 'Prev',
+    nextText = 'Next',
     getPaginationPageUrl,
     getPaginationPageTitle,
   } of paginations) {
@@ -74,6 +76,8 @@ export async function registerPaginations(
         const path = (getPaginationPageUrl as GetPaginationPageUrl)(index);
         return { path, interval };
       }),
+      prevText,
+      nextText,
     };
 
     recordPageFilters(pid, filter);

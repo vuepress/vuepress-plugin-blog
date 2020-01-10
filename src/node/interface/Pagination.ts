@@ -25,7 +25,7 @@ export type GetPaginationPageTitle = (
 /**
  * Pagination config options for users.
  */
-export interface PaginationConfig {
+export interface PaginationConfig extends Partial<LinkText> {
   /**
    * Filter for matched pages.
    */
@@ -78,7 +78,7 @@ export interface InternalPagination
 /**
  * Serialized pagination, generated for front-end use
  */
-export interface SerializedPagination extends PaginationIdentity {
+export interface SerializedPagination extends PaginationIdentity, LinkText {
   /**
    * Stringified filter function
    */
@@ -91,6 +91,17 @@ export interface SerializedPagination extends PaginationIdentity {
    * Details under current pagination
    */
   pages: PaginationPage[];
+}
+
+interface LinkText {
+  /**
+   * Text for previous links.
+   */
+  prevText: string;
+  /**
+   * Text for next links.
+   */
+  nextText: string;
 }
 
 /**
