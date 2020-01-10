@@ -2,7 +2,10 @@ module.exports = {
   title: '@vuepress/plugin-blog',
   description: 'Offical blog plugin for VuePress',
   themeConfig: {
-    repo: 'ulivz/vuepress-plugin-blog',
+    repo: 'vuepressjs/vuepress-plugin-blog',
+    docsDir: 'docs',
+    editLinks: true,
+    editLinkText: 'Edit this page on GitHub',
     nav: [
       { text: 'Guide', link: '/guide/' },
       { text: 'Config', link: '/config/' },
