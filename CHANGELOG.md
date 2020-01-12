@@ -1,3 +1,12 @@
+## [1.8.1](https://github.com/ulivz/vuepress-plugin-blog/compare/v1.8.0...v1.8.1) (2020-01-12)
+
+
+### Bug Fixes
+
+* sort uncorrect when writing date in 2-digits (fix [#56](https://github.com/ulivz/vuepress-plugin-blog/issues/56)) ([#57](https://github.com/ulivz/vuepress-plugin-blog/issues/57)) ([c3acf01](https://github.com/ulivz/vuepress-plugin-blog/commit/c3acf01156ae62fc459d61faa053ddd1dcb43d50))
+
+
+
 # [1.8.0](https://github.com/ulivz/vuepress-plugin-blog/compare/v1.7.1...v1.8.0) (2020-01-10)
 
 
