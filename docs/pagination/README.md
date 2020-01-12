@@ -15,17 +15,18 @@ We strongly recommend that you read the [Getting Started](../guide/getting-start
 
 Sorter for matched pages, the default sorter is as follows:
 
-```typescript
-function sorter(prev: VuePressPage, next: VuePressPage){
-  const prevTime = new Date(prev.frontmatter.date.replace(/\-/g, '/')).getTime()
-  const nextTime = new Date(next.frontmatter.date.replace(/\-/g, '/')).getTime()
-  return prevTime - nextTime > 0 ? -1 : 1
-},
+```js
+sorter: (prev, next) => {
+  const dayjs = require('dayjs');
+  const prevTime = dayjs(prev.frontmatter.date);
+  const nextTime = dayjs(next.frontmatter.date);
+  return prevTime - nextTime > 0 ? -1 : 1;
+}
 ```
 The function will be a parameter of [Array.sort()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort).
 
 ::: warning Note
-You might be intrigued by `replace(/\-/g, '/')`. Because only the dates in frontmatter written in 2-digits will be transformed, other dates written in single-digit, such as `2020-1-1` will be treated as string. Some browsers (e.g. Safari) don't support this format.
+Because only the dates in frontmatter written in 2-digits will be transformed, other dates written in single-digit, such as `2020-1-1` will be treated as string. `dayjs` accepts this two different result, whereas `new Date` won't work fine in some browser (e.g. Safari). 
 :::
 
 ## prevText
