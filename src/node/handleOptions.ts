@@ -194,6 +194,7 @@ export function handleOptions(
   const services = {
     comment: { enabled: false, service: '' },
     email: { enabled: false },
+    feed: { rss: false, atom: false, json: false },
   };
 
   if (options.sitemap && options.sitemap.hostname) {
@@ -246,6 +247,17 @@ export function handleOptions(
     directories.forEach(dir => {
       defaultFeedOptions.posts_directories.push(dir.dirname);
     });
+
+    services.feed = { rss: true, atom: true, json: true };
+    if (options.feed.feeds) {
+      if (options.feed.feeds.rss2 && options.feed.feeds.rss2.enable === false)
+        services.feed.rss = false;
+      if (options.feed.feeds.atom1 && options.feed.feeds.atom1.enable === false)
+        services.feed.atom = false;
+      if (options.feed.feeds.json1 && options.feed.feeds.json1.enable === false)
+        services.feed.json = false;
+    }
+
     const feedOptions = Object.assign({}, defaultFeedOptions, options.feed);
     plugins.push(['vuepress-plugin-feed', feedOptions]);
   }

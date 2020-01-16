@@ -134,3 +134,18 @@ Get the comment service
 #### `$service.email.enabled`
 
 Whether email (newsletter) service is enabled.
+
+### $service.feed
+
+#### `$service.feed.rss`
+
+whether RSS feed is enabled.
+
+#### `$service.feed.atom`
+
+whether Atom feed is enabled.
+
+#### `$service.feed.json`
+
+whether JSON feed is enabled.
+
