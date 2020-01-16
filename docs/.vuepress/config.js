@@ -12,6 +12,7 @@ module.exports = {
       { text: 'Pagination', link: '/pagination/' },
       { text: 'Client API', link: '/client-api/' },
       { text: 'Components', link: '/components/' },
+      { text: 'FAQ', link: '/faq/' }
     ],
     sidebarDepth: 3,
     sidebar: {
