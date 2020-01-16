@@ -1,3 +1,12 @@
+# [1.9.0](https://github.com/ulivz/vuepress-plugin-blog/compare/v1.8.1...v1.9.0) (2020-01-16)
+
+
+### Features
+
+* integrate with feed ([#58](https://github.com/ulivz/vuepress-plugin-blog/issues/58)) ([16d318d](https://github.com/ulivz/vuepress-plugin-blog/commit/16d318dd07d87492fc1dde8782d308a29c8bf7a5))
+
+
+
 ## [1.8.1](https://github.com/ulivz/vuepress-plugin-blog/compare/v1.8.0...v1.8.1) (2020-01-12)
 
 
