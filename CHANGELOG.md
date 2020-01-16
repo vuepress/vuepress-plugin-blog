@@ -1,3 +1,12 @@
+## [1.9.1](https://github.com/ulivz/vuepress-plugin-blog/compare/v1.9.0...v1.9.1) (2020-01-16)
+
+
+### Bug Fixes
+
+* missing client apis for feed ([f71fbea](https://github.com/ulivz/vuepress-plugin-blog/commit/f71fbea487ab88deecd32d7f8f532f20ae2c0271))
+
+
+
 # [1.9.0](https://github.com/ulivz/vuepress-plugin-blog/compare/v1.8.1...v1.9.0) (2020-01-16)
 
 
