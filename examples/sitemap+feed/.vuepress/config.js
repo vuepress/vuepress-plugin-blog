@@ -26,6 +26,9 @@ module.exports = {
       sitemap: {
         hostname: 'https://yourdomain'
       },
+      feed:{
+        canonical_base: 'http://localhost:8080',
+      }
     }],
   ],
 }

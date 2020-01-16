@@ -460,6 +460,29 @@ In your theme, You'll probably offer users options whether to enable or not. You
 
 Please head [UI-customization](https://vuepress-plugin-mailchimp.billyyyyy3320.com/#ui-customization) if you don't like the default UI.
 
+## Feed
+
+Feed is another approach to allow your users to get your latest content. RSS, Atom, and even JSON feeds are the right tools for the job. Let's see an example:
+
+```JavaScript
+// .vuepress/config.js
+module.exports = {
+  plugins: [
+    [
+      '@vuepress/blog',
+      {
+        feed: {
+         canonical_base: 'http://yoursite',
+        },
+      },
+    ],
+  ],
+}
+```
+
+After building, you'll be able to find them (`rss.xml`, `feed.atom`, `feed.json`) in you output directory (`dist`).
+
+
 ## Examples
 
 There're some [examples](https://github.com/vuepressjs/vuepress-plugin-blog/tree/master/examples) under this project help us test this plugin. They're also simplest examples for you after reading all the concept above. 

@@ -158,6 +158,7 @@ export interface BlogPluginOptions {
   globalPagination: PaginationConfig;
   //TODO: define types
   sitemap: any;
+  feed: any;
   comment: Comment;
   newsletter: Newsletter;
 }

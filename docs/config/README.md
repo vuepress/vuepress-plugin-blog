@@ -249,4 +249,18 @@ It will be enabled when `endpoint` is provided. e.g.
 ```
 [vuepress-plugin-mailchimp](https://vuepress-plugin-mailchimp.billyyyyy3320.com/) is how we implement the feature. This config will be pass directly to it, so please head [vuepress-plugin-mailchimp](https://vuepress-plugin-mailchimp.billyyyyy3320.com/#config) for more details.  
 
+## feed
 
+- Type: `object`
+- Default: `{}`
+- Required: `false`
+
+It will be enabled when `canonical_base` is provided. e.g.
+
+```js
+{
+  canonical_base: 'https://yoursite'
+}
+```
+
+All the generated files will be placed under your output directory. If you wish to make further configuration, please check out [vuepress-plugin-feed](https://github.com/webmasterish/vuepress-plugin-feed).
