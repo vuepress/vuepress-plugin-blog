@@ -1,4 +1,4 @@
-import { path, logger, chalk } from '@vuepress/shared-utils';
+import { path } from '@vuepress/shared-utils';
 import { handleOptions } from './handleOptions';
 import { registerPaginations } from './pagination';
 import { BlogPluginOptions } from './interface/Options';
@@ -30,58 +30,9 @@ module.exports = (options: BlogPluginOptions, ctx: VuePressContext) => {
     frontmatterClassificationPages,
     extraPages,
     paginations,
+    plugins,
+    services,
   } = handleOptions(options, ctx);
-
-  /**
-   * Leverage other plugins
-   */
-  const plugins: any[][] = [];
-  const services = {
-    comment: { enabled: false, service: '' },
-    email: { enabled: false },
-  };
-
-  if (options.sitemap && options.sitemap.hostname) {
-    const defaultSitemapOptions = { exclude: ['/404.html'] };
-    const sitemapOptions = Object.assign(
-      {},
-      defaultSitemapOptions,
-      options.sitemap
-    );
-    const sitemapDependencies = [
-      ['vuepress-plugin-sitemap', sitemapOptions],
-      ['@vuepress/last-updated'],
-    ];
-    plugins.push(...sitemapDependencies);
-  }
-
-  if (options.comment) {
-    const { service: commentService, ...commentOptions } = options.comment;
-    switch (commentService) {
-      case 'vssue':
-        plugins.push(['@vssue/vuepress-plugin-vssue', commentOptions]);
-        services.comment.enabled = true;
-        services.comment.service = commentService;
-        break;
-      case 'disqus':
-        plugins.push(['vuepress-plugin-disqus-comment', commentOptions]);
-        services.comment.enabled = true;
-        services.comment.service = commentService;
-        break;
-      default:
-        logger.warn(
-          `[@vuepress/plugin-blog] Invalid comment service: ${chalk.cyan(
-            commentService
-          )}`
-        );
-        break;
-    }
-  }
-
-  if (!!(options.newsletter && options.newsletter.endpoint)) {
-    plugins.push(['vuepress-plugin-mailchimp', options.newsletter]);
-    services.email.enabled = true;
-  }
 
   return {
     name: 'vuepress-plugin-blog',
