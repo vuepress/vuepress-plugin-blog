@@ -363,7 +363,7 @@ export default {
 ```
 
 You have to tell the plugin which service you're going to use.
-Since comment is implemented by other plugins, make sure you've read [vuepress-plugin-vssue](https://vssue.js.org/) or [vuepress-plugin-disqus-comment](https://vuepress-plugin-disqus.netlify.com) before using them:
+Since comment is implemented by other plugins, make sure you've read [vuepress-plugin-vssue](https://vssue.js.org/) or [vuepress-plugin-disqus](https://github.com/lorisleiva/vuepress-plugin-disqus) before using them:
 ```js
 // .vuepress/config.js
 module.exports = {

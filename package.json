@@ -55,7 +55,7 @@
     "@vssue/vuepress-plugin-vssue": "^1.2.0",
     "dayjs": "^1.8.19",
     "vuejs-paginate": "^2.1.0",
-    "vuepress-plugin-disqus-comment": "^0.2.3",
+    "vuepress-plugin-disqus": "^0.2.0",
     "vuepress-plugin-mailchimp": "^1.4.1",
     "vuepress-plugin-sitemap": "^2.3.1"
   },

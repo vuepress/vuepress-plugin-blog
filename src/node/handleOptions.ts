@@ -219,7 +219,7 @@ export function handleOptions(
         services.comment.service = commentService;
         break;
       case 'disqus':
-        plugins.push(['vuepress-plugin-disqus-comment', commentOptions]);
+        plugins.push(['vuepress-plugin-disqus', commentOptions]);
         services.comment.enabled = true;
         services.comment.service = commentService;
         break;

@@ -1,6 +1,6 @@
 <template>
   <Vssue v-if="$service.comment.service === 'vssue'" v-bind="vssueProps" />
-  <vue-disqus
+  <Disqus
     v-else-if="$service.comment.service === 'disqus'"
     v-bind="disqusProps"
   />

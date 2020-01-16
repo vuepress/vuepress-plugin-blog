@@ -43,7 +43,7 @@ module.exports = {
         nextText: '下一頁'
       },
       /**
-       * vuepress-plugin-disqus-comment will use $lang as default
+       * vuepress-plugin-disqus will use $lang as default
        */
       comment: {
         service: 'disqus',

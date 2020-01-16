@@ -231,7 +231,7 @@ Service to accomplish commenting.
 
 ### others
 Other options depend on which service you pick since this feature is accomplished by the plugins below. All options except `service` will be passed directly to the plugin, so take a look at their documentation for more details:
-- [vuepress-plugin-disqus-comment](https://vuepress-plugin-disqus.netlify.com/#config)
+- [vuepress-plugin-disqus](https://github.com/lorisleiva/vuepress-plugin-disqus)
 - [vuepress-plugin-vssue](https://vssue.js.org/guide/vuepress.html#usage)
 
 ## newsletter
