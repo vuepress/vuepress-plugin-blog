@@ -233,9 +233,21 @@ export function handleOptions(
     }
   }
 
-  if (!!(options.newsletter && options.newsletter.endpoint)) {
+  if (options.newsletter && options.newsletter.endpoint) {
     plugins.push(['vuepress-plugin-mailchimp', options.newsletter]);
     services.email.enabled = true;
+  }
+
+  if (options.feed && options.feed.canonical_base) {
+    /* eslint-disable @typescript-eslint/camelcase */
+    const defaultFeedOptions = {
+      posts_directories: [] as string[],
+    };
+    directories.forEach(dir => {
+      defaultFeedOptions.posts_directories.push(dir.dirname);
+    });
+    const feedOptions = Object.assign({}, defaultFeedOptions, options.feed);
+    plugins.push(['vuepress-plugin-feed', feedOptions]);
   }
 
   const processedData = {
