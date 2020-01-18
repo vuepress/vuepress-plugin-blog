@@ -1,3 +1,12 @@
+## [1.9.2](https://github.com/ulivz/vuepress-plugin-blog/compare/v1.9.1...v1.9.2) (2020-01-18)
+
+
+### Bug Fixes
+
+* feed doesn't work fine when useing non-default directory name ([0098baf](https://github.com/ulivz/vuepress-plugin-blog/commit/0098bafdfd7c058a93b570a248e50c0459973117))
+
+
+
 ## [1.9.1](https://github.com/ulivz/vuepress-plugin-blog/compare/v1.9.0...v1.9.1) (2020-01-16)
 
 
