@@ -245,7 +245,7 @@ export function handleOptions(
       posts_directories: [] as string[],
     };
     directories.forEach(dir => {
-      defaultFeedOptions.posts_directories.push(dir.dirname);
+      defaultFeedOptions.posts_directories.push(`/${dir.dirname}/`);
     });
 
     services.feed = { rss: true, atom: true, json: true };
