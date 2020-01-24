@@ -371,19 +371,17 @@ module.exports = {
     [
       '@vuepress/blog',
       {
-        comment: [
-          {
-            // Which service you'd like to use
-            service: 'vssue',
-            // The owner's name of repository to store the issues and comments.
-            owner: 'You',
-            // The name of repository to store the issues and comments.
-            repo: 'Your repo',
-            // The clientId & clientSecret introduced in OAuth2 spec.
-            clientId: 'Your clientId',
-            clientSecret: 'Your clientSecret',
-          },
-        ],
+        comment: {
+          // Which service you'd like to use
+          service: 'vssue',
+          // The owner's name of repository to store the issues and comments.
+          owner: 'You',
+          // The name of repository to store the issues and comments.
+          repo: 'Your repo',
+          // The clientId & clientSecret introduced in OAuth2 spec.
+          clientId: 'Your clientId',
+          clientSecret: 'Your clientSecret',
+        },
       },
     ],
   ],
@@ -396,14 +394,12 @@ module.exports = {
     [
       '@vuepress/blog',
       {
-        comment: [
-          {
-            // Which service you'd like to use
-            service: 'disqus',
-            // The owner's name of repository to store the issues and comments.
-            shortname: 'vuepress-plugin-blog',
-          },
-        ],
+        comment: {
+          // Which service you'd like to use
+          service: 'disqus',
+          // The owner's name of repository to store the issues and comments.
+          shortname: 'vuepress-plugin-blog',
+        },
       },
     ],
   ],
