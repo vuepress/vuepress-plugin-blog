@@ -46,6 +46,9 @@ module.exports = {
         directories: [
           {
             // Unique ID of current classification
+            // Note: DO NOT use hyphen in your id
+            // Separate your words with camel case, like 'myPost'
+            // Or with underscore, like 'my_post'
             id: 'post',
             // Target directory
             dirname: '_posts',
