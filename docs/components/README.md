@@ -98,7 +98,7 @@ export default {
 
 ## `<Newsletter>`
 
-- Source Code: [Comment.vue](https://github.com/ulivz/vuepress-plugin-blog/blob/master/src/client/components/Newsletter.vue)
+- Source Code: [Newsletter.vue](https://github.com/ulivz/vuepress-plugin-blog/blob/master/src/client/components/Newsletter.vue)
 
 - Usage:
 
