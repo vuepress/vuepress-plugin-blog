@@ -96,32 +96,19 @@ export default {
 
 <img src="/Vssue.png" />
 
-## `<Newsletter>`
+## `<SimpleNewsletter>`
 
-- Source Code: [Comment.vue](https://github.com/ulivz/vuepress-plugin-blog/blob/master/src/client/components/Newsletter.vue)
+Implemented by [vuepress-plugin-mailchimp](https://github.com/newsbielt703/vuepress-plugin-mailchimp)
+
+- Source Code: [SimpleNewsletter.vue](https://github.com/newsbielt703/vuepress-plugin-mailchimp/blob/master/src/components/SimpleNewsletter.vue)
 
 - Usage:
 
 ```vue
 <template>
-  <Newsletter />
+  <SimpleNewsletter/>
 </template>
-
-<script>
-import { Newsletter } from '@vuepress/plugin-blog/lib/client/components'
-export default {
-  components: {
-    Newsletter
-  }
-}
-</script>
 ```
 - Output:
 
 <img src="/Newsletter.png" width="500"/>
-
-::: tip 
-For `<Comment>` and `<Newsletter>`:
-
-When you're writing your own theme, you may offer user options whether to enable or not. In this scenario, you can still simply put those components in your layout component because it has handled this condition. It'll render nothing without error if the feature is disabled.
-:::
