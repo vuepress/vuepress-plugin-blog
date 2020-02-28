@@ -31,7 +31,7 @@ module.exports = {
 }
 ```
 
-Please head [documentation](https://vuepress-theme-blog.ulivz.com/) to see all available options.
+Please head [documentation](https://vuepress-plugin-blog.ulivz.com/) to see all available options.
 
 
 ## Projects Using `@vuepress/plugin-blog`
