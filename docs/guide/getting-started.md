@@ -151,7 +151,7 @@ module.exports = {
 }
 ```
 
-Suppose you have 3 pages at `_posts` direcotry:
+Suppose you have 3 pages at `_posts` directory:
 
 - `_posts/2018-6-8-a.md`
 - `_posts/2019-6-8-b.md`
