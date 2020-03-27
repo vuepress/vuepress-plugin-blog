@@ -41,6 +41,7 @@ Please head [documentation](https://vuepress-plugin-blog.ulivz.com/) to see all 
 - [vuepress-theme-modern-blog](https://github.com/z3by/vuepress-theme-modern-blog): A modern theme for Vue press using [Element.UI design system](https://element.eleme.io/#/)
 - [vuepress-theme-reco](https://github.com/vuepress-reco/vuepress-theme-reco) - A simple and beautiful vuepress blog theme
 - [vuepress-theme-yuchanns](https://github.com/yuchanns/vuepress-theme-yuchanns): A github style vuepress blog theme
+- [vuepress-theme-ic](https://github.com/IKangXu/vuepress-theme-ic) :tada::tada::tada: A note-style vuepress blog theme with simple, clear and practical features for the purpose. The palest ink is better than the best memory.
 
 Feel free to add yours here...
 
