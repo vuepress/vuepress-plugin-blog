@@ -1,18 +1,20 @@
 # @vuepress/plugin-blog
 
-[![NPM version](https://badgen.net/npm/v/@vuepress/plugin-blog)](https://npmjs.com/package/@vuepress/plugin-blog) 
-[![NPM downloads](https://badgen.net/npm/dm/@vuepress/plugin-blog)](https://npmjs.com/package/@vuepress/plugin-blog) 
+[![NPM version](https://badgen.net/npm/v/@vuepress/plugin-blog)](https://npmjs.com/package/@vuepress/plugin-blog)
+[![NPM downloads](https://badgen.net/npm/dm/@vuepress/plugin-blog)](https://npmjs.com/package/@vuepress/plugin-blog)
 [![NPM LICENSE](https://badgen.net/npm/license/@vuepress/plugin-blog)](https://github.com/vuepressjs/vuepress-plugin-blog/blob/master/LICENSE)
 
-> Official blog plugin for VuePress. 
+> Official blog plugin for VuePress.
+
+[**中文文档**](./README.zh-CN.md)
 
 ## Features
 
-- [**Classification**](https://vuepress-plugin-blog.ulivz.com/guide/getting-started.html#document-classifier): 
-Powerful classification system lets you quickly classify your posts.
-- [**Pagination**](https://vuepress-plugin-blog.ulivz.com/guide/getting-started.html#pagination): 
-Pagination runs through the entire plugin, and it has never been so simple.
-- [**Client APIs**](https://vuepress-plugin-blog.ulivz.com/client-api/): Simple client APIs make it easier for you to write a blog theme.       
+- [**Classification**](https://vuepress-plugin-blog.ulivz.com/guide/getting-started.html#document-classifier):
+  Powerful classification system lets you quickly classify your posts.
+- [**Pagination**](https://vuepress-plugin-blog.ulivz.com/guide/getting-started.html#pagination):
+  Pagination runs through the entire plugin, and it has never been so simple.
+- [**Client APIs**](https://vuepress-plugin-blog.ulivz.com/client-api/): Simple client APIs make it easier for you to write a blog theme.
 
 ## Install
 
@@ -27,12 +29,11 @@ yarn add -D @vuepress/plugin-blog
 
 ```javascript
 module.exports = {
-  plugins: ['@vuepress/blog'] 
+  plugins: ['@vuepress/blog']
 }
 ```
 
 Please head [documentation](https://vuepress-plugin-blog.ulivz.com/) to see all available options.
-
 
 ## Projects Using `@vuepress/plugin-blog`
 
@@ -42,12 +43,12 @@ Please head [documentation](https://vuepress-plugin-blog.ulivz.com/) to see all 
 - [vuepress-theme-reco](https://github.com/vuepress-reco/vuepress-theme-reco) - A simple and beautiful vuepress blog theme
 - [vuepress-theme-yuchanns](https://github.com/yuchanns/vuepress-theme-yuchanns): A github style vuepress blog theme
 - [vuepress-theme-ic](https://github.com/IKangXu/vuepress-theme-ic) :tada::tada::tada: A note-style vuepress blog theme with simple, clear and practical features for the purpose. The palest ink is better than the best memory.
+- [vuepress-theme-hope](https://vuepress-theme.mrhope.site/): :zap: A light vuepress theme
 
 Feel free to add yours here...
-
 
 ## Author
 
 **@vuepress/theme-blog** © [ULIVZ](https://github.com/ulivz), Released under the [MIT](./LICENSE) License.<br>
 
-> [github.com/ulivz](https://github.com/ulivz) · GitHub [@ULIVZ](https://github.com/ulivz) · Twitter [@_ulivz](https://twitter.com/_ulivz)
+> [github.com/ulivz](https://github.com/ulivz) · GitHub [@ULIVZ](https://github.com/ulivz) · Twitter [@\_ulivz](https://twitter.com/_ulivz)

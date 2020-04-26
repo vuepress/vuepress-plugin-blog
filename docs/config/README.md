@@ -4,8 +4,9 @@ sidebar: auto
 
 # Config
 
-::: tip TIP
-We strongly recommend that you read the [Getting Started](../guide/getting-started.md) section before using this plugin.
+::: tip
+We strongly recommend that you read the [Getting Started](../guide/getting-started.md) section before using
+this plugin.
 :::
 
 ## directories
@@ -14,8 +15,7 @@ We strongly recommend that you read the [Getting Started](../guide/getting-start
 - Default: `[]`
 
 Create one or more [directory classifiers](../guide/getting-started.md#directory-classifier), all available options in
-`DirectoryClassifier` are as
-follows.
+`DirectoryClassifier` are as follows.
 
 ### id
 
@@ -41,15 +41,15 @@ Matched directory name, e.g. `_post`.
 
 Entry page for current classifier, e.g. `/` or `/post/`.
 
-If you set `DirectoryClassifier.path` to `/`, it means that you want to access the matched pages list at `/`. set
-to `/post/` is the same.
+If you set `DirectoryClassifier.path` to `/`, it means that you want to access the matched pages list at `/`. set to
+`/post/` is the same.
 
 ### title
 
 - Type: `string`
-- Default: `id` 
+- Default: `id`
 - Required: `false`
- 
+
 Entry and pagination page titles for current classifier.
 
 ### layout
@@ -100,7 +100,8 @@ With the default `itemPermalink`, you'll get following output paths:
 /2019/06/08/intro-to-vuepress-next/
 ```
 
-For more details about permalinks, please head to [Permalinks](https://v1.vuepress.vuejs.org/guide/permalinks.html) section at VuePress's documentation.
+For more details about permalinks, please head to [Permalinks](https://v1.vuepress.vuejs.org/guide/permalinks.html)
+section at VuePress's documentation.
 
 ### pagination
 
@@ -137,10 +138,10 @@ module.exports = {
     ['@vuepress/plugin-blog', {
       frontmatters: [
         {
-          id: "tag",
+          id: 'tag',
           keys: ['tag', 'tags'],
         },
-      ]
+      ],
     }],
   ],
 }
@@ -157,10 +158,10 @@ Entry page for current classifier, e.g. `/` or `/post/`.
 ### title
 
 - Type: `string`
-- Default: `id` 
+- Default: `id`
 - Required: `false`
- 
-Entry, scope and pagination  page titles for current classifier.
+
+Entry, scope and pagination page titles for current classifier.
 
 ### layout
 
@@ -197,7 +198,7 @@ Please head to [Pagination Config](../pagination/README.md#config) section to ge
 
 ## globalPagination
 
-Pagination config for all directories and frontmatters. 
+Pagination config for all directories and frontmatters.
 
 - Type: `Pagination`
 - Required: `false`
@@ -217,20 +218,25 @@ It will be enabled when `hostname` is provided. e.g.
   hostname: 'https://yourdomain'
 }
 ```
-The 404 page is excluded by default. Further options, please head to [vuepress-plugin-sitemap](https://github.com/ekoeryanto/vuepress-plugin-sitemap#options).
+
+The 404 page is excluded by default. Further options, please head to
+[vuepress-plugin-sitemap](https://github.com/ekoeryanto/vuepress-plugin-sitemap#options).
 
 ## comment
 
-### service 
+### service
 
-Service to accomplish commenting. 
+Service to accomplish commenting.
 
-- Type: `'vssue' | 'disqus';`
+- Type: `'vssue' | 'disqus'`
 - Default: `undefined`
 - Required: `false`
 
 ### others
-Other options depend on which service you pick since this feature is accomplished by the plugins below. All options except `service` will be passed directly to the plugin, so take a look at their documentation for more details:
+
+Other options depend on which service you pick since this feature is accomplished by the plugins below. All options
+except `service` will be passed directly to the plugin, so take a look at their documentation for more details:
+
 - [vuepress-plugin-disqus](https://github.com/lorisleiva/vuepress-plugin-disqus)
 - [vuepress-plugin-vssue](https://vssue.js.org/guide/vuepress.html#usage)
 
@@ -247,7 +253,10 @@ It will be enabled when `endpoint` is provided. e.g.
   endpoint: 'https://billyyyyy3320.us4.list-manage.com/subscribe/post?u=4905113ee00d8210c2004e038&amp;id=bd18d40138'
 }
 ```
-[vuepress-plugin-mailchimp](https://vuepress-plugin-mailchimp.billyyyyy3320.com/) is how we implement the feature. This config will be pass directly to it, so please head [vuepress-plugin-mailchimp](https://vuepress-plugin-mailchimp.billyyyyy3320.com/#config) for more details.  
+
+[vuepress-plugin-mailchimp](https://vuepress-plugin-mailchimp.billyyyyy3320.com/) is how we implement the feature. This
+config will be pass directly to it, so please head
+[vuepress-plugin-mailchimp](https://vuepress-plugin-mailchimp.billyyyyy3320.com/#config) for more details.
 
 ## feed
 
@@ -263,4 +272,5 @@ It will be enabled when `canonical_base` is provided. e.g.
 }
 ```
 
-All the generated files will be placed under your output directory. If you wish to make further configuration, please check out [vuepress-plugin-feed](https://github.com/webmasterish/vuepress-plugin-feed).
+All the generated files will be placed under your output directory. If you wish to make further configuration, please
+check out [vuepress-plugin-feed](https://github.com/webmasterish/vuepress-plugin-feed).

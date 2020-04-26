@@ -1,15 +1,15 @@
 ---
 home: true
-heroImage: 
+heroImage:
 actionText: Getting Started →
 actionLink: /guide/
 features:
-- title: Classification
-  details: Powerful classification system lets you quickly classify your posts.
-- title: Pagination
-  details: Pagination runs through the entire plugin, and it has never been so simple.
-- title: Client APIs
-  details: Simple client APIs make it easier for you to write a blog theme.
+  - title: Classification
+    details: Powerful classification system lets you quickly classify your posts.
+  - title: Pagination
+    details: Pagination runs through the entire plugin, and it has never been so simple.
+  - title: Client APIs
+    details: Simple client APIs make it easier for you to write a blog theme.
 
 footer: MIT Licensed | Copyright © 2019-present ULIVZ
 ---

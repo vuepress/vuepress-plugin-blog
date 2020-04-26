@@ -4,19 +4,19 @@ sidebar: auto
 
 # Client API
 
-::: tip TIP
-We strongly recommend that you read the [Getting Started](../guide/getting-started.md) section before using this plugin.
+::: tip
+We strongly recommend that you read the [Getting Started](../guide/getting-started.md) section before using
+this plugin.
 :::
 
 ## $pagination
 
-::: warning WARN
-Note that if you're accessing `$pagination` at a route which doesn't match any classification, the  value of
-`$pagination` will be `null`.
+::: warning
+Note that if you're accessing `$pagination` at a route which doesn't match any classification, the
+value of `$pagination` will be `null`.
 
 So when you develop layout components, you need to verify that `$pagination` exists.
 :::
-
 
 ### `$pagination.pages`
 
@@ -53,11 +53,10 @@ Link of next pagination page.
 
 Get specific pagination page via page number.
 
-::: tip TIP
-You can use this function to custom the pagination component as the internal 
+::: tip
+You can use this function to custom the pagination component as the internal
 [`<Pagnination />`](../components/#pagination) component.
 :::
-
 
 ## $frontmatterKey
 
@@ -87,7 +86,7 @@ module.exports = {
 }
 ```
 
-Then this plugin will inject a `$frontmatterKey` object to the prototype of Vue, so you can use it directly at your 
+Then this plugin will inject a `$frontmatterKey` object to the prototype of Vue, so you can use it directly at your
 layout component (`<Tag />`).
 
 ### `$frontmatterKey.list`
@@ -98,24 +97,23 @@ The interface is as follows:
 
 ```typescript
 type FrontmatterKeyList = Array<{
-  name: string;
-  path: string;
-  pages: Array<VuePressPage>;
+  name: string
+  path: string
+  pages: Array<VuePressPage>
 }>
 ```
 
-You can re-read the [Frontmatter Classifier](../guide/getting-started.md#frontmatter-classifier) to see the live 
-example of `tag`.
+You can re-read the [Frontmatter Classifier](../guide/getting-started.md#frontmatter-classifier) to see the live example
+of `tag`.
 
 ::: tip Multiple Frontmatter Classifiers
 
-If you create two frontmatter classifiers, e.g. `tag` and `category`, then in `/tag/` route, the `$frontmatterKey` will 
+If you create two frontmatter classifiers, e.g. `tag` and `category`, then in `/tag/` route, the `$frontmatterKey` will
 automatically point to `tag`, while in `/category/`, it will point to `category`.
 
 This variable is essentially designed to generalize the list page of frontmatter keys
 
 :::
-
 
 ## $service
 
@@ -127,7 +125,7 @@ Whether comment is enabled.
 
 #### `$service.comment.service`
 
-Get the comment service 
+Get the comment service
 
 ### $service.email
 
@@ -148,4 +146,3 @@ whether Atom feed is enabled.
 #### `$service.feed.json`
 
 whether JSON feed is enabled.
-

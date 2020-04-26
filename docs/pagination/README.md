@@ -4,8 +4,9 @@ sidebar: auto
 
 # Pagination Config
 
-::: tip TIP
-We strongly recommend that you read the [Getting Started](../guide/getting-started.md) section before using this plugin.
+::: tip
+We strongly recommend that you read the [Getting Started](../guide/getting-started.md) section before using
+this plugin.
 :::
 
 ## sorter
@@ -17,16 +18,20 @@ Sorter for matched pages, the default sorter is as follows:
 
 ```js
 sorter: (prev, next) => {
-  const dayjs = require('dayjs');
-  const prevTime = dayjs(prev.frontmatter.date);
-  const nextTime = dayjs(next.frontmatter.date);
-  return prevTime - nextTime > 0 ? -1 : 1;
+  const dayjs = require('dayjs')
+  const prevTime = dayjs(prev.frontmatter.date)
+  const nextTime = dayjs(next.frontmatter.date)
+  return prevTime - nextTime > 0 ? -1 : 1
 }
 ```
-The function will be a parameter of [Array.sort()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort).
 
-::: warning Note
-Because only the dates in frontmatter written in 2-digits will be transformed, other dates written in single-digit, such as `2020-1-1` will be treated as string. `dayjs` accepts this two different result, whereas `new Date` won't work fine in some browser (e.g. Safari). 
+The function will be a parameter of
+[Array.sort()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort).
+
+::: warning
+Because only the dates in frontmatter written in 2-digits will be transformed, other dates written in
+single-digit, such as `2020-1-1` will be treated as string. `dayjs` accepts this two different result, whereas
+`new Date` won't work fine in some browser (e.g. Safari).
 :::
 
 ## prevText
@@ -73,10 +78,10 @@ function getPaginationPageUrl(index) {
 }
 ```
 
-- For [directory classifier](../README.md#directory-classifier), the `indexPath` defaults to `/${classifier.id}/` (e.g
-. `/post/`)
-- For [frontmatter classifier](../README.md#frontmatter-classifier), the `indexPath` defaults to `/${classifier.pid}/${classifier.id}` 
-(e.g. `/tag/js/`)
+- For [directory classifier](../README.md#directory-classifier), the `indexPath` defaults to `/${classifier.id}/` (e.g .
+  `/post/`)
+- For [frontmatter classifier](../README.md#frontmatter-classifier), the `indexPath` defaults to
+  `/${classifier.pid}/${classifier.id}` (e.g. `/tag/js/`)
 
 ## getPaginationPageTitle
 
@@ -87,16 +92,17 @@ A function to get the title of pagination page dynamically:
 
 ```js
 // directories
-function getPaginationPageTitle (pageNumber) {
+function getPaginationPageTitle(pageNumber) {
   return `Page ${pageNumber} | ${entryTitle}`
 }
 
 // frontmatters
-function getPaginationPageTitle (pageNumber, key) {
+function getPaginationPageTitle(pageNumber, key) {
   return `Page ${pageNumber} - ${key} | ${entryTitle}`
 }
 ```
 
-There are two args to help you customize your title: 
+There are two args to help you customize your title:
+
 - `pageNumber`
 - `key` : the [key](../config/#keys) while configuring frontmatters
