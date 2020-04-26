@@ -1,13 +1,14 @@
 # Getting Started
 
 ::: tip
-This section is a step-by-step tutorial with some concepts, and we recommend that you read it completely before using
-this plugin.
+This section is a step-by-step tutorial with some concepts, and we recommend that you read it completely before
+using this plugin.
 :::
 
 ## Document Classifier
 
-`Document classifier` is a set of functions that can classify pages with the same characteristics. For a blog developer, the same characteristics may exist between different pages as follows:
+`Document classifier` is a set of functions that can classify pages with the same characteristics. For a blog developer,
+the same characteristics may exist between different pages as follows:
 
 - Pages put in a directory (e.g. `_post`)
 - Pages containing the same specific frontmatter key value (e.g. `tag: js`).
@@ -22,10 +23,10 @@ Directory Classifier, that classifies the source pages placed in a same director
 
 Suppose you have the following files structure:
 
-```vue
+```
 .
-└── _posts   
-    ├── 2018-4-4-intro-to-vuepress.md   
+└── _posts
+    ├── 2018-4-4-intro-to-vuepress.md
     └── 2019-6-8-intro-to-vuepress-next.md
 ```
 
@@ -59,17 +60,16 @@ module.exports = {
 }
 ```
 
-Then the plugin will help you to generate following pages, and automatically leverage corresponding
-layout:
+Then the plugin will help you to generate following pages, and automatically leverage corresponding layout:
 
-| url                                   | layout                 |
-| ------------------------------------- | ---------------------- |
+| url                                   | layout                                          |
+| ------------------------------------- | ----------------------------------------------- |
 | `/`                                   | `IndexPost` (fallback to `Layout` if not exist) |
-| `/2018/04/04/intro-to-vuepress/`      | `Post`                 |
-| `/2019/06/08/intro-to-vuepress-next/` | `Post`                 |
+| `/2018/04/04/intro-to-vuepress/`      | `Post`                                          |
+| `/2019/06/08/intro-to-vuepress-next/` | `Post`                                          |
 
-This means that you need to create two layout components(`IndexPost` and `Post`) to handle the layout of `index` and `post`
-pages.
+This means that you need to create two layout components(`IndexPost` and `Post`) to handle the layout of `index` and
+`post` pages.
 
 You can also custom the layout component:
 
@@ -114,10 +114,10 @@ module.exports = {
 ```
 
 ::: warning
-It is noteworthy that the `path` and `itemPermalink` must be uniformly modified, and `itemPermalink` must be prefixed with
-`path`.
+It is noteworthy that the `path` and `itemPermalink` must be uniformly modified, and `itemPermalink` must be
+prefixed with `path`.
 
-The default value of `itemPermalink` is `'/:year/:month/:day/:slug'`,
+The default value of `itemPermalink` is `'/:year/:month/:day/:slug'`.
 :::
 
 **See also**:
@@ -159,19 +159,19 @@ Suppose you have 3 pages at `_posts` directory:
 
 When the `lengthPerPage` is set to `2`, this plugin will help you generate the following pages:
 
-| url              | layout                           |
-| ---------------- | -------------------------------- |
-| `/`              | `IndexPost` (fallback to `Layout` if not exist) |
+| url              | layout                                                    |
+| ---------------- | --------------------------------------------------------- |
+| `/`              | `IndexPost` (fallback to `Layout` if not exist)           |
 | `/page/2/` (New) | `DirectoryPagination` (fallback to `Layout` if not exist) |
-| `/2019/06/08/a/` | `Post`                           |
-| `/2019/06/08/b/` | `Post`                           |
-| `/2018/06/08/c/` | `Post`                           |
+| `/2019/06/08/a/` | `Post`                                                    |
+| `/2019/06/08/b/` | `Post`                                                    |
+| `/2018/06/08/c/` | `Post`                                                    |
 
 So how to get the matched pages in the layout component? In fact, it will be much simpler than you think.
 
 If you visit `/`, current page leverages layout `IndexPost`. In this layout component, you just need to use
-`this.$pagination.pages` to get the matched pages. In the above example, the actual value of `this.$pagination.pages` will
-be:
+`this.$pagination.pages` to get the matched pages. In the above example, the actual value of `this.$pagination.pages`
+will be:
 
 ```json
 [
@@ -180,8 +180,8 @@ be:
 ]
 ```
 
-If you visit `/`, current page leverages layout `DirectoryPagination`, you can also use
-`this.$pagination.pages` to access it:
+If you visit `/`, current page leverages layout `DirectoryPagination`, you can also use `this.$pagination.pages` to
+access it:
 
 ```json
 [
@@ -189,11 +189,13 @@ If you visit `/`, current page leverages layout `DirectoryPagination`, you can a
 ]
 ```
 
-Isn't this very natural experience? You just need to care about the style of your layout component, not the complicated and boring logic behind it.
+Isn't this very natural experience? You just need to care about the style of your layout component, not the complicated
+and boring logic behind it.
 
 ::: tip
-To save the length of docs, we omitted the data structure of the `$page` object. You can get more information about
-the data structure of `$page` at the [official documentation](https://v1.vuepress.vuejs.org/guide/global-computed.html#page).
+To save the length of docs, we omitted the data structure of the `$page` object. You can get more information
+about the data structure of `$page` at the
+[official documentation](https://v1.vuepress.vuejs.org/guide/global-computed.html#page).
 :::
 
 **See also**:
@@ -208,7 +210,7 @@ Suppose you have three pages:
 
 - `a.md`:
 
-```mardkown
+```md
 ---
 tag: vue
 ---
@@ -216,7 +218,7 @@ tag: vue
 
 - `b.md`:
 
-```mardkown
+```md
 ---
 tag: vue
 ---
@@ -224,7 +226,7 @@ tag: vue
 
 - `c.md`:
 
-```mardkown
+```md
 ---
 tag: js
 ---
@@ -249,7 +251,7 @@ module.exports = {
             // Layout of the `entry page`
             layout: 'Tags',
             // Layout of the `scope page`
-            scopeLayout: 'Tag'
+            scopeLayout: 'Tag',
           },
         ],
       },
@@ -258,19 +260,17 @@ module.exports = {
 }
 ```
 
-Then the plugin will help you to generate the following extra pages, and automatically leverage
-the corresponding layout:
+Then the plugin will help you to generate the following extra pages, and automatically leverage the corresponding
+layout:
 
-| url         | layout                             |
-| ----------- | ---------------------------------- |
-| `/tag/`     | `Tags` (fallback to `FrontmatterKey` if not exist)  |
-| `/tag/vue/` | `Tag` (fallback to `FrontmatterPagination` if not exist)  |
-| `/tag/js/`  | `Tag` (fallback to `FrontmatterPagination` if not exist)  |
+| url         | layout                                                   |
+| ----------- | -------------------------------------------------------- |
+| `/tag/`     | `Tags` (fallback to `FrontmatterKey` if not exist)       |
+| `/tag/vue/` | `Tag` (fallback to `FrontmatterPagination` if not exist) |
+| `/tag/js/`  | `Tag` (fallback to `FrontmatterPagination` if not exist) |
 
-In the `<Tags />` component, you can use [this.$frontmatterKey.list](../client-api/README.md#frontmatterkey) to get the
-tag
-list. The value
-would be like:
+In the `<Tags />` component, you can use [this.\$frontmatterKey.list](../client-api/README.md#frontmatterkey) to get the
+tag list. The value would be like:
 
 ```json
 [
@@ -292,9 +292,8 @@ would be like:
 ]
 ```
 
-In the `FrontmatterPagination` component, you can use
-[this.$pagination.pages](../client-api/README.md#pagination) to get the matched pages in current tag
-classification:
+In the `FrontmatterPagination` component, you can use [this.\$pagination.pages](../client-api/README.md#pagination) to
+get the matched pages in current tag classification:
 
 - If you visit `/tag/vue/`, the `this.$pagination.pages` will be:
 
@@ -320,7 +319,9 @@ classification:
 ## Sitemap
 
 I can't see a reason you don't want a sitemap. Sitemap is a XML file that helps search engines better index your blog.
-The file will be generated by simply passing down your host name as below. 
+
+The file will be generated by simply passing down your host name as below.
+
 ```js
 // .vuepress/config.js
 module.exports = {
@@ -329,25 +330,31 @@ module.exports = {
       '@vuepress/blog',
       {
         sitemap: {
-          hostname: 'https://yourdomain'
+          hostname: 'https://yourdomain',
         },
       },
     ],
   ],
 }
 ```
+
 ## Comment
 
-Comment is a great way to make your blog much more lively. We integrate client side comment services: [Vssue](https://vssue.js.org/) and [Disqus](https://disqus.com/) in this plugin. The former is a vue-powered and issue-based open source project which can enable comments for your static pages, while the latter is a networked platform that provides comment service used by hundreds of thousands of websites. 
+Comment is a great way to make your blog much more lively. We integrate client side comment services:
+[Vssue](https://vssue.js.org/) and [Disqus](https://disqus.com/) in this plugin. The former is a vue-powered and
+issue-based open source project which can enable comments for your static pages, while the latter is a networked
+platform that provides comment service used by hundreds of thousands of websites.
 
-We provide you a out-of-box component `<Comment>`. you can import it from `'@vuepress/plugin-blog/lib/client/components'`. It might be useful when you're creating layout component `Post` which handle all the layout of post pages:
+We provide you a out-of-box component `<Comment>`. you can import it from
+`'@vuepress/plugin-blog/lib/client/components'`. It might be useful when you're creating layout component `Post` which
+handle all the layout of post pages:
 
 ```vue
 // layouts/Post.vue
 <template>
   <div>
-      <Content />
-      <Comment />
+    <Content />
+    <Comment />
   </div>
 </template>
 
@@ -363,7 +370,10 @@ export default {
 ```
 
 You have to tell the plugin which service you're going to use.
-Since comment is implemented by other plugins, make sure you've read [vuepress-plugin-vssue](https://vssue.js.org/) or [vuepress-plugin-disqus](https://github.com/lorisleiva/vuepress-plugin-disqus) before using them:
+
+Since comment is implemented by other plugins, make sure you've read [vuepress-plugin-vssue](https://vssue.js.org/) or
+[vuepress-plugin-disqus](https://github.com/lorisleiva/vuepress-plugin-disqus) before using them:
+
 ```js
 // .vuepress/config.js
 module.exports = {
@@ -387,6 +397,7 @@ module.exports = {
   ],
 }
 ```
+
 ```js
 // .vuepress/config.js
 module.exports = {
@@ -407,14 +418,21 @@ module.exports = {
 ```
 
 ::: tip
-Of course you can use whatever service you like or roll your own comment system. You can simply ignore this config as you wish so that this build-in comment feature won't be enabled.
+Of course you can use whatever service you like or roll your own comment system. You can simply ignore this
+config as you wish so that this build-in comment feature won't be enabled.
 :::
 
 ## Newsletter
 
-A blog newsletter is an email to notify subscribers you’ve published a new blog post. Emails are a great way to build relationships and engage with your readers. 
+A blog newsletter is an email to notify subscribers you’ve published a new blog post. Emails are a great way to build
+relationships and engage with your readers.
 
-Just like [Comment](#comment), we integrate a service to help you accomplish it easily. [MailChimp](https://mailchimp.com/) is probably the most well-known email marketing tool. The only required config option is `endpoint`, please head [vuepress-plugin-mailchimp](https://vuepress-plugin-mailchimp.billyyyyy3320.com/#install) to see how to get your own endpoint.
+Just like [Comment](#comment), we integrate a service to help you accomplish it easily.
+[MailChimp](https://mailchimp.com/) is probably the most well-known email marketing tool. The only required config
+option is `endpoint`, please head
+[vuepress-plugin-mailchimp](https://vuepress-plugin-mailchimp.billyyyyy3320.com/#install) to see how to get your own
+endpoint.
+
 ```js
 // .vuepress/config.js
 module.exports = {
@@ -424,7 +442,8 @@ module.exports = {
       {
         newsletter: {
           // Put your endpoint, not mine.
-          endpoint: "https://billyyyyy3320.us4.list-manage.com/subscribe/post?u=4905113ee00d8210c2004e038&amp;id=bd18d40138"
+          endpoint:
+            'https://billyyyyy3320.us4.list-manage.com/subscribe/post?u=4905113ee00d8210c2004e038&amp;id=bd18d40138',
         },
       },
     ],
@@ -433,32 +452,37 @@ module.exports = {
 ```
 
 `vuepress-plugin-mailchimp` has already registered a global component `SimpleNewsletter`. Here's a simple usage:
+
 ```vue
 // layouts/Post.vue
 <template>
-<div>
-  <Content />
-  <SimpleNewsletter />
-</div>
+  <div>
+    <Content />
+    <SimpleNewsletter />
+  </div>
 </template>
 ```
 
-In your theme, You'll probably offer users options whether to enable or not. You can use `this.$service.email.enabled` to access it:
+In your theme, You'll probably offer users options whether to enable or not. You can use `this.$service.email.enabled`
+to access it:
+
 ```vue
 // layouts/Post.vue
 <template>
-<div>
-  <Content />
-  <SimpleNewsletter v-if="$service.email.enabled"/>
-</div>
+  <div>
+    <Content />
+    <SimpleNewsletter v-if="$service.email.enabled" />
+  </div>
 </template>
 ```
 
-Please head [UI-customization](https://vuepress-plugin-mailchimp.billyyyyy3320.com/#ui-customization) if you don't like the default UI.
+Please head [UI-customization](https://vuepress-plugin-mailchimp.billyyyyy3320.com/#ui-customization) if you don't like
+the default UI.
 
 ## Feed
 
-Feed is another approach to allow your users to get your latest content. RSS, Atom, and even JSON feeds are the right tools for the job. Let's see an example:
+Feed is another approach to allow your users to get your latest content. RSS, Atom, and even JSON feeds are the right
+tools for the job. Let's see an example:
 
 ```JavaScript
 // .vuepress/config.js
@@ -478,22 +502,23 @@ module.exports = {
 
 After building, you'll be able to find them (`rss.xml`, `feed.atom`, `feed.json`) in you output directory (`dist`).
 
-
 ## Examples
 
-There're some [examples](https://github.com/vuepressjs/vuepress-plugin-blog/tree/master/examples) under this project help us test this plugin. They're also simplest examples for you after reading all the concept above. 
+There're some [examples](https://github.com/vuepressjs/vuepress-plugin-blog/tree/master/examples) under this project
+help us test this plugin. They're also simplest examples for you after reading all the concept above.
 
 Clone [this repo](https://github.com/vuepressjs/vuepress-plugin-blog) and start the example to see the output:
+
 ```shell
 yarn dev:example # serves example
 yarn build:example # builds example
 ```
 
-:::tip Tip
-It's worth telling that [the `zh` folder](https://github.com/vuepressjs/vuepress-plugin-blog/tree/master/examples/zh) is an example to build the blog in your native language. It took Traditional Chinese for example.
+:::tip
+It's worth telling that
+[the `zh` folder](https://github.com/vuepressjs/vuepress-plugin-blog/tree/master/examples/zh) is an example to build the
+blog in your native language. It took Traditional Chinese for example.
 :::
-
-
 
 ## Writing a blog theme
 
@@ -506,5 +531,6 @@ create a blog theme:
 
 Here are two official examples (A simple & a complex) for you:
 
-- [70-lines-of-vuepress-blog-theme](https://github.com/ulivz/70-lines-of-vuepress-blog-theme): A VuePress Blog Theme implemented in around 70 lines.
+- [70-lines-of-vuepress-blog-theme](https://github.com/ulivz/70-lines-of-vuepress-blog-theme): A VuePress Blog Theme
+  implemented in around 70 lines.
 - [@vuepress/theme-blog](https://github.com/ulivz/vuepress-theme-blog): Default blog theme for VuePress.
