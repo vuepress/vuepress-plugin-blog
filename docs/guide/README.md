@@ -5,7 +5,7 @@
 
 Later, VuePress 1.x, which introduced [plugin system](https://v1.vuepress.vuejs.org/plugin/), greatly improved the 
 expansibility of VuePress. This project is a VuePress plugin created by the author of VuePress 1.x, its purpose is to 
-reduce the cost of using developing a VuePress blog theme AFAP.
+reduce the cost of developing a VuePress blog theme AFAP.
 
 Note that this plugin has been deeply integrated into [@vuepress/theme-blog](https://github.com/ulivz/vuepress-theme-blog).
 
