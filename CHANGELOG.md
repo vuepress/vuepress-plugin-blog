@@ -1,3 +1,12 @@
+## [1.9.3](https://github.com/ulivz/vuepress-plugin-blog/compare/v1.9.2...v1.9.3) (2020-11-01)
+
+
+### Bug Fixes
+
+* pagination filter is incorrect when frontmatter key is number ([4abe10c](https://github.com/ulivz/vuepress-plugin-blog/commit/4abe10c8faf519e9aa682aae00ea80e1b4ec4185))
+
+
+
 ## [1.9.2](https://github.com/ulivz/vuepress-plugin-blog/compare/v1.9.1...v1.9.2) (2020-01-18)
 
 
