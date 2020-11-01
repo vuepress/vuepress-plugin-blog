@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/plugin-blog",
-  "version": "1.9.2",
+  "version": "1.9.3",
   "description": "Offical blog plugin for VuePress",
   "repository": {
     "type": "git",
