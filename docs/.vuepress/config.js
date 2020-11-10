@@ -1,6 +1,6 @@
 module.exports = {
   title: '@vuepress/plugin-blog',
-  description: 'Offical blog plugin for VuePress',
+  description: 'Official blog plugin for VuePress',
   themeConfig: {
     repo: 'vuepressjs/vuepress-plugin-blog',
     docsDir: 'docs',
