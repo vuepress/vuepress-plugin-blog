@@ -76,6 +76,9 @@ export interface FrontmatterClassifier {
    * `/tag/vue` will use `Foo.vue` as the layout
    */
   scopeLayout?: string;
+  /**
+   * A function to get the title of scope page dynamically.
+   */
   getScopePageTitle?: GetScopePageTitle;
   /**
    * Frontmatter for index page.
