@@ -115,7 +115,7 @@ export function resolvePaginationConfig(
        * Some browsers (e.g. Safari) don't support this format.
        */
       sorter: (prev: VuePressPage, next: VuePressPage) => {
-        const dayjs = require('dayjs'); // eslint-disable-line
+        const dayjs = require('dayjs').default; // eslint-disable-line
         const prevTime = dayjs(prev.frontmatter.date);
         const nextTime = dayjs(next.frontmatter.date);
         return prevTime - nextTime > 0 ? -1 : 1;
