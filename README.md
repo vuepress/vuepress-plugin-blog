@@ -43,6 +43,7 @@ Please head [documentation](https://vuepress-plugin-blog.ulivz.com/) to see all 
 - [vuepress-theme-hope](https://github.com/Mister-Hope/vuepress-theme-hope/) - A powerful vuepress blog theme with tons of features.
 - [vuepress-theme-yuchanns](https://github.com/yuchanns/vuepress-theme-yuchanns): A github style vuepress blog theme
 - [vuepress-theme-ic](https://github.com/IKangXu/vuepress-theme-ic) :tada::tada::tada: A note-style vuepress blog theme with simple, clear and practical features for the purpose. The palest ink is better than the best memory.
+- [vuepress-theme-blogue](https://github.com/ocavue/vuepress-theme-blogue) A minimalist blog theme with Material Design.
 
 Feel free to add yours here...
 
