@@ -1,3 +1,12 @@
+## [1.9.4](https://github.com/ulivz/vuepress-plugin-blog/compare/v1.9.3...v1.9.4) (2021-01-17)
+
+
+### Bug Fixes
+
+* error when requiring dayjs ([#94](https://github.com/ulivz/vuepress-plugin-blog/issues/94)) ([52aa5ed](https://github.com/ulivz/vuepress-plugin-blog/commit/52aa5edebde8190035bdc85cfe43ad3978e60ceb))
+
+
+
 ## [1.9.3](https://github.com/ulivz/vuepress-plugin-blog/compare/v1.9.2...v1.9.3) (2020-11-01)
 
 
