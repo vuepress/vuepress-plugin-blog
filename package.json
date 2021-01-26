@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/plugin-blog",
-  "version": "1.9.2",
+  "version": "1.9.4",
   "description": "Offical blog plugin for VuePress",
   "repository": {
     "type": "git",
@@ -8,11 +8,11 @@
   },
   "license": "MIT",
   "author": "ULIVZ <chl814@foxmail.com>",
+  "main": "lib/node/index.js",
   "files": [
     "lib",
     "types"
   ],
-  "main": "lib/node/index.js",
   "scripts": {
     "build": "concurrently \"rimraf lib\" \"npm:build:client\" \"npm:build:node\" \"npm:build:components\"",
     "build:client": "tsc -p tsconfig.client.json",
@@ -53,7 +53,7 @@
   "dependencies": {
     "@vssue/api-github-v3": "^1.1.2",
     "@vssue/vuepress-plugin-vssue": "^1.2.0",
-    "dayjs": "^1.8.19",
+    "dayjs": "^1.10.3",
     "vuejs-paginate": "^2.1.0",
     "vuepress-plugin-disqus": "^0.2.0",
     "vuepress-plugin-feed": "^0.1.8",

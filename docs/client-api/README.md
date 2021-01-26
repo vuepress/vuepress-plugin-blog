@@ -5,7 +5,7 @@ sidebar: auto
 # Client API
 
 ::: tip TIP
-We strongly recommend that you read the [Getting Started](../guide/getting-started.md) section before using this plugin.
+We strongly recommend that you read the [Getting Started](../guide/getting-started.md) section before using Client API.
 :::
 
 ## $pagination
