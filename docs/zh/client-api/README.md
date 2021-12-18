@@ -11,7 +11,7 @@ sidebar: auto
 ## $pagination
 
 ::: warning
-请注意，如果你在与任何分类都不匹配的路由上访问 `$pagination` ，则 `$pagination` 的值将为 `null` 。
+请注意，如果你在与任何分类都不匹配的路由上访问 `$pagination` ， `$pagination` 的值将为 `null` 。
 
 因此，当你开发布局组件时，你需要验证 `$pagination` 是否存在。
 :::
