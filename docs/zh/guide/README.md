@@ -2,7 +2,7 @@
 
 [VuePress](https://v1.vuepress.vuejs.org/zh/) 是由 Vue 驱动的可扩展静态网站生成器，其创建目的是为了满足 Vue 子项目的文档需求。
 
-后来，引入 [插件系统](https://v1.vuepress.vuejs.org/zh/plugin/), 大大改善了 VuePress 的可扩展性。该项目是由 VuePress 1.x 的作者创建的 VuePress 插件，其目的是减少使用开发 VuePress 博客主题子程序的成本。
+后来，引入 [插件系统](https://v1.vuepress.vuejs.org/zh/plugin/)的 VuePress 1.x 大幅度地增強了 VuePress 的可扩展性。本项目是一個 VuePress 插件，由 VuePress 1.x 的作者创建，其目的是盡可能地降低 VuePress 博客主题的开发成本。
 
 请注意，此插件已深入集成到 [@vuepress/theme-blog](https://github.com/ulivz/vuepress-theme-blog).
 
