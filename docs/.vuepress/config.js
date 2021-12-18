@@ -10,6 +10,7 @@ module.exports = {
       description: 'Vuepress 官方博客插件',
     },
   },
+  description: 'Official blog plugin for VuePress',
   themeConfig: {
     repo: 'vuepressjs/vuepress-plugin-blog',
     docsDir: 'docs',
