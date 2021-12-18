@@ -6,7 +6,7 @@
 
 请注意，此插件已深入集成到 [@vuepress/theme-blog](https://github.com/ulivz/vuepress-theme-blog).
 
-为了了解此插件的用法，我们建议你首先了解 VuePress ，并且你最好具有使用 VuePress 的经验。你可以通过以下方式了解 VuePress 1.x：
+为了了解本插件的用法，我们建议你先对于 VuePress 有些认识 ，而使用过 VuePress 的话更好。你可以通过以下方式了解 VuePress 1.x：
 
 - [VuePress 1.x 的文档](https://v1.vuepress.vuejs.org/zh/)
 - [medium - VuePress 1.x 的介绍](https://medium.com/@_ulivz/intro-to-vuepress-1-x-7e2b7885f95f)
