@@ -476,7 +476,7 @@ module.exports = {
 }
 ```
 
-After building, you'll be able to find them (`rss.xml`, `feed.atom`, `feed.json`) in you output directory (`dist`).
+After building, you'll be able to find them (`rss.xml`, `feed.atom`, `feed.json`) in your output directory (`dist`).
 
 
 ## Examples
