@@ -126,10 +126,10 @@ The default value of `itemPermalink` is `'/:year/:month/:day/:slug'`,
 
 ## Pagination
 
-As your blog articles grew more and more, you began to have the need for paging. By default, this plugin integrates a
+As your blog articles grew more and more, you began to have the need for paging. This plugin integrates a
 very powerful pagination system that allows you to access pagination functions with simple configuration.
 
-By default, the plugin assumes that the max number of pages per page is `10`. you can also modify it like this:
+By default, the plugin assumes that the max number of blog posts per page is `10`. You can also modify it like this:
 
 ```diff
 // .vuepress/config.js
